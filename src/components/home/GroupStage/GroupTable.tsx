@@ -1,3 +1,5 @@
+import { Flag } from "../Flag";
+
 export default function GroupTable() {
   return (
     <div className="overflow-hidden w-full rounded-2xl border border-border bg-card">
@@ -23,7 +25,7 @@ export default function GroupTable() {
         <div className="grid grid-cols-[1fr_repeat(8,28px)] items-center gap-1 rounded-lg px-2 py-2 text-sm hover:bg-secondary/50">
           <div className="flex items-center gap-2">
             <span className="w-4 text-xs text-muted-foreground">1</span>
-            <span className="text-lg">🇧🇷</span>
+            <Flag src="https://crests.football-data.org/764.svg" alt="Brazil" />
             <span className="font-medium">Brasil</span>
           </div>
           <span className="text-center font-display font-bold text-gold tabular-nums">9</span>
@@ -34,13 +36,13 @@ export default function GroupTable() {
           <span className="text-center tabular-nums text-muted-foreground">1</span>
           <span className="text-center tabular-nums text-muted-foreground">1</span>
           <span className="text-center tabular-nums text-muted-foreground">1</span>
-          
+
         </div   >
 
         <div className="grid grid-cols-[1fr_repeat(8,28px)] items-center gap-1 rounded-lg px-2 py-2 text-sm hover:bg-secondary/50">
           <div className="flex items-center gap-2">
             <span className="w-4 text-xs text-muted-foreground">2</span>
-            <span className="text-lg">🇭🇷</span>
+            <Flag src="https://crests.football-data.org/799.svg" alt="Croatia" />
             <span className="font-medium">Croácia</span>
           </div>
           <span className="text-center font-display font-bold text-gold tabular-nums">6</span>
@@ -51,12 +53,12 @@ export default function GroupTable() {
           <span className="text-center tabular-nums text-muted-foreground">1</span>
           <span className="text-center tabular-nums text-muted-foreground">1</span>
           <span className="text-center tabular-nums text-muted-foreground">1</span>
-          
+
         </div   >
         <div className="grid grid-cols-[1fr_repeat(8,28px)] items-center gap-1 rounded-lg px-2 py-2 text-sm hover:bg-secondary/50">
           <div className="flex items-center gap-2">
             <span className="w-4 text-xs text-muted-foreground">3</span>
-            <span className="text-lg">🇲🇦</span>
+            <Flag src="https://crests.football-data.org/morocco.svg" alt="Marroco" />
             <span className="font-medium">Marrocos</span>
           </div>
           <span className="text-center font-display font-bold text-gold tabular-nums">3</span>
@@ -67,13 +69,13 @@ export default function GroupTable() {
           <span className="text-center tabular-nums text-muted-foreground">1</span>
           <span className="text-center tabular-nums text-muted-foreground">1</span>
           <span className="text-center tabular-nums text-muted-foreground">1</span>
-          
+
         </div   >
         <div className="grid grid-cols-[1fr_repeat(8,28px)] items-center gap-1 rounded-lg px-2 py-2 text-sm hover:bg-secondary/50">
           <div className="flex items-center gap-2">
             <span className="w-4 text-xs text-muted-foreground">4</span>
-            <span className="text-lg">🇨🇷</span>
-            <span className="font-medium">Costa Rica</span>
+            <Flag src="https://crests.football-data.org/791.svg" alt="Ecuador" />
+            <span className="font-medium">Equador</span>
           </div>
           <span className="text-center font-display font-bold text-gold tabular-nums">0</span>
           <span className="text-center tabular-nums text-muted-foreground">3</span>
@@ -83,7 +85,7 @@ export default function GroupTable() {
           <span className="text-center tabular-nums text-muted-foreground">1</span>
           <span className="text-center tabular-nums text-muted-foreground">1</span>
           <span className="text-center tabular-nums text-muted-foreground">1</span>
-          
+
         </div>
       </div>
     </div>
