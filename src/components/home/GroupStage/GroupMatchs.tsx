@@ -1,3 +1,5 @@
+import { Flag } from "../Flag";
+
 export default function GroupMatch() {
   return (
     <div className="flex flex-col items-center gap-2">
@@ -11,7 +13,7 @@ export default function GroupMatch() {
           <div className="flex items-center gap-2">
             <div className="flex  items-center gap-2">
               <div className="flex items-center gap-2">
-                <span className="text-2xl">🇧🇷</span>
+                <Flag src="https://crests.football-data.org/764.svg" alt="Brazil" />
                 <span className="text-sm font-semibold">BRA</span>
               </div>
               <div className="flex items-center gap-1.5">
@@ -29,7 +31,7 @@ export default function GroupMatch() {
               </div>
               <div className="flex items-center gap-2">
                 <span className="text-sm font-semibold">CRO</span>
-                <span className="text-2xl">🇭🇷</span>
+                <Flag src="https://crests.football-data.org/799.svg" alt="Croatia" />
               </div>
             </div>
           </div>
@@ -37,7 +39,7 @@ export default function GroupMatch() {
           <div className="flex items-center gap-2">
             <div className="flex  items-center gap-2">
               <div className="flex items-center gap-2">
-                <span className="text-2xl">🇧🇷</span>
+                <Flag src="https://crests.football-data.org/764.svg" alt="Brazil" />
                 <span className="text-sm font-semibold">BRA</span>
               </div>
               <div className="flex items-center gap-1.5">
@@ -55,7 +57,7 @@ export default function GroupMatch() {
               </div>
               <div className="flex items-center gap-2">
                 <span className="text-sm font-semibold">CRO</span>
-                <span className="text-2xl">🇭🇷</span>
+                <Flag src="https://crests.football-data.org/799.svg" alt="Croatia" />
               </div>
             </div>
           </div>
