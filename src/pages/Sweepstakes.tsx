@@ -1,10 +1,10 @@
 import { useState } from "react";
-import GroupMatch from "../components/home/GroupStage/GroupMatchs";
-import GroupTable from "../components/home/GroupStage/GroupTable";
-import PaginationDots from "../components/home/GroupStage/PaginationDots";
+import GroupMatch from "../components/sweepstakes/GroupStage/GroupMatchs";
+import GroupTable from "../components/sweepstakes/GroupStage/GroupTable";
+import PaginationDots from "../components/sweepstakes/GroupStage/PaginationDots";
 import Header from "../components/shared/Header";
 import PhaseSelector from "../components/shared/PhaseSelector";
-import KnockoutStage from "../components/home/KnockoutStage/KnockoutStage";
+import KnockoutStage from "../components/sweepstakes/KnockoutStage/KnockoutStage";
 
 export default function Home() {
   const [isGroupStage, setIsGroupStage] = useState(false);

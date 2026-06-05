@@ -3,8 +3,23 @@ import KnockoutMatch from "./KnockoutMatch";
 export default function KnockoutStage() {
   return (
     <div className="flex gap-6">
-      <div className="flex flex-col justify-around gap-3">
-        
+      <div className="flex flex-col justify-around gap-3 text-xs">
+        <span>2ºA</span>
+        <span>2ºB</span>
+        <span>1ºE</span>
+        <span>3ºs</span>
+        <span>1ºF</span>
+        <span>2ºC</span>
+        <span>1ºC</span>
+        <span>2ºF</span>
+        <span>1ºI</span>
+        <span>3ºs</span>
+        <span>2ºE</span>
+        <span>2ºI</span>
+        <span>1ºA</span>
+        <span>3ºs</span>
+        <span>1ºL</span>
+        <span>3ºs</span>
       </div>
       <div className="flex flex-col justify-around gap-3">
         <KnockoutMatch
@@ -249,6 +264,24 @@ export default function KnockoutStage() {
           leftConnectingLine={false}
           connectingLineHeight="h-28"
         />
+      </div>
+      <div className="flex flex-col justify-around gap-3 text-xs">
+        <span>1ºD</span>
+        <span>3ºs</span>
+        <span>1ºG</span>
+        <span>3ºs</span>
+        <span>2ºK</span>
+        <span>2ºL</span>
+        <span>1ºH</span>
+        <span>2ºJ</span>
+        <span>1ºB</span>
+        <span>3ºs</span>
+        <span>1ºJ</span>
+        <span>2ºH</span>
+        <span>1ºK</span>
+        <span>3ºs</span>
+        <span>2ºD</span>
+        <span>2ºG</span>
       </div>
     </div>
   );

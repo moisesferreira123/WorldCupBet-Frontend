@@ -1,4 +1,4 @@
-import { Flag } from "../Flag";
+import { Flag } from "../../shared/Flag";
 
 export default function GroupTable() {
   return (
