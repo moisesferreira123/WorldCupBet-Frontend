@@ -16,7 +16,7 @@ export default function GroupMatch() {
               </div>
               <div className="flex items-center gap-1.5">
                 <label className="grid h-12 w-12 place-items-center rounded-xl border border-gold/30 bg-gold/10 font-display text-2xl font-bold tabular-nums text-gold">
-                  <input value={0} type="text" className="w-full h-full text-center focus:outline-none focus:border focus:border-yellow-400 rounded-xl" />
+                  <input value={0} type="text" className="w-full h-full text-center focus:outline-none focus:border focus:border-white rounded-xl" />
                 </label>
               </div>
             </div>
@@ -24,7 +24,7 @@ export default function GroupMatch() {
             <div className="flex items-center gap-2">
               <div className="flex items-center gap-1.5">
                 <label className="grid h-12 w-12 place-items-center rounded-xl border border-gold/30 bg-gold/10 font-display text-2xl font-bold tabular-nums text-gold">
-                  <input value={0} type="text" className="w-full h-full text-center focus:outline-none focus:border focus:border-yellow-400 rounded-xl" />
+                  <input value={0} type="text" className="w-full h-full text-center focus:outline-none focus:border focus:border-white rounded-xl" />
                 </label>
               </div>
               <div className="flex items-center gap-2">
@@ -42,7 +42,7 @@ export default function GroupMatch() {
               </div>
               <div className="flex items-center gap-1.5">
                 <label className="grid h-12 w-12 place-items-center rounded-xl border border-gold/30 bg-gold/10 font-display text-2xl font-bold tabular-nums text-gold">
-                  <input value={0} type="text" className="w-full h-full text-center focus:outline-none focus:border focus:border-yellow-400 rounded-xl" />
+                  <input value={0} type="text" className="w-full h-full text-center focus:outline-none focus:border focus:border-white rounded-xl" />
                 </label>
               </div>
             </div>
@@ -50,7 +50,7 @@ export default function GroupMatch() {
             <div className="flex items-center gap-2">
               <div className="flex items-center gap-1.5">
                 <label className="grid h-12 w-12 place-items-center rounded-xl border border-gold/30 bg-gold/10 font-display text-2xl font-bold tabular-nums text-gold">
-                  <input value={0} type="text" className="w-full h-full text-center focus:outline-none focus:border focus:border-yellow-400 rounded-xl" />
+                  <input value={0} type="text" className="w-full h-full text-center focus:outline-none focus:border focus:border-white rounded-xl" />
                 </label>
               </div>
               <div className="flex items-center gap-2">
