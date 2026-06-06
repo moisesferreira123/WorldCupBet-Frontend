@@ -3,11 +3,16 @@ import { createRoot } from 'react-dom/client'
 import './global.css'
 import Sweepstakes from './pages/Sweepstakes'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
+import Ranking from './pages/Ranking'
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <Sweepstakes />,
+  },
+  {
+    path: "/ranking",
+    element: <Ranking />,
   },
 ])
 

@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 export default function Header() {
   return (
     <header className="fixed top-0 w-screen z-40 border-b border-border/60 bg-background/80 backdrop-blur-lg">
@@ -12,10 +14,10 @@ export default function Header() {
           </div>
         </a>
         <ul className="flex gap-4 text-muted-foreground text-sm">
-          <li className="hover:text-gold cursor-pointer"><a>Bolão</a></li>
-          <li className="hover:text-gold cursor-pointer"><a>Partidas</a></li>
-          <li className="hover:text-gold cursor-pointer"><a>Ranking</a></li>
-          <li className="hover:text-gold cursor-pointer"><a>Pontuação</a></li>
+          <li className="hover:text-gold cursor-pointer"><Link to={'/'}>Bolão</Link></li>
+          <li className="hover:text-gold cursor-pointer"><Link to={'/matchs'}>Partidas</Link></li>
+          <li className="hover:text-gold cursor-pointer"><Link to={'/ranking'}>Ranking</Link></li>
+          <li className="hover:text-gold cursor-pointer"><Link to={'/score'}>Pontuação</Link></li>
         </ul>
       </nav>
     </header>

@@ -1,3 +1,5 @@
+import { Minus, Plus } from "lucide-react";
+
 interface KnockoutMatchProps {
   leftLine: boolean;
   rightLine: boolean;
@@ -19,16 +21,14 @@ export default function KnockoutMatch({leftLine, rightLine, leftConnectingLine, 
           </div>
           <div className="flex items-center gap-1">
             <button className="grid h-6 w-6 place-items-center rounded-md border border-border bg-secondary text-muted-foreground hover:border-primary hover:text-primary active:scale-95" aria-label="Diminuir">
-              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" className="lucide lucide-minus h-3 w-3" aria-hidden="true">
-                <path d="M5 12h14"></path>
-              </svg>
+              <Minus className="h-3 w-3" />
             </button>
-            <div className="grid h-8 w-8 place-items-center rounded-md border border-gold/30 bg-gold/10 font-display font-bold tabular-nums text-gold text-base">0</div>
+            {/* TODO: Colocar input */}
+            <div className="grid h-8 w-8 place-items-center rounded-md border border-gold/30 bg-gold/10 font-display font-bold tabular-nums text-gold text-base">
+              0
+            </div>
             <button className="grid h-6 w-6 place-items-center rounded-md border border-border bg-secondary text-muted-foreground hover:border-primary hover:text-primary active:scale-95" aria-label="Aumentar">
-              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" className="lucide lucide-plus h-3 w-3" aria-hidden="true">
-                <path d="M5 12h14"></path>
-                <path d="M12 5v14"></path>
-              </svg>
+              <Plus className="h-3 w-3" />
             </button>
           </div>
         </div>
@@ -42,16 +42,14 @@ export default function KnockoutMatch({leftLine, rightLine, leftConnectingLine, 
           </div>
           <div className="flex items-center gap-1">
             <button className="grid h-6 w-6 place-items-center rounded-md border border-border bg-secondary text-muted-foreground hover:border-primary hover:text-primary active:scale-95" aria-label="Diminuir">
-              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" className="lucide lucide-minus h-3 w-3" aria-hidden="true">
-                <path d="M5 12h14"></path>
-              </svg>
+              <Minus className="h-3 w-3" />
             </button>
-            <div className="grid h-8 w-8 place-items-center rounded-md border border-gold/30 bg-gold/10 font-display font-bold tabular-nums text-gold text-base">0</div>
+            {/* TODO: Colocar input */}
+            <div className="grid h-8 w-8 place-items-center rounded-md border border-gold/30 bg-gold/10 font-display font-bold tabular-nums text-gold text-base">
+              0
+            </div>
             <button className="grid h-6 w-6 place-items-center rounded-md border border-border bg-secondary text-muted-foreground hover:border-primary hover:text-primary active:scale-95" aria-label="Aumentar">
-              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" className="lucide lucide-plus h-3 w-3" aria-hidden="true">
-                <path d="M5 12h14"></path>
-                <path d="M12 5v14"></path>
-              </svg>
+              <Plus className="h-3 w-3" />
             </button>
           </div>
         </div>
