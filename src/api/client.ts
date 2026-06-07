@@ -1,7 +1,7 @@
 import axios, { HttpStatusCode } from 'axios';
 import type { BetResponse, CreateBetRequest, RankResponse, WorldCupResponse } from './types';
 
-axios.defaults.baseURL = "http://localhost:5073/";
+axios.defaults.baseURL = import.meta.env.API_BASE_URL || "http://localhost:5073/";
 
 export type ApiResponse<T> = {
    status: HttpStatusCode;

@@ -2,7 +2,6 @@ import Header from "../components/shared/Header";
 import { useQuery } from "@tanstack/react-query";
 import { getRanking } from "../api/client";
 import type { RankResponse } from "../api/types";
-import { delay } from "../lib/utils";
 import ReportError from "../components/error/ReportError";
 import RankTable from "../components/rank/RankTable";
 import RankTableSkeleton from "../components/rank/RankTableSkeleton";
@@ -28,7 +27,7 @@ export default function Ranking() {
   });
 
   return (
-    <div>
+    <div className="relative z-10 min-h-screen">
       <Header />
       <main className="flex flex-col gap-4 pt-20 pb-20 sm:w-2/3 md:w-1/2 mx-auto">
         <div className="space-y-6">
