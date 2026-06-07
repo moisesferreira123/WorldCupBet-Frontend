@@ -25,7 +25,11 @@ async function getWorldCupQuery(): Promise<WorldCupResponse> {
 }
 
 export default function Matches() {
-  const [isGroupStage, setIsGroupStage] = useState(sessionStorage.getItem('is-group-stage') === 'true');
+  const [isGroupStage, setIsGroupStage] = useState(
+    sessionStorage.getItem("is-group-stage")
+      ? sessionStorage.getItem("is-group-stage") === "true"
+      : true
+  );
   const [showLive, setShowLive] = useState(true);
   const [showRecent, setShowRecent] = useState(true);
   const [showUpcoming, setShowUpcoming] = useState(true);
@@ -107,7 +111,7 @@ export default function Matches() {
                 <div
                   key={match.id}
                   className={`flex flex-col items-center gap-2 rounded-xl border p-3 shadow-sm transition-all duration-500 ${isMatchInProgress
-                      ? 'border-success/50 bg-success/[0.03] ring-1 ring-success/20 animate-pulse-subtle'
+                      ? 'border-success/50 bg-success/3 ring-1 ring-success/20 animate-pulse-subtle'
                       : 'border-border bg-card'
                     }`}
                 >
