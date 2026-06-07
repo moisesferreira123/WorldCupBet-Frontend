@@ -14,6 +14,9 @@ export type PredictionDraft = {
   homeTeamPenalties: number | null;
   awayTeamPenalties: number | null;
   points?: number | null;
+  homeTeamId?: number | null;
+  awayTeamId?: number | null;
+  winnerTeamId?: number | null;
 };
 
 export type PredictionsMap = Record<number, PredictionDraft>;
@@ -299,14 +302,32 @@ export function applyBetPredictions(
   const next = { ...current };
 
   predictions.forEach(prediction => {
+    let homePen = null;
+    let awayPen = null;
+
+    if (
+      prediction.homeTeamGoals === prediction.awayTeamGoals &&
+      prediction.winnerTeamId !== null
+    ) {
+      if (prediction.winnerTeamId === prediction.homeTeamId) {
+        homePen = 1;
+        awayPen = 0;
+      } else if (prediction.winnerTeamId === prediction.awayTeamId) {
+        homePen = 0;
+        awayPen = 1;
+      }
+    }
+
     next[prediction.matchId] = {
-      ...(next[prediction.matchId] ?? {
-        homeTeamPenalties: null,
-        awayTeamPenalties: null,
-      }),
+      ...(next[prediction.matchId] ?? {}),
       homeTeamGoals: prediction.homeTeamGoals,
       awayTeamGoals: prediction.awayTeamGoals,
+      homeTeamPenalties: homePen,
+      awayTeamPenalties: awayPen,
       points: prediction.points,
+      homeTeamId: prediction.homeTeamId,
+      awayTeamId: prediction.awayTeamId,
+      winnerTeamId: prediction.winnerTeamId,
     };
   });
 
@@ -448,8 +469,8 @@ function assignNextRound(
     const firstSource = previousMatches[index * 2];
     const secondSource = previousMatches[index * 2 + 1];
 
-    match.homeTeamId = firstSource ? getWinnerTeamId(firstSource, predictions) : null;
-    match.awayTeamId = secondSource ? getWinnerTeamId(secondSource, predictions) : null;
+    match.homeTeamId = match.homeTeamId ?? (firstSource ? getWinnerTeamId(firstSource, predictions) : null);
+    match.awayTeamId = match.awayTeamId ?? (secondSource ? getWinnerTeamId(secondSource, predictions) : null);
   });
 }
 
@@ -467,6 +488,8 @@ export function buildPredictedWorldCup(
       homeTeamPenalties: prediction?.homeTeamPenalties ?? null,
       awayTeamPenalties: prediction?.awayTeamPenalties ?? null,
       predictionPoints: prediction?.points ?? null,
+      homeTeamId: prediction?.homeTeamId ?? match.homeTeamId,
+      awayTeamId: prediction?.awayTeamId ?? match.awayTeamId,
     };
   });
 
@@ -542,12 +565,12 @@ export function buildPredictedWorldCup(
     const firstSemiWinner = semiFinals[0] ? getWinnerTeamId(semiFinals[0], predictions) : null;
     const secondSemiWinner = semiFinals[1] ? getWinnerTeamId(semiFinals[1], predictions) : null;
 
-    thirdPlace[0].homeTeamId = semiFinals[0]
+    thirdPlace[0].homeTeamId = thirdPlace[0].homeTeamId ?? (semiFinals[0]
       ? getLoserTeamId(semiFinals[0], firstSemiWinner)
-      : null;
-    thirdPlace[0].awayTeamId = semiFinals[1]
+      : null);
+    thirdPlace[0].awayTeamId = thirdPlace[0].awayTeamId ?? (semiFinals[1]
       ? getLoserTeamId(semiFinals[1], secondSemiWinner)
-      : null;
+      : null);
   }
 
   return {

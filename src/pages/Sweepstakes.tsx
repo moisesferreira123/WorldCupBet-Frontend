@@ -171,7 +171,7 @@ export default function Home() {
   if (error instanceof Error) return <ReportError error={error} />;
 
   return (
-    <div className="min-h-screen bg-background">
+    <div className="relative z-10 min-h-screen">
       <Header />
 
       <main className="flex flex-col items-center px-4 pt-24 pb-28">

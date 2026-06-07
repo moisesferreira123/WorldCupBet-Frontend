@@ -6,8 +6,6 @@ import PhaseSelector from "../components/stage/StageSelector";
 import { useQuery } from "@tanstack/react-query";
 import { type Match, type WorldCupResponse } from "../api/types";
 import { getWorldCupData } from "../api/client";
-import { delay } from "../lib/utils";
-import worldCupData from "../mock/worldcup.json"
 import ReportError from "../components/error/ReportError";
 import GroupStageSkeleton from "../components/stage/groupStage/GroupStageSkeleton";
 import CountdownTimer from "../components/shared/CountdownTimer";
@@ -143,7 +141,7 @@ export default function Matches() {
   };
 
   return (
-    <div className="min-h-screen bg-background text-foreground">
+    <div className="relative z-10 min-h-screen text-foreground">
       <Header />
       <main className="flex flex-col items-center pt-24 pb-32 px-4">
         <CountdownTimer />
@@ -163,7 +161,7 @@ export default function Matches() {
               <GroupStageSkeleton />
             )
               : (
-                <div className="w-full max-w-6xl animate-in fade-in duration-500">
+                <div className={`w-full animate-in fade-in duration-500 ${isGroupStage ? 'max-w-6xl' : ''}`}>
                   {isGroupStage
                     ? <GroupStage data={data ?? { teams: [], groups: [], matches: [] }} />
                     : <KnockoutStage data={data} />
