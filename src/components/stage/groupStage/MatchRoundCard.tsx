@@ -5,6 +5,7 @@ import { Circle, Trophy, Ban, Clock3, Minus, Plus } from "lucide-react";
 type MatchRoundCardProps = {
    round: number;
    matches: Match[];
+   realMatches?: Match[];
    teams: Team[];
    editable?: boolean;
    onScoreChange?: (
@@ -112,6 +113,7 @@ function parseInputValue(value: string) {
 export default function MatchRoundCard({
    round,
    matches,
+   realMatches,
    teams,
    editable = false,
    onScoreChange,
@@ -144,8 +146,19 @@ export default function MatchRoundCard({
                   const { date, time } =
                      formatMatchDate(match.utcDate);
 
-                  const status = getStatus(match);
+                  const realMatch = realMatches?.find(m => m.id === match.id);
+                  const status = getStatus(realMatch || match);
                   const canEdit = editable;
+
+                  const isInProgress = (realMatch || match).status === "InProgress";
+                  const isFinished = (realMatch || match).status === "Finished";
+                  
+                  // Disable live effects in Sweepstakes view (where realMatches is provided)
+                  const showLiveEffects = isInProgress && !realMatches;
+
+                  // Points come directly from the backend via the match object in Sweepstakes view mode
+                  const points = realMatches ? match.predictionPoints ?? null : null;
+
                   const scoreControl = (
                      side: "home" | "away",
                      value: number | null
@@ -208,19 +221,34 @@ export default function MatchRoundCard({
                   );
 
                   return (
-                     <div key={match.id}>
-                        <div className="mb-2 flex items-center justify-between text-xs">
+                     <div key={match.id} className={`relative rounded-xl transition-all duration-300 ${showLiveEffects ? 'bg-success/5 ring-1 ring-success/20' : ''}`}>
+                        <div className={`mb-2 flex items-center justify-between text-xs ${showLiveEffects ? 'p-2 pb-0' : ''}`}>
                            <div className="flex items-center gap-1.5">
-                              {status.icon}
+                              {showLiveEffects ? (
+                                 <div className="flex items-center gap-1.5">
+                                    <div className="relative -top-0.5 h-2 w-2">
+                                       <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-success opacity-75"></span>
+                                       <span className="relative inline-flex h-2 w-2 rounded-full bg-success"></span>
+                                    </div>
+                                    <span className="font-bold uppercase tracking-wider text-success">Ao Vivo</span>
+                                 </div>
+                              ) : status.icon}
 
                               <span className="text-muted-foreground">
                                  {date}
                               </span>
                            </div>
 
-                           <span className="font-medium text-muted-foreground">
-                              {time}
-                           </span>
+                           <div className="flex items-center gap-2">
+                              {points !== null && (
+                                 <span className={`rounded-md px-1.5 py-0.5 font-bold ${points === 3 ? 'bg-gold/20 text-gold' : points === 1 ? 'bg-primary/20 text-primary' : 'bg-muted text-muted-foreground'}`}>
+                                    +{points}
+                                 </span>
+                              )}
+                              <span className={`font-medium ${isInProgress ? 'text-success' : 'text-muted-foreground'}`}>
+                                 {time}
+                              </span>
+                           </div>
                         </div>
 
                         <div className="grid grid-cols-[1fr_auto_1fr] items-center gap-2">
@@ -238,7 +266,7 @@ export default function MatchRoundCard({
                            <div className="flex items-center gap-1 sm:gap-2">
                               {scoreControl(
                                  "home",
-                                 match.homeTeamGoals
+                                 (match.status === "Finished" || match.status === "InProgress") ? match.homeTeamGoals : (match.homeTeamGoals ?? null)
                               )}
 
                               <span className="font-display text-lg font-bold text-muted-foreground">
@@ -247,7 +275,7 @@ export default function MatchRoundCard({
 
                               {scoreControl(
                                  "away",
-                                 match.awayTeamGoals
+                                 (match.status === "Finished" || match.status === "InProgress") ? match.awayTeamGoals : (match.awayTeamGoals ?? null)
                               )}
                            </div>
 
@@ -263,15 +291,16 @@ export default function MatchRoundCard({
                            </div>
                         </div>
 
-                        {match.homeTeamPenalties !== null &&
-                           match.awayTeamPenalties !== null && (
-                              <div className="mt-2 text-center text-xs text-muted-foreground">
-                                 Pênaltis:{" "}
-                                 {match.homeTeamPenalties}
-                                 {" × "}
-                                 {match.awayTeamPenalties}
+                        {isFinished && realMatch && (
+                           <div className="absolute left-0 right-0 top-full mt-0.5 flex flex-col items-center text-[0.55rem] font-bold uppercase tracking-widest text-muted-foreground/80 z-20 pointer-events-none">
+                              <div className="flex items-center gap-1 rounded-full border border-border/50 bg-card/80 px-2 py-0.5 shadow-sm backdrop-blur-sm">
+                                 <span>Real:</span>
+                                 <span className="text-foreground">
+                                    {realMatch.homeTeamGoals} × {realMatch.awayTeamGoals}
+                                 </span>
                               </div>
-                           )}
+                           </div>
+                        )}
 
                         {index < matches.length - 1 && (
                            <div className="mt-4 h-px w-full bg-border" />

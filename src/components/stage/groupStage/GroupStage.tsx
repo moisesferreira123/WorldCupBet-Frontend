@@ -6,6 +6,7 @@ import MatchRoundCard from "./MatchRoundCard";
 
 type GroupStageProps = {
   data: WorldCupResponse;
+  realData?: WorldCupResponse;
   editable?: boolean;
   onScoreChange?: (
     matchId: number,
@@ -16,6 +17,7 @@ type GroupStageProps = {
 
 export default function GroupStage({
   data,
+  realData,
   editable = false,
   onScoreChange,
 }: GroupStageProps) {
@@ -74,6 +76,7 @@ export default function GroupStage({
               key={index}
               round={index + 1}
               matches={matches}
+              realMatches={realData?.matches}
               teams={data.teams}
               editable={editable}
               onScoreChange={onScoreChange}

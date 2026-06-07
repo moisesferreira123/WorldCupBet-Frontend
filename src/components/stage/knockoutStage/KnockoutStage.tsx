@@ -8,6 +8,7 @@ import KnockoutMatch from "./KnockoutMatch";
 
 type KnockoutStageProps = {
   data?: WorldCupResponse;
+  realData?: WorldCupResponse;
   editable?: boolean;
   onScoreChange?: (
     matchId: number,
@@ -38,6 +39,7 @@ function getTeamsMap(teams: Team[]) {
 
 export default function KnockoutStage({
   data,
+  realData,
   editable = false,
   onScoreChange,
   onPenaltyChange,
@@ -199,15 +201,16 @@ export default function KnockoutStage({
         {/* Round of 32 Left */}
         <div className="flex flex-col justify-around gap-6">
           {matchesByStage.roundOf32.slice(0, 8).map((match, i) => (
-            <KnockoutMatch
-              key={match.id}
-              match={match}
-              teamsMap={teamsMap}
-              homePlaceholder={roundOf32Placeholders[i].home}
-              awayPlaceholder={roundOf32Placeholders[i].away}
-              editable={editable}
-              onScoreChange={onScoreChange}
-              onPenaltyChange={onPenaltyChange}
+            <KnockoutMatch 
+              key={match.id} 
+              match={match} 
+              realMatch={realData?.matches.find(m => m.id === match.id)}
+              teamsMap={teamsMap} 
+              homePlaceholder={roundOf32Placeholders[i].home} 
+              awayPlaceholder={roundOf32Placeholders[i].away} 
+              editable={editable} 
+              onScoreChange={onScoreChange} 
+              onPenaltyChange={onPenaltyChange} 
             />
           ))}
         </div>
@@ -215,13 +218,14 @@ export default function KnockoutStage({
         {/* Round of 16 Left */}
         <div className="flex flex-col justify-around gap-12">
           {matchesByStage.roundOf16.slice(0, 4).map(match => (
-            <KnockoutMatch
-              key={match.id}
-              match={match}
-              teamsMap={teamsMap}
-              editable={editable}
-              onScoreChange={onScoreChange}
-              onPenaltyChange={onPenaltyChange}
+            <KnockoutMatch 
+              key={match.id} 
+              match={match} 
+              realMatch={realData?.matches.find(m => m.id === match.id)}
+              teamsMap={teamsMap} 
+              editable={editable} 
+              onScoreChange={onScoreChange} 
+              onPenaltyChange={onPenaltyChange} 
             />
           ))}
         </div>
@@ -229,13 +233,28 @@ export default function KnockoutStage({
         {/* Quarter Finals Left */}
         <div className="flex flex-col justify-around gap-24">
           {matchesByStage.quarterFinals.slice(0, 2).map(match => (
-            <KnockoutMatch key={match.id} match={match} teamsMap={teamsMap} editable={editable} onScoreChange={onScoreChange} onPenaltyChange={onPenaltyChange} />
+            <KnockoutMatch 
+              key={match.id} 
+              match={match} 
+              realMatch={realData?.matches.find(m => m.id === match.id)}
+              teamsMap={teamsMap} 
+              editable={editable} 
+              onScoreChange={onScoreChange} 
+              onPenaltyChange={onPenaltyChange} 
+            />
           ))}
         </div>
 
         {/* Semi Finals Left */}
         <div className="flex flex-col justify-around gap-32">
-          <KnockoutMatch match={matchesByStage.semiFinals[0]} teamsMap={teamsMap} editable={editable} onScoreChange={onScoreChange} onPenaltyChange={onPenaltyChange} />
+          <KnockoutMatch 
+            match={matchesByStage.semiFinals[0]} 
+            realMatch={realData?.matches.find(m => m.id === matchesByStage.semiFinals[0]?.id)}
+            teamsMap={teamsMap} 
+            editable={editable} 
+            onScoreChange={onScoreChange} 
+            onPenaltyChange={onPenaltyChange} 
+          />
         </div>
 
         {/* Final + Third Place */}
@@ -243,18 +262,39 @@ export default function KnockoutStage({
           <div className="flex flex-col gap-20">
             <div className="flex flex-col items-center gap-2">
               <span className="text-[0.65rem] font-bold uppercase tracking-wider text-gold">Final</span>
-              <KnockoutMatch match={matchesByStage.final[0]} teamsMap={teamsMap} editable={editable} onScoreChange={onScoreChange} onPenaltyChange={onPenaltyChange} />
+              <KnockoutMatch 
+                match={matchesByStage.final[0]} 
+                realMatch={realData?.matches.find(m => m.id === matchesByStage.final[0]?.id)}
+                teamsMap={teamsMap} 
+                editable={editable} 
+                onScoreChange={onScoreChange} 
+                onPenaltyChange={onPenaltyChange} 
+              />
             </div>
             <div className="flex flex-col items-center gap-2">
               <span className="text-[0.65rem] font-bold uppercase tracking-wider text-muted-foreground">3º Lugar</span>
-              <KnockoutMatch match={matchesByStage.thirdPlace[0]} teamsMap={teamsMap} editable={editable} onScoreChange={onScoreChange} onPenaltyChange={onPenaltyChange} />
+              <KnockoutMatch 
+                match={matchesByStage.thirdPlace[0]} 
+                realMatch={realData?.matches.find(m => m.id === matchesByStage.thirdPlace[0]?.id)}
+                teamsMap={teamsMap} 
+                editable={editable} 
+                onScoreChange={onScoreChange} 
+                onPenaltyChange={onPenaltyChange} 
+              />
             </div>
           </div>
         </div>
 
         {/* Semi Finals Right */}
         <div className="flex flex-col justify-around gap-32">
-          <KnockoutMatch match={matchesByStage.semiFinals[1]} teamsMap={teamsMap} editable={editable} onScoreChange={onScoreChange} onPenaltyChange={onPenaltyChange} />
+          <KnockoutMatch 
+            match={matchesByStage.semiFinals[1]} 
+            realMatch={realData?.matches.find(m => m.id === matchesByStage.semiFinals[1]?.id)}
+            teamsMap={teamsMap} 
+            editable={editable} 
+            onScoreChange={onScoreChange} 
+            onPenaltyChange={onPenaltyChange} 
+          />
         </div>
 
         {/* Quarter Finals Right */}
@@ -264,6 +304,7 @@ export default function KnockoutStage({
             <KnockoutMatch
               key={match.id}
               match={match}
+              realMatch={realData?.matches.find(m => m.id === match.id)}
               teamsMap={teamsMap}
               editable={editable}
               onScoreChange={onScoreChange}
@@ -278,6 +319,7 @@ export default function KnockoutStage({
             <KnockoutMatch
               key={match.id}
               match={match}
+              realMatch={realData?.matches.find(m => m.id === match.id)}
               teamsMap={teamsMap}
               editable={editable}
               onScoreChange={onScoreChange}
@@ -292,6 +334,7 @@ export default function KnockoutStage({
             <KnockoutMatch
               key={match.id}
               match={match}
+              realMatch={realData?.matches.find(m => m.id === match.id)}
               teamsMap={teamsMap}
               homePlaceholder={roundOf32Placeholders[i + 8].home}
               awayPlaceholder={roundOf32Placeholders[i + 8].away}

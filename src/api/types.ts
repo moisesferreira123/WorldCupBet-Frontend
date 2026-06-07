@@ -34,6 +34,7 @@ export type Match = {
    awayTeamGoals: number | null;
    homeTeamPenalties: number | null;
    awayTeamPenalties: number | null;
+   predictionPoints?: number | null;
 };
 
 export type WorldCupResponse = {

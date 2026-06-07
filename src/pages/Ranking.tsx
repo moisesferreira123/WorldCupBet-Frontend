@@ -7,57 +7,7 @@ import ReportError from "../components/error/ReportError";
 import RankTable from "../components/rank/RankTable";
 import RankTableSkeleton from "../components/rank/RankTableSkeleton";
 
-async function getQuery(page: number, pageSize: number, fake: boolean = false): Promise<RankResponse> {
-  if (fake) {
-    await delay(2000);
-
-    return {
-      items: [
-        {
-          id: "id1",
-          position: 1,
-          predictions: [],
-          title: "Pedro",
-          totalPoints: 10,
-          correctPredictions: 2
-        },
-        {
-          id: "id2",
-          position: 2,
-          predictions: [],
-          title: "Maria",
-          totalPoints: 9,
-          correctPredictions: 2
-        },
-        {
-          id: "id3",
-          position: 3,
-          predictions: [],
-          title: "José",
-          totalPoints: 8,
-          correctPredictions: 2
-        },
-        {
-          id: "id4",
-          position: 4,
-          predictions: [],
-          title: "Oscar",
-          totalPoints: 8,
-          correctPredictions: 2
-        },
-        {
-          id: "id5",
-          position: 5,
-          predictions: [],
-          title: "Moises",
-          totalPoints: 8,
-          correctPredictions: 2
-        }
-      ],
-      totalItems: 5
-    };
-  }
-
+async function getRankQuery(page: number, pageSize: number): Promise<RankResponse> {
   const response = await getRanking(page, pageSize);
 
   if (response.status === 200 && response.data) {
@@ -73,8 +23,8 @@ export default function Ranking() {
 
   const { isLoading, error, data } = useQuery<RankResponse>({
     queryKey: ["ranking", page, pageSize],
-    queryFn: async () => getQuery(page, pageSize, true),
-    staleTime: 1 * 60 * 1000
+    queryFn: async () => getRankQuery(page, pageSize),
+    staleTime: 15 * 60 * 1000
   });
 
   return (

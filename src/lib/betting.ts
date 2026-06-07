@@ -13,6 +13,7 @@ export type PredictionDraft = {
   awayTeamGoals: number | null;
   homeTeamPenalties: number | null;
   awayTeamPenalties: number | null;
+  points?: number | null;
 };
 
 export type PredictionsMap = Record<number, PredictionDraft>;
@@ -305,6 +306,7 @@ export function applyBetPredictions(
       }),
       homeTeamGoals: prediction.homeTeamGoals,
       awayTeamGoals: prediction.awayTeamGoals,
+      points: prediction.points,
     };
   });
 
@@ -464,6 +466,7 @@ export function buildPredictedWorldCup(
       awayTeamGoals: prediction?.awayTeamGoals ?? null,
       homeTeamPenalties: prediction?.homeTeamPenalties ?? null,
       awayTeamPenalties: prediction?.awayTeamPenalties ?? null,
+      predictionPoints: prediction?.points ?? null,
     };
   });
 
