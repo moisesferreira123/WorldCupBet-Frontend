@@ -1,4 +1,5 @@
 import { Minus, Plus } from "lucide-react";
+import { useLocation } from "react-router-dom";
 
 interface KnockoutMatchProps {
   leftLine: boolean;
@@ -9,8 +10,10 @@ interface KnockoutMatchProps {
 }
 
 export default function KnockoutMatch({leftLine, rightLine, leftConnectingLine, rightConnectingLine, connectingLineHeight} : KnockoutMatchProps) {
+  const pathname = useLocation().pathname;
+  
   return (
-    <div className="relative w-44">
+    <div className={`relative ${pathname === '/' ? 'w-44' : 'w-35'}`}>
       <div className="rounded-xl border border-border bg-card shadow-sm p-2.5">
         <div className="flex items-center justify-between gap-2">
           <div className="flex shrink-0 items-center gap-2">
@@ -20,16 +23,19 @@ export default function KnockoutMatch({leftLine, rightLine, leftConnectingLine, 
             <span className=" font-semibold text-xs">- - -</span>
           </div>
           <div className="flex items-center gap-1">
-            <button className="grid h-6 w-6 place-items-center rounded-md border border-border bg-secondary text-muted-foreground hover:border-primary hover:text-primary active:scale-95" aria-label="Diminuir">
-              <Minus className="h-3 w-3" />
-            </button>
+            {pathname === '/' &&
+              <button className="grid h-6 w-6 place-items-center rounded-md border border-border bg-secondary text-muted-foreground hover:border-primary hover:text-primary active:scale-95" aria-label="Diminuir">
+                <Minus className="h-3 w-3" />
+              </button>
+            }
             {/* TODO: Colocar input */}
-            <div className="grid h-8 w-8 place-items-center rounded-md border border-gold/30 bg-gold/10 font-display font-bold tabular-nums text-gold text-base">
-              0
-            </div>
-            <button className="grid h-6 w-6 place-items-center rounded-md border border-border bg-secondary text-muted-foreground hover:border-primary hover:text-primary active:scale-95" aria-label="Aumentar">
-              <Plus className="h-3 w-3" />
-            </button>
+            {pathname === '/' && <input type="text" value={0} className="flex justify-center items-center text-center outline-none h-8 w-8 rounded-md border border-gold/30 bg-gold/10 font-display font-bold text-gold focus:border-gold" />}
+            {pathname === '/matches' && <div className="grid h-8 w-8 place-items-center rounded-md border border-gold/30 bg-gold/10 font-display font-bold tabular-nums text-gold text-base">0</div>}
+            {pathname === '/' &&
+              <button className="grid h-6 w-6 place-items-center rounded-md border border-border bg-secondary text-muted-foreground hover:border-primary hover:text-primary active:scale-95" aria-label="Aumentar">
+                <Plus className="h-3 w-3" />
+              </button>
+            }
           </div>
         </div>
         <div className="my-1.5 h-px bg-border/60"></div>
@@ -41,16 +47,19 @@ export default function KnockoutMatch({leftLine, rightLine, leftConnectingLine, 
           <span className="truncate font-semibold text-xs">GHA</span>
           </div>
           <div className="flex items-center gap-1">
-            <button className="grid h-6 w-6 place-items-center rounded-md border border-border bg-secondary text-muted-foreground hover:border-primary hover:text-primary active:scale-95" aria-label="Diminuir">
-              <Minus className="h-3 w-3" />
-            </button>
+            {pathname === '/' &&
+              <button className="grid h-6 w-6 place-items-center rounded-md border border-border bg-secondary text-muted-foreground hover:border-primary hover:text-primary active:scale-95" aria-label="Diminuir">
+                <Minus className="h-3 w-3" />
+              </button>
+            }
             {/* TODO: Colocar input */}
-            <div className="grid h-8 w-8 place-items-center rounded-md border border-gold/30 bg-gold/10 font-display font-bold tabular-nums text-gold text-base">
-              0
-            </div>
-            <button className="grid h-6 w-6 place-items-center rounded-md border border-border bg-secondary text-muted-foreground hover:border-primary hover:text-primary active:scale-95" aria-label="Aumentar">
-              <Plus className="h-3 w-3" />
-            </button>
+            {pathname === '/' && <input type="text" value={0} className="flex justify-center items-center text-center outline-none h-8 w-8 rounded-md border border-gold/30 bg-gold/10 font-display font-bold text-gold focus:border-gold" />}
+            {pathname === '/matches' && <div className="grid h-8 w-8 place-items-center rounded-md border border-gold/30 bg-gold/10 font-display font-bold tabular-nums text-gold text-base">0</div>}
+            {pathname === '/' &&
+              <button className="grid h-6 w-6 place-items-center rounded-md border border-border bg-secondary text-muted-foreground hover:border-primary hover:text-primary active:scale-95" aria-label="Aumentar">
+                <Plus className="h-3 w-3" />
+              </button>
+            }
           </div>
         </div>
       </div>

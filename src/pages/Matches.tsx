@@ -1,11 +1,11 @@
 import { useState } from "react";
 import Header from "../components/shared/Header";
-import PhaseSelector from "../components/stage/StageSelector";
-import KnockoutStage from "../components/stage/knockoutStage/KnockoutStage";
 import GroupStage from "../components/stage/groupStage/GroupeStage";
+import KnockoutStage from "../components/stage/knockoutStage/KnockoutStage";
+import PhaseSelector from "../components/stage/StageSelector";
 
-export default function Home() {
-  const [isGroupStage, setIsGroupStage] = useState(sessionStorage.getItem('is-group-stage') ? sessionStorage.getItem('is-group-stage') === 'true' : true);
+export default function Matches() {
+  const [isGroupStage, setIsGroupStage] = useState(sessionStorage.getItem('is-group-stage') === 'true');
 
   function changeToGroupStage() {
     if(!isGroupStage) setIsGroupStage(true);

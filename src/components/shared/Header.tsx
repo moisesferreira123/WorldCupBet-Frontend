@@ -1,6 +1,8 @@
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 
 export default function Header() {
+  const pathname = useLocation().pathname;
+
   return (
     <header className="fixed top-0 w-screen z-40 border-b border-border/60 bg-background/80 backdrop-blur-lg">
       <nav className="mx-auto flex max-w-5xl items-center justify-between px-4 py-3">
@@ -14,10 +16,10 @@ export default function Header() {
           </div>
         </a>
         <ul className="flex gap-4 text-muted-foreground text-sm">
-          <li className="hover:text-gold cursor-pointer"><Link to={'/'}>Bolão</Link></li>
-          <li className="hover:text-gold cursor-pointer"><Link to={'/matchs'}>Partidas</Link></li>
-          <li className="hover:text-gold cursor-pointer"><Link to={'/ranking'}>Ranking</Link></li>
-          <li className="hover:text-gold cursor-pointer"><Link to={'/score'}>Pontuação</Link></li>
+          <li className={`${pathname === '/' ? 'text-gold' : 'hover:text-gold'} cursor-pointer`}><Link to={'/'}>Bolão</Link></li>
+          <li className={`${pathname === '/matches' ? 'text-gold' : 'hover:text-gold'} cursor-pointer`}><Link to={'/matches'}>Partidas</Link></li>
+          <li className={`${pathname === '/ranking' ? 'text-gold' : 'hover:text-gold'} cursor-pointer`}><Link to={'/ranking'}>Ranking</Link></li>
+          <li className={`${pathname === '/score' ? 'text-gold' : 'hover:text-gold'} cursor-pointer`}><Link to={'/score'}>Pontuação</Link></li>
         </ul>
       </nav>
     </header>
