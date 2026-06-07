@@ -1,5 +1,5 @@
 import axios, { HttpStatusCode } from 'axios';
-import type { RankResponse, WorldCupResponse } from './types';
+import type { BetResponse, CreateBetRequest, RankResponse, WorldCupResponse } from './types';
 
 axios.defaults.baseURL = "http://localhost:5073/";
 
@@ -55,3 +55,9 @@ export const getRanking = (page: number, pageSize: number) =>
          },
       })
    );
+
+export const getBet = (betId: string) =>
+  request<BetResponse>(axios.get(`/bet/${betId}`));
+
+export const createBet = (data: CreateBetRequest) =>
+  request<BetResponse>(axios.post("/bet", data));
