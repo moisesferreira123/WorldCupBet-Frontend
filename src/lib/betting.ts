@@ -4,6 +4,7 @@ import type {
   Match,
   MatchPrediction,
   Standings,
+  Team,
   WorldCupResponse,
 } from "../api/types";
 
@@ -80,10 +81,31 @@ function getGroupLetter(groupName: string) {
   return groupName.replace("Group", "");
 }
 
+const fifaRankFetch = fetch("/fifa-rank.json").then(res => res.json());
+let fifaRankData: Record<string, number> | null = null;
+fifaRankFetch.then(data => (fifaRankData = data));
+
+function getFifaRankMap(teams: Team[]) {
+  const map = new Map<number, number>();
+  if (!fifaRankData) return map;
+
+  teams.forEach(team => {
+    const rank = fifaRankData![team.name];
+    if (rank !== undefined) {
+      map.set(team.id, rank);
+    } else {
+      map.set(team.id, 999); // Default for unknown teams
+    }
+  });
+
+  return map;
+}
+
 function rankStandings(
   standings: Standings[],
   groupMatches: Match[],
-  predictions: PredictionsMap
+  predictions: PredictionsMap,
+  fifaRankMap: Map<number, number>
 ) {
   return [...standings]
     .sort((a, b) => {
@@ -120,6 +142,11 @@ function rankStandings(
 
       // 3. Overall GF
       if (a.goalsFor !== b.goalsFor) return b.goalsFor - a.goalsFor;
+
+      // 4. FIFA Rank (Ultimate deterministic tie-break)
+      const rankA = fifaRankMap.get(a.teamId) ?? 999;
+      const rankB = fifaRankMap.get(b.teamId) ?? 999;
+      if (rankA !== rankB) return rankA - rankB;
 
       // Fallback
       return a.teamId - b.teamId;
@@ -284,7 +311,11 @@ export function applyBetPredictions(
   return next;
 }
 
-function buildGroups(data: WorldCupResponse, predictions: PredictionsMap): Group[] {
+function buildGroups(
+  data: WorldCupResponse,
+  predictions: PredictionsMap,
+  fifaRankMap: Map<number, number>
+): Group[] {
   return data.groups.map(group => {
     const standingsMap = new Map(
       group.standings.map(standing => [
@@ -316,7 +347,8 @@ function buildGroups(data: WorldCupResponse, predictions: PredictionsMap): Group
       standings: rankStandings(
         Array.from(standingsMap.values()),
         groupMatches,
-        predictions
+        predictions,
+        fifaRankMap
       ),
     };
   });
@@ -435,7 +467,9 @@ export function buildPredictedWorldCup(
     };
   });
 
-  const groups = buildGroups(data, predictions);
+  const fifaRankMap = getFifaRankMap(data.teams);
+
+  const groups = buildGroups(data, predictions, fifaRankMap);
   const rankings = getGroupRankings(groups);
   const thirdPlaceTeams = groupLetters
     .map(groupLetter => {
@@ -449,6 +483,12 @@ export function buildPredictedWorldCup(
         return second.goalsDifference - first.goalsDifference;
       }
       if (first.goalsFor !== second.goalsFor) return second.goalsFor - first.goalsFor;
+      
+      // FIFA Rank fallback
+      const rankA = fifaRankMap.get(first.teamId) ?? 999;
+      const rankB = fifaRankMap.get(second.teamId) ?? 999;
+      if (rankA !== rankB) return rankA - rankB;
+
       return first.teamId - second.teamId;
     });
 

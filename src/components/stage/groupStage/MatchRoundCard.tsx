@@ -1,4 +1,3 @@
-import { useLocation } from "react-router-dom";
 import type { Match, Team } from "../../../api/types";
 import { Flag } from "../../shared/Flag";
 import { Circle, Trophy, Ban, Clock3, Minus, Plus } from "lucide-react";
@@ -117,8 +116,6 @@ export default function MatchRoundCard({
    editable = false,
    onScoreChange,
 }: MatchRoundCardProps) {
-   const pathname = useLocation().pathname;
-
    const teamsMap = new Map(
       teams.map(team => [team.id, team])
    );

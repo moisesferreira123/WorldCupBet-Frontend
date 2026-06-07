@@ -19,7 +19,15 @@ export default function GroupStage({
   editable = false,
   onScoreChange,
 }: GroupStageProps) {
-  const [selectedGroupIndex, setSelectedGroupIndex] = useState(0);
+  const [selectedGroupIndex, setSelectedGroupIndex] = useState(() => {
+    const saved = sessionStorage.getItem("selected-group-index");
+    return saved !== null ? Number(saved) : 0;
+  });
+
+  const handleGroupChange = (index: number) => {
+    setSelectedGroupIndex(index);
+    sessionStorage.setItem("selected-group-index", index.toString());
+  };
 
   const selectedGroup = data.groups[selectedGroupIndex];
 
@@ -52,7 +60,7 @@ export default function GroupStage({
       <PaginationDots
         groups={data.groups}
         selectedIndex={selectedGroupIndex}
-        onChange={setSelectedGroupIndex}
+        onChange={handleGroupChange}
       />
 
       <h1 className="font-bold text-center text-2xl uppercase">

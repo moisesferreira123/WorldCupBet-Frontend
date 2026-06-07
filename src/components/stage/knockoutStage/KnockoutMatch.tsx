@@ -1,5 +1,4 @@
 import { Ban, Circle, Clock3, Minus, Plus, Trophy } from "lucide-react";
-import { useLocation } from "react-router-dom";
 import type { Match, Team } from "../../../api/types";
 
 interface KnockoutMatchProps {
@@ -194,7 +193,6 @@ function getStatus(match?: Match) {
       };
   }
 }
-
 export default function KnockoutMatch({
   match,
   teamsMap,
@@ -205,6 +203,7 @@ export default function KnockoutMatch({
   onPenaltyChange,
 }: Omit<KnockoutMatchProps, "leftLine" | "rightLine" | "leftConnectingLine" | "rightConnectingLine" | "connectingLineHeight">) {
   const homeTeam = match?.homeTeamId ? teamsMap?.get(match.homeTeamId) : undefined;
+
   const awayTeam = match?.awayTeamId ? teamsMap?.get(match.awayTeamId) : undefined;
   const status = getStatus(match);
   const hasPenalties =
@@ -259,7 +258,9 @@ export default function KnockoutMatch({
           isPenaltyWinner={
             match?.homeTeamPenalties !== null &&
             match?.awayTeamPenalties !== null &&
-            match.homeTeamPenalties > match.awayTeamPenalties
+            match?.homeTeamPenalties !== undefined &&
+            match?.awayTeamPenalties !== undefined &&
+            match?.homeTeamPenalties > match?.awayTeamPenalties
           }
           onPenaltySelect={
             canEditPenalties
@@ -283,7 +284,9 @@ export default function KnockoutMatch({
           isPenaltyWinner={
             match?.homeTeamPenalties !== null &&
             match?.awayTeamPenalties !== null &&
-            match.awayTeamPenalties > match.homeTeamPenalties
+            match?.homeTeamPenalties !== undefined &&
+            match?.awayTeamPenalties !== undefined &&
+            match?.awayTeamPenalties > match?.homeTeamPenalties
           }
           onPenaltySelect={
             canEditPenalties

@@ -179,7 +179,7 @@ export default function KnockoutStage({
     >
       <div
         ref={contentRef}
-        className="relative mx-auto flex min-w-max gap-12 p-8 py-12 lg:gap-16 sm:justify-center"
+        className="relative flex min-w-max w-full gap-12 p-8 py-12 lg:gap-16 justify-start sm:justify-center"
       >
         <svg className="pointer-events-none absolute inset-0 h-full w-full overflow-visible">
           {paths.map((d, i) => (
