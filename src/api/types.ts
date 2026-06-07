@@ -57,6 +57,7 @@ export type BetResponse = {
    predictions: MatchPrediction[];
    totalPoints: number;
    position: number;
+   correctPreditions: number;
 };
 
 export type RankResponse = {

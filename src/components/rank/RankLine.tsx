@@ -79,7 +79,7 @@ export default function RankLine({
 
             transition-all duration-300 ease-out
             hover:scale-[1.01]
-            hover:-translate-y-[2px]
+            hover:-translate-y-0.5
             ${glow}
          `}
       >

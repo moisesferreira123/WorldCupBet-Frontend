@@ -20,13 +20,13 @@ export default function Home() {
   return (
     <div className="">
       <Header />
-      <div className="flex flex-col items-center justify-center pt-20 pb-20">
+      <main className="flex flex-col items-center justify-center pt-20 pb-20">
         {isGroupStage ?
           <GroupStage />
           :
           <KnockoutStage />
         }
-      </div>
+      </main>
       <PhaseSelector
         isGroupStage={isGroupStage}
         changeToGroupStage={changeToGroupStage}
