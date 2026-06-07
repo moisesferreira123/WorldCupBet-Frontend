@@ -2,18 +2,18 @@ import { useState } from "react";
 import Header from "../components/shared/Header";
 import PhaseSelector from "../components/stage/StageSelector";
 import KnockoutStage from "../components/stage/knockoutStage/KnockoutStage";
-import GroupStage from "../components/stage/groupStage/GroupeStage";
+import GroupStage from "../components/stage/groupStage/GroupStage";
 
 export default function Home() {
   const [isGroupStage, setIsGroupStage] = useState(sessionStorage.getItem('is-group-stage') ? sessionStorage.getItem('is-group-stage') === 'true' : true);
 
   function changeToGroupStage() {
-    if(!isGroupStage) setIsGroupStage(true);
+    if (!isGroupStage) setIsGroupStage(true);
     sessionStorage.setItem('is-group-stage', 'true');
   }
 
   function changeToKnockoutStage() {
-    if(isGroupStage) setIsGroupStage(false);
+    if (isGroupStage) setIsGroupStage(false);
     sessionStorage.setItem('is-group-stage', 'false');
   }
 

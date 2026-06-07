@@ -1,10 +1,10 @@
-export function Flag({ src, alt }: { src: string; alt: string }) {
+export function Flag({ src, alt }: { src: string; alt: string; }) {
    return (
-      <div className="h-6 w-6 overflow-hidden rounded-full border border-border">
+      <div className="flex h-6 w-6 items-center justify-center overflow-hidden rounded-full border border-border bg-card">
          <img
             src={src}
             alt={alt}
-            className="h-full w-full object-cover"
+            className="h-full w-full object-cover object-center"
          />
       </div>
    );

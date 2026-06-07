@@ -1,0 +1,2180 @@
+{
+  "teams": [
+    {
+      "id": 778,
+      "name": "Algeria",
+      "tla": "ALG",
+      "flagUri": "https://crests.football-data.org/algeria.svg"
+    },
+    {
+      "id": 762,
+      "name": "Argentina",
+      "tla": "ARG",
+      "flagUri": "https://crests.football-data.org/762.png"
+    },
+    {
+      "id": 779,
+      "name": "Australia",
+      "tla": "AUS",
+      "flagUri": "https://crests.football-data.org/779.svg"
+    },
+    {
+      "id": 816,
+      "name": "Austria",
+      "tla": "AUT",
+      "flagUri": "https://crests.football-data.org/816.svg"
+    },
+    {
+      "id": 805,
+      "name": "Belgium",
+      "tla": "BEL",
+      "flagUri": "https://crests.football-data.org/805.svg"
+    },
+    {
+      "id": 1060,
+      "name": "Bosnia-Herzegovina",
+      "tla": "BIH",
+      "flagUri": "https://crests.football-data.org/bosnia.svg"
+    },
+    {
+      "id": 764,
+      "name": "Brazil",
+      "tla": "BRA",
+      "flagUri": "https://crests.football-data.org/764.svg"
+    },
+    {
+      "id": 828,
+      "name": "Canada",
+      "tla": "CAN",
+      "flagUri": "https://crests.football-data.org/canada.svg"
+    },
+    {
+      "id": 1930,
+      "name": "Cape Verde Islands",
+      "tla": "CPV",
+      "flagUri": "https://crests.football-data.org/cape_verde.svg"
+    },
+    {
+      "id": 818,
+      "name": "Colombia",
+      "tla": "COL",
+      "flagUri": "https://crests.football-data.org/818.svg"
+    },
+    {
+      "id": 1934,
+      "name": "Congo DR",
+      "tla": "COD",
+      "flagUri": "https://crests.football-data.org/congo_dr.svg"
+    },
+    {
+      "id": 799,
+      "name": "Croatia",
+      "tla": "CRO",
+      "flagUri": "https://crests.football-data.org/799.svg"
+    },
+    {
+      "id": 9460,
+      "name": "Curaçao",
+      "tla": "CUW",
+      "flagUri": "https://crests.football-data.org/curacao.svg"
+    },
+    {
+      "id": 798,
+      "name": "Czechia",
+      "tla": "CZE",
+      "flagUri": "https://crests.football-data.org/798.svg"
+    },
+    {
+      "id": 791,
+      "name": "Ecuador",
+      "tla": "ECU",
+      "flagUri": "https://crests.football-data.org/791.svg"
+    },
+    {
+      "id": 825,
+      "name": "Egypt",
+      "tla": "EGY",
+      "flagUri": "https://crests.football-data.org/825.svg"
+    },
+    {
+      "id": 770,
+      "name": "England",
+      "tla": "ENG",
+      "flagUri": "https://crests.football-data.org/770.svg"
+    },
+    {
+      "id": 773,
+      "name": "France",
+      "tla": "FRA",
+      "flagUri": "https://crests.football-data.org/773.svg"
+    },
+    {
+      "id": 759,
+      "name": "Germany",
+      "tla": "GER",
+      "flagUri": "https://crests.football-data.org/759.svg"
+    },
+    {
+      "id": 763,
+      "name": "Ghana",
+      "tla": "GHA",
+      "flagUri": "https://crests.football-data.org/ghana.svg"
+    },
+    {
+      "id": 836,
+      "name": "Haiti",
+      "tla": "HAI",
+      "flagUri": "https://crests.football-data.org/haiti.svg"
+    },
+    {
+      "id": 840,
+      "name": "Iran",
+      "tla": "IRN",
+      "flagUri": "https://crests.football-data.org/iran.svg"
+    },
+    {
+      "id": 8062,
+      "name": "Iraq",
+      "tla": "IRQ",
+      "flagUri": "https://crests.football-data.org/iraq.svg"
+    },
+    {
+      "id": 1935,
+      "name": "Ivory Coast",
+      "tla": "CIV",
+      "flagUri": "https://crests.football-data.org/787.svg"
+    },
+    {
+      "id": 766,
+      "name": "Japan",
+      "tla": "JPN",
+      "flagUri": "https://crests.football-data.org/766.svg"
+    },
+    {
+      "id": 8049,
+      "name": "Jordan",
+      "tla": "JOR",
+      "flagUri": "https://crests.football-data.org/8049.png"
+    },
+    {
+      "id": 769,
+      "name": "Mexico",
+      "tla": "MEX",
+      "flagUri": "https://crests.football-data.org/769.svg"
+    },
+    {
+      "id": 815,
+      "name": "Morocco",
+      "tla": "MAR",
+      "flagUri": "https://crests.football-data.org/morocco.svg"
+    },
+    {
+      "id": 8601,
+      "name": "Netherlands",
+      "tla": "NED",
+      "flagUri": "https://crests.football-data.org/8601.svg"
+    },
+    {
+      "id": 783,
+      "name": "New Zealand",
+      "tla": "NZL",
+      "flagUri": "https://crests.football-data.org/783.svg"
+    },
+    {
+      "id": 8872,
+      "name": "Norway",
+      "tla": "NOR",
+      "flagUri": "https://crests.football-data.org/813.svg"
+    },
+    {
+      "id": 1836,
+      "name": "Panama",
+      "tla": "PAN",
+      "flagUri": "https://crests.football-data.org/panama.svg"
+    },
+    {
+      "id": 761,
+      "name": "Paraguay",
+      "tla": "PAR",
+      "flagUri": "https://crests.football-data.org/761.svg"
+    },
+    {
+      "id": 765,
+      "name": "Portugal",
+      "tla": "POR",
+      "flagUri": "https://crests.football-data.org/765.svg"
+    },
+    {
+      "id": 8030,
+      "name": "Qatar",
+      "tla": "QAT",
+      "flagUri": "https://crests.football-data.org/8030.svg"
+    },
+    {
+      "id": 801,
+      "name": "Saudi Arabia",
+      "tla": "KSA",
+      "flagUri": "https://crests.football-data.org/saudi_arabia.svg"
+    },
+    {
+      "id": 8873,
+      "name": "Scotland",
+      "tla": "SCO",
+      "flagUri": "https://crests.football-data.org/814.svg"
+    },
+    {
+      "id": 804,
+      "name": "Senegal",
+      "tla": "SEN",
+      "flagUri": "https://crests.football-data.org/senegal.svg"
+    },
+    {
+      "id": 774,
+      "name": "South Africa",
+      "tla": "RSA",
+      "flagUri": "https://crests.football-data.org/9396.svg"
+    },
+    {
+      "id": 772,
+      "name": "South Korea",
+      "tla": "KOR",
+      "flagUri": "https://crests.football-data.org/772.png"
+    },
+    {
+      "id": 760,
+      "name": "Spain",
+      "tla": "ESP",
+      "flagUri": "https://crests.football-data.org/760.svg"
+    },
+    {
+      "id": 792,
+      "name": "Sweden",
+      "tla": "SWE",
+      "flagUri": "https://crests.football-data.org/792.svg"
+    },
+    {
+      "id": 788,
+      "name": "Switzerland",
+      "tla": "SUI",
+      "flagUri": "https://crests.football-data.org/788.svg"
+    },
+    {
+      "id": 802,
+      "name": "Tunisia",
+      "tla": "TUN",
+      "flagUri": "https://crests.football-data.org/tunisia.svg"
+    },
+    {
+      "id": 803,
+      "name": "Turkey",
+      "tla": "TUR",
+      "flagUri": "https://crests.football-data.org/803.svg"
+    },
+    {
+      "id": 771,
+      "name": "United States",
+      "tla": "USA",
+      "flagUri": "https://crests.football-data.org/usa.svg"
+    },
+    {
+      "id": 758,
+      "name": "Uruguay",
+      "tla": "URY",
+      "flagUri": "https://crests.football-data.org/758.svg"
+    },
+    {
+      "id": 8070,
+      "name": "Uzbekistan",
+      "tla": "UZB",
+      "flagUri": "https://crests.football-data.org/8070.png"
+    }
+  ],
+  "groups": [
+    {
+      "group": "GroupA",
+      "standings": [
+        {
+          "teamId": 769,
+          "position": 2,
+          "playedGames": 0,
+          "won": 0,
+          "draw": 0,
+          "lost": 0,
+          "goalsFor": 0,
+          "goalsAgainst": 0,
+          "goalsDifference": 0,
+          "points": 0
+        },
+        {
+          "teamId": 772,
+          "position": 4,
+          "playedGames": 0,
+          "won": 0,
+          "draw": 0,
+          "lost": 0,
+          "goalsFor": 0,
+          "goalsAgainst": 0,
+          "goalsDifference": 0,
+          "points": 0
+        },
+        {
+          "teamId": 774,
+          "position": 3,
+          "playedGames": 0,
+          "won": 0,
+          "draw": 0,
+          "lost": 0,
+          "goalsFor": 0,
+          "goalsAgainst": 0,
+          "goalsDifference": 0,
+          "points": 0
+        },
+        {
+          "teamId": 798,
+          "position": 1,
+          "playedGames": 0,
+          "won": 0,
+          "draw": 0,
+          "lost": 0,
+          "goalsFor": 0,
+          "goalsAgainst": 0,
+          "goalsDifference": 0,
+          "points": 0
+        }
+      ]
+    },
+    {
+      "group": "GroupB",
+      "standings": [
+        {
+          "teamId": 788,
+          "position": 4,
+          "playedGames": 0,
+          "won": 0,
+          "draw": 0,
+          "lost": 0,
+          "goalsFor": 0,
+          "goalsAgainst": 0,
+          "goalsDifference": 0,
+          "points": 0
+        },
+        {
+          "teamId": 828,
+          "position": 2,
+          "playedGames": 0,
+          "won": 0,
+          "draw": 0,
+          "lost": 0,
+          "goalsFor": 0,
+          "goalsAgainst": 0,
+          "goalsDifference": 0,
+          "points": 0
+        },
+        {
+          "teamId": 1060,
+          "position": 1,
+          "playedGames": 0,
+          "won": 0,
+          "draw": 0,
+          "lost": 0,
+          "goalsFor": 0,
+          "goalsAgainst": 0,
+          "goalsDifference": 0,
+          "points": 0
+        },
+        {
+          "teamId": 8030,
+          "position": 3,
+          "playedGames": 0,
+          "won": 0,
+          "draw": 0,
+          "lost": 0,
+          "goalsFor": 0,
+          "goalsAgainst": 0,
+          "goalsDifference": 0,
+          "points": 0
+        }
+      ]
+    },
+    {
+      "group": "GroupC",
+      "standings": [
+        {
+          "teamId": 764,
+          "position": 1,
+          "playedGames": 0,
+          "won": 0,
+          "draw": 0,
+          "lost": 0,
+          "goalsFor": 0,
+          "goalsAgainst": 0,
+          "goalsDifference": 0,
+          "points": 0
+        },
+        {
+          "teamId": 815,
+          "position": 2,
+          "playedGames": 0,
+          "won": 0,
+          "draw": 0,
+          "lost": 0,
+          "goalsFor": 0,
+          "goalsAgainst": 0,
+          "goalsDifference": 0,
+          "points": 0
+        },
+        {
+          "teamId": 836,
+          "position": 3,
+          "playedGames": 0,
+          "won": 0,
+          "draw": 0,
+          "lost": 0,
+          "goalsFor": 0,
+          "goalsAgainst": 0,
+          "goalsDifference": 0,
+          "points": 0
+        },
+        {
+          "teamId": 8873,
+          "position": 4,
+          "playedGames": 0,
+          "won": 0,
+          "draw": 0,
+          "lost": 0,
+          "goalsFor": 0,
+          "goalsAgainst": 0,
+          "goalsDifference": 0,
+          "points": 0
+        }
+      ]
+    },
+    {
+      "group": "GroupD",
+      "standings": [
+        {
+          "teamId": 761,
+          "position": 3,
+          "playedGames": 0,
+          "won": 0,
+          "draw": 0,
+          "lost": 0,
+          "goalsFor": 0,
+          "goalsAgainst": 0,
+          "goalsDifference": 0,
+          "points": 0
+        },
+        {
+          "teamId": 771,
+          "position": 2,
+          "playedGames": 0,
+          "won": 0,
+          "draw": 0,
+          "lost": 0,
+          "goalsFor": 0,
+          "goalsAgainst": 0,
+          "goalsDifference": 0,
+          "points": 0
+        },
+        {
+          "teamId": 779,
+          "position": 4,
+          "playedGames": 0,
+          "won": 0,
+          "draw": 0,
+          "lost": 0,
+          "goalsFor": 0,
+          "goalsAgainst": 0,
+          "goalsDifference": 0,
+          "points": 0
+        },
+        {
+          "teamId": 803,
+          "position": 1,
+          "playedGames": 0,
+          "won": 0,
+          "draw": 0,
+          "lost": 0,
+          "goalsFor": 0,
+          "goalsAgainst": 0,
+          "goalsDifference": 0,
+          "points": 0
+        }
+      ]
+    },
+    {
+      "group": "GroupE",
+      "standings": [
+        {
+          "teamId": 759,
+          "position": 1,
+          "playedGames": 0,
+          "won": 0,
+          "draw": 0,
+          "lost": 0,
+          "goalsFor": 0,
+          "goalsAgainst": 0,
+          "goalsDifference": 0,
+          "points": 0
+        },
+        {
+          "teamId": 791,
+          "position": 4,
+          "playedGames": 0,
+          "won": 0,
+          "draw": 0,
+          "lost": 0,
+          "goalsFor": 0,
+          "goalsAgainst": 0,
+          "goalsDifference": 0,
+          "points": 0
+        },
+        {
+          "teamId": 1935,
+          "position": 3,
+          "playedGames": 0,
+          "won": 0,
+          "draw": 0,
+          "lost": 0,
+          "goalsFor": 0,
+          "goalsAgainst": 0,
+          "goalsDifference": 0,
+          "points": 0
+        },
+        {
+          "teamId": 9460,
+          "position": 2,
+          "playedGames": 0,
+          "won": 0,
+          "draw": 0,
+          "lost": 0,
+          "goalsFor": 0,
+          "goalsAgainst": 0,
+          "goalsDifference": 0,
+          "points": 0
+        }
+      ]
+    },
+    {
+      "group": "GroupF",
+      "standings": [
+        {
+          "teamId": 766,
+          "position": 3,
+          "playedGames": 0,
+          "won": 0,
+          "draw": 0,
+          "lost": 0,
+          "goalsFor": 0,
+          "goalsAgainst": 0,
+          "goalsDifference": 0,
+          "points": 0
+        },
+        {
+          "teamId": 792,
+          "position": 1,
+          "playedGames": 0,
+          "won": 0,
+          "draw": 0,
+          "lost": 0,
+          "goalsFor": 0,
+          "goalsAgainst": 0,
+          "goalsDifference": 0,
+          "points": 0
+        },
+        {
+          "teamId": 802,
+          "position": 4,
+          "playedGames": 0,
+          "won": 0,
+          "draw": 0,
+          "lost": 0,
+          "goalsFor": 0,
+          "goalsAgainst": 0,
+          "goalsDifference": 0,
+          "points": 0
+        },
+        {
+          "teamId": 8601,
+          "position": 2,
+          "playedGames": 0,
+          "won": 0,
+          "draw": 0,
+          "lost": 0,
+          "goalsFor": 0,
+          "goalsAgainst": 0,
+          "goalsDifference": 0,
+          "points": 0
+        }
+      ]
+    },
+    {
+      "group": "GroupG",
+      "standings": [
+        {
+          "teamId": 783,
+          "position": 4,
+          "playedGames": 0,
+          "won": 0,
+          "draw": 0,
+          "lost": 0,
+          "goalsFor": 0,
+          "goalsAgainst": 0,
+          "goalsDifference": 0,
+          "points": 0
+        },
+        {
+          "teamId": 805,
+          "position": 1,
+          "playedGames": 0,
+          "won": 0,
+          "draw": 0,
+          "lost": 0,
+          "goalsFor": 0,
+          "goalsAgainst": 0,
+          "goalsDifference": 0,
+          "points": 0
+        },
+        {
+          "teamId": 825,
+          "position": 2,
+          "playedGames": 0,
+          "won": 0,
+          "draw": 0,
+          "lost": 0,
+          "goalsFor": 0,
+          "goalsAgainst": 0,
+          "goalsDifference": 0,
+          "points": 0
+        },
+        {
+          "teamId": 840,
+          "position": 3,
+          "playedGames": 0,
+          "won": 0,
+          "draw": 0,
+          "lost": 0,
+          "goalsFor": 0,
+          "goalsAgainst": 0,
+          "goalsDifference": 0,
+          "points": 0
+        }
+      ]
+    },
+    {
+      "group": "GroupH",
+      "standings": [
+        {
+          "teamId": 758,
+          "position": 4,
+          "playedGames": 0,
+          "won": 0,
+          "draw": 0,
+          "lost": 0,
+          "goalsFor": 0,
+          "goalsAgainst": 0,
+          "goalsDifference": 0,
+          "points": 0
+        },
+        {
+          "teamId": 760,
+          "position": 1,
+          "playedGames": 0,
+          "won": 0,
+          "draw": 0,
+          "lost": 0,
+          "goalsFor": 0,
+          "goalsAgainst": 0,
+          "goalsDifference": 0,
+          "points": 0
+        },
+        {
+          "teamId": 801,
+          "position": 3,
+          "playedGames": 0,
+          "won": 0,
+          "draw": 0,
+          "lost": 0,
+          "goalsFor": 0,
+          "goalsAgainst": 0,
+          "goalsDifference": 0,
+          "points": 0
+        },
+        {
+          "teamId": 1930,
+          "position": 2,
+          "playedGames": 0,
+          "won": 0,
+          "draw": 0,
+          "lost": 0,
+          "goalsFor": 0,
+          "goalsAgainst": 0,
+          "goalsDifference": 0,
+          "points": 0
+        }
+      ]
+    },
+    {
+      "group": "GroupI",
+      "standings": [
+        {
+          "teamId": 773,
+          "position": 2,
+          "playedGames": 0,
+          "won": 0,
+          "draw": 0,
+          "lost": 0,
+          "goalsFor": 0,
+          "goalsAgainst": 0,
+          "goalsDifference": 0,
+          "points": 0
+        },
+        {
+          "teamId": 804,
+          "position": 3,
+          "playedGames": 0,
+          "won": 0,
+          "draw": 0,
+          "lost": 0,
+          "goalsFor": 0,
+          "goalsAgainst": 0,
+          "goalsDifference": 0,
+          "points": 0
+        },
+        {
+          "teamId": 8062,
+          "position": 1,
+          "playedGames": 0,
+          "won": 0,
+          "draw": 0,
+          "lost": 0,
+          "goalsFor": 0,
+          "goalsAgainst": 0,
+          "goalsDifference": 0,
+          "points": 0
+        },
+        {
+          "teamId": 8872,
+          "position": 4,
+          "playedGames": 0,
+          "won": 0,
+          "draw": 0,
+          "lost": 0,
+          "goalsFor": 0,
+          "goalsAgainst": 0,
+          "goalsDifference": 0,
+          "points": 0
+        }
+      ]
+    },
+    {
+      "group": "GroupJ",
+      "standings": [
+        {
+          "teamId": 762,
+          "position": 1,
+          "playedGames": 0,
+          "won": 0,
+          "draw": 0,
+          "lost": 0,
+          "goalsFor": 0,
+          "goalsAgainst": 0,
+          "goalsDifference": 0,
+          "points": 0
+        },
+        {
+          "teamId": 778,
+          "position": 2,
+          "playedGames": 0,
+          "won": 0,
+          "draw": 0,
+          "lost": 0,
+          "goalsFor": 0,
+          "goalsAgainst": 0,
+          "goalsDifference": 0,
+          "points": 0
+        },
+        {
+          "teamId": 816,
+          "position": 3,
+          "playedGames": 0,
+          "won": 0,
+          "draw": 0,
+          "lost": 0,
+          "goalsFor": 0,
+          "goalsAgainst": 0,
+          "goalsDifference": 0,
+          "points": 0
+        },
+        {
+          "teamId": 8049,
+          "position": 4,
+          "playedGames": 0,
+          "won": 0,
+          "draw": 0,
+          "lost": 0,
+          "goalsFor": 0,
+          "goalsAgainst": 0,
+          "goalsDifference": 0,
+          "points": 0
+        }
+      ]
+    },
+    {
+      "group": "GroupK",
+      "standings": [
+        {
+          "teamId": 765,
+          "position": 2,
+          "playedGames": 0,
+          "won": 0,
+          "draw": 0,
+          "lost": 0,
+          "goalsFor": 0,
+          "goalsAgainst": 0,
+          "goalsDifference": 0,
+          "points": 0
+        },
+        {
+          "teamId": 818,
+          "position": 4,
+          "playedGames": 0,
+          "won": 0,
+          "draw": 0,
+          "lost": 0,
+          "goalsFor": 0,
+          "goalsAgainst": 0,
+          "goalsDifference": 0,
+          "points": 0
+        },
+        {
+          "teamId": 1934,
+          "position": 1,
+          "playedGames": 0,
+          "won": 0,
+          "draw": 0,
+          "lost": 0,
+          "goalsFor": 0,
+          "goalsAgainst": 0,
+          "goalsDifference": 0,
+          "points": 0
+        },
+        {
+          "teamId": 8070,
+          "position": 3,
+          "playedGames": 0,
+          "won": 0,
+          "draw": 0,
+          "lost": 0,
+          "goalsFor": 0,
+          "goalsAgainst": 0,
+          "goalsDifference": 0,
+          "points": 0
+        }
+      ]
+    },
+    {
+      "group": "GroupL",
+      "standings": [
+        {
+          "teamId": 763,
+          "position": 3,
+          "playedGames": 0,
+          "won": 0,
+          "draw": 0,
+          "lost": 0,
+          "goalsFor": 0,
+          "goalsAgainst": 0,
+          "goalsDifference": 0,
+          "points": 0
+        },
+        {
+          "teamId": 770,
+          "position": 1,
+          "playedGames": 0,
+          "won": 0,
+          "draw": 0,
+          "lost": 0,
+          "goalsFor": 0,
+          "goalsAgainst": 0,
+          "goalsDifference": 0,
+          "points": 0
+        },
+        {
+          "teamId": 799,
+          "position": 2,
+          "playedGames": 0,
+          "won": 0,
+          "draw": 0,
+          "lost": 0,
+          "goalsFor": 0,
+          "goalsAgainst": 0,
+          "goalsDifference": 0,
+          "points": 0
+        },
+        {
+          "teamId": 1836,
+          "position": 4,
+          "playedGames": 0,
+          "won": 0,
+          "draw": 0,
+          "lost": 0,
+          "goalsFor": 0,
+          "goalsAgainst": 0,
+          "goalsDifference": 0,
+          "points": 0
+        }
+      ]
+    }
+  ],
+  "matches": [
+    {
+      "id": 537327,
+      "utcDate": "2026-06-11T19:00:00Z",
+      "status": "Finished",
+      "stage": "GroupStage",
+      "homeTeamId": 769,
+      "awayTeamId": 774,
+      "homeTeamGoals": 2,
+      "awayTeamGoals": 2,
+      "homeTeamPenalties": null,
+      "awayTeamPenalties": null
+    },
+    {
+      "id": 537328,
+      "utcDate": "2026-06-12T02:00:00Z",
+      "status": "Finished",
+      "stage": "GroupStage",
+      "homeTeamId": 772,
+      "awayTeamId": 798,
+      "homeTeamGoals": 3,
+      "awayTeamGoals": 1,
+      "homeTeamPenalties": null,
+      "awayTeamPenalties": null
+    },
+    {
+      "id": 537333,
+      "utcDate": "2026-06-12T19:00:00Z",
+      "status": "Finished",
+      "stage": "GroupStage",
+      "homeTeamId": 828,
+      "awayTeamId": 1060,
+      "homeTeamGoals": 3,
+      "awayTeamGoals": 4,
+      "homeTeamPenalties": null,
+      "awayTeamPenalties": null
+    },
+    {
+      "id": 537345,
+      "utcDate": "2026-06-13T01:00:00Z",
+      "status": "Finished",
+      "stage": "GroupStage",
+      "homeTeamId": 771,
+      "awayTeamId": 761,
+      "homeTeamGoals": 2,
+      "awayTeamGoals": 0,
+      "homeTeamPenalties": null,
+      "awayTeamPenalties": null
+    },
+    {
+      "id": 537334,
+      "utcDate": "2026-06-13T19:00:00Z",
+      "status": "Finished",
+      "stage": "GroupStage",
+      "homeTeamId": 8030,
+      "awayTeamId": 788,
+      "homeTeamGoals": 0,
+      "awayTeamGoals": 0,
+      "homeTeamPenalties": null,
+      "awayTeamPenalties": null
+    },
+    {
+      "id": 537339,
+      "utcDate": "2026-06-13T22:00:00Z",
+      "status": "Finished",
+      "stage": "GroupStage",
+      "homeTeamId": 764,
+      "awayTeamId": 815,
+      "homeTeamGoals": 1,
+      "awayTeamGoals": 2,
+      "homeTeamPenalties": null,
+      "awayTeamPenalties": null
+    },
+    {
+      "id": 537340,
+      "utcDate": "2026-06-14T01:00:00Z",
+      "status": "InProgress",
+      "stage": "GroupStage",
+      "homeTeamId": 836,
+      "awayTeamId": 8873,
+      "homeTeamGoals": 1,
+      "awayTeamGoals": 0,
+      "homeTeamPenalties": null,
+      "awayTeamPenalties": null
+    },
+    {
+      "id": 537346,
+      "utcDate": "2026-06-14T04:00:00Z",
+      "status": "Scheduled",
+      "stage": "GroupStage",
+      "homeTeamId": 779,
+      "awayTeamId": 803,
+      "homeTeamGoals": null,
+      "awayTeamGoals": null,
+      "homeTeamPenalties": null,
+      "awayTeamPenalties": null
+    },
+    {
+      "id": 537351,
+      "utcDate": "2026-06-14T17:00:00Z",
+      "status": "Scheduled",
+      "stage": "GroupStage",
+      "homeTeamId": 759,
+      "awayTeamId": 9460,
+      "homeTeamGoals": null,
+      "awayTeamGoals": null,
+      "homeTeamPenalties": null,
+      "awayTeamPenalties": null
+    },
+    {
+      "id": 537357,
+      "utcDate": "2026-06-14T20:00:00Z",
+      "status": "Scheduled",
+      "stage": "GroupStage",
+      "homeTeamId": 8601,
+      "awayTeamId": 766,
+      "homeTeamGoals": null,
+      "awayTeamGoals": null,
+      "homeTeamPenalties": null,
+      "awayTeamPenalties": null
+    },
+    {
+      "id": 537352,
+      "utcDate": "2026-06-14T23:00:00Z",
+      "status": "Scheduled",
+      "stage": "GroupStage",
+      "homeTeamId": 1935,
+      "awayTeamId": 791,
+      "homeTeamGoals": null,
+      "awayTeamGoals": null,
+      "homeTeamPenalties": null,
+      "awayTeamPenalties": null
+    },
+    {
+      "id": 537358,
+      "utcDate": "2026-06-15T02:00:00Z",
+      "status": "Scheduled",
+      "stage": "GroupStage",
+      "homeTeamId": 792,
+      "awayTeamId": 802,
+      "homeTeamGoals": null,
+      "awayTeamGoals": null,
+      "homeTeamPenalties": null,
+      "awayTeamPenalties": null
+    },
+    {
+      "id": 537369,
+      "utcDate": "2026-06-15T16:00:00Z",
+      "status": "Scheduled",
+      "stage": "GroupStage",
+      "homeTeamId": 760,
+      "awayTeamId": 1930,
+      "homeTeamGoals": null,
+      "awayTeamGoals": null,
+      "homeTeamPenalties": null,
+      "awayTeamPenalties": null
+    },
+    {
+      "id": 537363,
+      "utcDate": "2026-06-15T19:00:00Z",
+      "status": "Scheduled",
+      "stage": "GroupStage",
+      "homeTeamId": 805,
+      "awayTeamId": 825,
+      "homeTeamGoals": null,
+      "awayTeamGoals": null,
+      "homeTeamPenalties": null,
+      "awayTeamPenalties": null
+    },
+    {
+      "id": 537370,
+      "utcDate": "2026-06-15T22:00:00Z",
+      "status": "Scheduled",
+      "stage": "GroupStage",
+      "homeTeamId": 801,
+      "awayTeamId": 758,
+      "homeTeamGoals": null,
+      "awayTeamGoals": null,
+      "homeTeamPenalties": null,
+      "awayTeamPenalties": null
+    },
+    {
+      "id": 537364,
+      "utcDate": "2026-06-16T01:00:00Z",
+      "status": "Scheduled",
+      "stage": "GroupStage",
+      "homeTeamId": 840,
+      "awayTeamId": 783,
+      "homeTeamGoals": null,
+      "awayTeamGoals": null,
+      "homeTeamPenalties": null,
+      "awayTeamPenalties": null
+    },
+    {
+      "id": 537391,
+      "utcDate": "2026-06-16T19:00:00Z",
+      "status": "Scheduled",
+      "stage": "GroupStage",
+      "homeTeamId": 773,
+      "awayTeamId": 804,
+      "homeTeamGoals": null,
+      "awayTeamGoals": null,
+      "homeTeamPenalties": null,
+      "awayTeamPenalties": null
+    },
+    {
+      "id": 537392,
+      "utcDate": "2026-06-16T22:00:00Z",
+      "status": "Scheduled",
+      "stage": "GroupStage",
+      "homeTeamId": 8062,
+      "awayTeamId": 8872,
+      "homeTeamGoals": null,
+      "awayTeamGoals": null,
+      "homeTeamPenalties": null,
+      "awayTeamPenalties": null
+    },
+    {
+      "id": 537397,
+      "utcDate": "2026-06-17T01:00:00Z",
+      "status": "Scheduled",
+      "stage": "GroupStage",
+      "homeTeamId": 762,
+      "awayTeamId": 778,
+      "homeTeamGoals": null,
+      "awayTeamGoals": null,
+      "homeTeamPenalties": null,
+      "awayTeamPenalties": null
+    },
+    {
+      "id": 537398,
+      "utcDate": "2026-06-17T04:00:00Z",
+      "status": "Scheduled",
+      "stage": "GroupStage",
+      "homeTeamId": 816,
+      "awayTeamId": 8049,
+      "homeTeamGoals": null,
+      "awayTeamGoals": null,
+      "homeTeamPenalties": null,
+      "awayTeamPenalties": null
+    },
+    {
+      "id": 537403,
+      "utcDate": "2026-06-17T17:00:00Z",
+      "status": "Scheduled",
+      "stage": "GroupStage",
+      "homeTeamId": 765,
+      "awayTeamId": 1934,
+      "homeTeamGoals": null,
+      "awayTeamGoals": null,
+      "homeTeamPenalties": null,
+      "awayTeamPenalties": null
+    },
+    {
+      "id": 537409,
+      "utcDate": "2026-06-17T20:00:00Z",
+      "status": "Scheduled",
+      "stage": "GroupStage",
+      "homeTeamId": 770,
+      "awayTeamId": 799,
+      "homeTeamGoals": null,
+      "awayTeamGoals": null,
+      "homeTeamPenalties": null,
+      "awayTeamPenalties": null
+    },
+    {
+      "id": 537410,
+      "utcDate": "2026-06-17T23:00:00Z",
+      "status": "Scheduled",
+      "stage": "GroupStage",
+      "homeTeamId": 763,
+      "awayTeamId": 1836,
+      "homeTeamGoals": null,
+      "awayTeamGoals": null,
+      "homeTeamPenalties": null,
+      "awayTeamPenalties": null
+    },
+    {
+      "id": 537404,
+      "utcDate": "2026-06-18T02:00:00Z",
+      "status": "Scheduled",
+      "stage": "GroupStage",
+      "homeTeamId": 8070,
+      "awayTeamId": 818,
+      "homeTeamGoals": null,
+      "awayTeamGoals": null,
+      "homeTeamPenalties": null,
+      "awayTeamPenalties": null
+    },
+    {
+      "id": 537329,
+      "utcDate": "2026-06-18T16:00:00Z",
+      "status": "Scheduled",
+      "stage": "GroupStage",
+      "homeTeamId": 798,
+      "awayTeamId": 774,
+      "homeTeamGoals": null,
+      "awayTeamGoals": null,
+      "homeTeamPenalties": null,
+      "awayTeamPenalties": null
+    },
+    {
+      "id": 537335,
+      "utcDate": "2026-06-18T19:00:00Z",
+      "status": "Scheduled",
+      "stage": "GroupStage",
+      "homeTeamId": 788,
+      "awayTeamId": 1060,
+      "homeTeamGoals": null,
+      "awayTeamGoals": null,
+      "homeTeamPenalties": null,
+      "awayTeamPenalties": null
+    },
+    {
+      "id": 537336,
+      "utcDate": "2026-06-18T22:00:00Z",
+      "status": "Scheduled",
+      "stage": "GroupStage",
+      "homeTeamId": 828,
+      "awayTeamId": 8030,
+      "homeTeamGoals": null,
+      "awayTeamGoals": null,
+      "homeTeamPenalties": null,
+      "awayTeamPenalties": null
+    },
+    {
+      "id": 537330,
+      "utcDate": "2026-06-19T01:00:00Z",
+      "status": "Scheduled",
+      "stage": "GroupStage",
+      "homeTeamId": 769,
+      "awayTeamId": 772,
+      "homeTeamGoals": null,
+      "awayTeamGoals": null,
+      "homeTeamPenalties": null,
+      "awayTeamPenalties": null
+    },
+    {
+      "id": 537348,
+      "utcDate": "2026-06-19T19:00:00Z",
+      "status": "Scheduled",
+      "stage": "GroupStage",
+      "homeTeamId": 771,
+      "awayTeamId": 779,
+      "homeTeamGoals": null,
+      "awayTeamGoals": null,
+      "homeTeamPenalties": null,
+      "awayTeamPenalties": null
+    },
+    {
+      "id": 537342,
+      "utcDate": "2026-06-19T22:00:00Z",
+      "status": "Scheduled",
+      "stage": "GroupStage",
+      "homeTeamId": 8873,
+      "awayTeamId": 815,
+      "homeTeamGoals": null,
+      "awayTeamGoals": null,
+      "homeTeamPenalties": null,
+      "awayTeamPenalties": null
+    },
+    {
+      "id": 537341,
+      "utcDate": "2026-06-20T00:30:00Z",
+      "status": "Scheduled",
+      "stage": "GroupStage",
+      "homeTeamId": 764,
+      "awayTeamId": 836,
+      "homeTeamGoals": null,
+      "awayTeamGoals": null,
+      "homeTeamPenalties": null,
+      "awayTeamPenalties": null
+    },
+    {
+      "id": 537347,
+      "utcDate": "2026-06-20T03:00:00Z",
+      "status": "Scheduled",
+      "stage": "GroupStage",
+      "homeTeamId": 803,
+      "awayTeamId": 761,
+      "homeTeamGoals": null,
+      "awayTeamGoals": null,
+      "homeTeamPenalties": null,
+      "awayTeamPenalties": null
+    },
+    {
+      "id": 537359,
+      "utcDate": "2026-06-20T17:00:00Z",
+      "status": "Scheduled",
+      "stage": "GroupStage",
+      "homeTeamId": 8601,
+      "awayTeamId": 792,
+      "homeTeamGoals": null,
+      "awayTeamGoals": null,
+      "homeTeamPenalties": null,
+      "awayTeamPenalties": null
+    },
+    {
+      "id": 537353,
+      "utcDate": "2026-06-20T20:00:00Z",
+      "status": "Scheduled",
+      "stage": "GroupStage",
+      "homeTeamId": 759,
+      "awayTeamId": 1935,
+      "homeTeamGoals": null,
+      "awayTeamGoals": null,
+      "homeTeamPenalties": null,
+      "awayTeamPenalties": null
+    },
+    {
+      "id": 537354,
+      "utcDate": "2026-06-21T00:00:00Z",
+      "status": "Scheduled",
+      "stage": "GroupStage",
+      "homeTeamId": 791,
+      "awayTeamId": 9460,
+      "homeTeamGoals": null,
+      "awayTeamGoals": null,
+      "homeTeamPenalties": null,
+      "awayTeamPenalties": null
+    },
+    {
+      "id": 537360,
+      "utcDate": "2026-06-21T04:00:00Z",
+      "status": "Scheduled",
+      "stage": "GroupStage",
+      "homeTeamId": 802,
+      "awayTeamId": 766,
+      "homeTeamGoals": null,
+      "awayTeamGoals": null,
+      "homeTeamPenalties": null,
+      "awayTeamPenalties": null
+    },
+    {
+      "id": 537371,
+      "utcDate": "2026-06-21T16:00:00Z",
+      "status": "Scheduled",
+      "stage": "GroupStage",
+      "homeTeamId": 760,
+      "awayTeamId": 801,
+      "homeTeamGoals": null,
+      "awayTeamGoals": null,
+      "homeTeamPenalties": null,
+      "awayTeamPenalties": null
+    },
+    {
+      "id": 537365,
+      "utcDate": "2026-06-21T19:00:00Z",
+      "status": "Scheduled",
+      "stage": "GroupStage",
+      "homeTeamId": 805,
+      "awayTeamId": 840,
+      "homeTeamGoals": null,
+      "awayTeamGoals": null,
+      "homeTeamPenalties": null,
+      "awayTeamPenalties": null
+    },
+    {
+      "id": 537372,
+      "utcDate": "2026-06-21T22:00:00Z",
+      "status": "Scheduled",
+      "stage": "GroupStage",
+      "homeTeamId": 758,
+      "awayTeamId": 1930,
+      "homeTeamGoals": null,
+      "awayTeamGoals": null,
+      "homeTeamPenalties": null,
+      "awayTeamPenalties": null
+    },
+    {
+      "id": 537366,
+      "utcDate": "2026-06-22T01:00:00Z",
+      "status": "Scheduled",
+      "stage": "GroupStage",
+      "homeTeamId": 783,
+      "awayTeamId": 825,
+      "homeTeamGoals": null,
+      "awayTeamGoals": null,
+      "homeTeamPenalties": null,
+      "awayTeamPenalties": null
+    },
+    {
+      "id": 537399,
+      "utcDate": "2026-06-22T17:00:00Z",
+      "status": "Scheduled",
+      "stage": "GroupStage",
+      "homeTeamId": 762,
+      "awayTeamId": 816,
+      "homeTeamGoals": null,
+      "awayTeamGoals": null,
+      "homeTeamPenalties": null,
+      "awayTeamPenalties": null
+    },
+    {
+      "id": 537393,
+      "utcDate": "2026-06-22T21:00:00Z",
+      "status": "Scheduled",
+      "stage": "GroupStage",
+      "homeTeamId": 773,
+      "awayTeamId": 8062,
+      "homeTeamGoals": null,
+      "awayTeamGoals": null,
+      "homeTeamPenalties": null,
+      "awayTeamPenalties": null
+    },
+    {
+      "id": 537394,
+      "utcDate": "2026-06-23T00:00:00Z",
+      "status": "Scheduled",
+      "stage": "GroupStage",
+      "homeTeamId": 8872,
+      "awayTeamId": 804,
+      "homeTeamGoals": null,
+      "awayTeamGoals": null,
+      "homeTeamPenalties": null,
+      "awayTeamPenalties": null
+    },
+    {
+      "id": 537400,
+      "utcDate": "2026-06-23T03:00:00Z",
+      "status": "Scheduled",
+      "stage": "GroupStage",
+      "homeTeamId": 8049,
+      "awayTeamId": 778,
+      "homeTeamGoals": null,
+      "awayTeamGoals": null,
+      "homeTeamPenalties": null,
+      "awayTeamPenalties": null
+    },
+    {
+      "id": 537405,
+      "utcDate": "2026-06-23T17:00:00Z",
+      "status": "Scheduled",
+      "stage": "GroupStage",
+      "homeTeamId": 765,
+      "awayTeamId": 8070,
+      "homeTeamGoals": null,
+      "awayTeamGoals": null,
+      "homeTeamPenalties": null,
+      "awayTeamPenalties": null
+    },
+    {
+      "id": 537411,
+      "utcDate": "2026-06-23T20:00:00Z",
+      "status": "Scheduled",
+      "stage": "GroupStage",
+      "homeTeamId": 770,
+      "awayTeamId": 763,
+      "homeTeamGoals": null,
+      "awayTeamGoals": null,
+      "homeTeamPenalties": null,
+      "awayTeamPenalties": null
+    },
+    {
+      "id": 537412,
+      "utcDate": "2026-06-23T23:00:00Z",
+      "status": "Scheduled",
+      "stage": "GroupStage",
+      "homeTeamId": 1836,
+      "awayTeamId": 799,
+      "homeTeamGoals": null,
+      "awayTeamGoals": null,
+      "homeTeamPenalties": null,
+      "awayTeamPenalties": null
+    },
+    {
+      "id": 537406,
+      "utcDate": "2026-06-24T02:00:00Z",
+      "status": "Scheduled",
+      "stage": "GroupStage",
+      "homeTeamId": 818,
+      "awayTeamId": 1934,
+      "homeTeamGoals": null,
+      "awayTeamGoals": null,
+      "homeTeamPenalties": null,
+      "awayTeamPenalties": null
+    },
+    {
+      "id": 537337,
+      "utcDate": "2026-06-24T19:00:00Z",
+      "status": "Scheduled",
+      "stage": "GroupStage",
+      "homeTeamId": 788,
+      "awayTeamId": 828,
+      "homeTeamGoals": null,
+      "awayTeamGoals": null,
+      "homeTeamPenalties": null,
+      "awayTeamPenalties": null
+    },
+    {
+      "id": 537338,
+      "utcDate": "2026-06-24T19:00:00Z",
+      "status": "Scheduled",
+      "stage": "GroupStage",
+      "homeTeamId": 1060,
+      "awayTeamId": 8030,
+      "homeTeamGoals": null,
+      "awayTeamGoals": null,
+      "homeTeamPenalties": null,
+      "awayTeamPenalties": null
+    },
+    {
+      "id": 537343,
+      "utcDate": "2026-06-24T22:00:00Z",
+      "status": "Scheduled",
+      "stage": "GroupStage",
+      "homeTeamId": 8873,
+      "awayTeamId": 764,
+      "homeTeamGoals": null,
+      "awayTeamGoals": null,
+      "homeTeamPenalties": null,
+      "awayTeamPenalties": null
+    },
+    {
+      "id": 537344,
+      "utcDate": "2026-06-24T22:00:00Z",
+      "status": "Scheduled",
+      "stage": "GroupStage",
+      "homeTeamId": 815,
+      "awayTeamId": 836,
+      "homeTeamGoals": null,
+      "awayTeamGoals": null,
+      "homeTeamPenalties": null,
+      "awayTeamPenalties": null
+    },
+    {
+      "id": 537331,
+      "utcDate": "2026-06-25T01:00:00Z",
+      "status": "Scheduled",
+      "stage": "GroupStage",
+      "homeTeamId": 798,
+      "awayTeamId": 769,
+      "homeTeamGoals": null,
+      "awayTeamGoals": null,
+      "homeTeamPenalties": null,
+      "awayTeamPenalties": null
+    },
+    {
+      "id": 537332,
+      "utcDate": "2026-06-25T01:00:00Z",
+      "status": "Scheduled",
+      "stage": "GroupStage",
+      "homeTeamId": 774,
+      "awayTeamId": 772,
+      "homeTeamGoals": null,
+      "awayTeamGoals": null,
+      "homeTeamPenalties": null,
+      "awayTeamPenalties": null
+    },
+    {
+      "id": 537355,
+      "utcDate": "2026-06-25T20:00:00Z",
+      "status": "Scheduled",
+      "stage": "GroupStage",
+      "homeTeamId": 791,
+      "awayTeamId": 759,
+      "homeTeamGoals": null,
+      "awayTeamGoals": null,
+      "homeTeamPenalties": null,
+      "awayTeamPenalties": null
+    },
+    {
+      "id": 537356,
+      "utcDate": "2026-06-25T20:00:00Z",
+      "status": "Scheduled",
+      "stage": "GroupStage",
+      "homeTeamId": 9460,
+      "awayTeamId": 1935,
+      "homeTeamGoals": null,
+      "awayTeamGoals": null,
+      "homeTeamPenalties": null,
+      "awayTeamPenalties": null
+    },
+    {
+      "id": 537361,
+      "utcDate": "2026-06-25T23:00:00Z",
+      "status": "Scheduled",
+      "stage": "GroupStage",
+      "homeTeamId": 802,
+      "awayTeamId": 8601,
+      "homeTeamGoals": null,
+      "awayTeamGoals": null,
+      "homeTeamPenalties": null,
+      "awayTeamPenalties": null
+    },
+    {
+      "id": 537362,
+      "utcDate": "2026-06-25T23:00:00Z",
+      "status": "Scheduled",
+      "stage": "GroupStage",
+      "homeTeamId": 766,
+      "awayTeamId": 792,
+      "homeTeamGoals": null,
+      "awayTeamGoals": null,
+      "homeTeamPenalties": null,
+      "awayTeamPenalties": null
+    },
+    {
+      "id": 537349,
+      "utcDate": "2026-06-26T02:00:00Z",
+      "status": "Scheduled",
+      "stage": "GroupStage",
+      "homeTeamId": 803,
+      "awayTeamId": 771,
+      "homeTeamGoals": null,
+      "awayTeamGoals": null,
+      "homeTeamPenalties": null,
+      "awayTeamPenalties": null
+    },
+    {
+      "id": 537350,
+      "utcDate": "2026-06-26T02:00:00Z",
+      "status": "Scheduled",
+      "stage": "GroupStage",
+      "homeTeamId": 761,
+      "awayTeamId": 779,
+      "homeTeamGoals": null,
+      "awayTeamGoals": null,
+      "homeTeamPenalties": null,
+      "awayTeamPenalties": null
+    },
+    {
+      "id": 537395,
+      "utcDate": "2026-06-26T19:00:00Z",
+      "status": "Scheduled",
+      "stage": "GroupStage",
+      "homeTeamId": 8872,
+      "awayTeamId": 773,
+      "homeTeamGoals": null,
+      "awayTeamGoals": null,
+      "homeTeamPenalties": null,
+      "awayTeamPenalties": null
+    },
+    {
+      "id": 537396,
+      "utcDate": "2026-06-26T19:00:00Z",
+      "status": "Scheduled",
+      "stage": "GroupStage",
+      "homeTeamId": 804,
+      "awayTeamId": 8062,
+      "homeTeamGoals": null,
+      "awayTeamGoals": null,
+      "homeTeamPenalties": null,
+      "awayTeamPenalties": null
+    },
+    {
+      "id": 537373,
+      "utcDate": "2026-06-27T00:00:00Z",
+      "status": "Scheduled",
+      "stage": "GroupStage",
+      "homeTeamId": 758,
+      "awayTeamId": 760,
+      "homeTeamGoals": null,
+      "awayTeamGoals": null,
+      "homeTeamPenalties": null,
+      "awayTeamPenalties": null
+    },
+    {
+      "id": 537374,
+      "utcDate": "2026-06-27T00:00:00Z",
+      "status": "Scheduled",
+      "stage": "GroupStage",
+      "homeTeamId": 1930,
+      "awayTeamId": 801,
+      "homeTeamGoals": null,
+      "awayTeamGoals": null,
+      "homeTeamPenalties": null,
+      "awayTeamPenalties": null
+    },
+    {
+      "id": 537367,
+      "utcDate": "2026-06-27T03:00:00Z",
+      "status": "Scheduled",
+      "stage": "GroupStage",
+      "homeTeamId": 783,
+      "awayTeamId": 805,
+      "homeTeamGoals": null,
+      "awayTeamGoals": null,
+      "homeTeamPenalties": null,
+      "awayTeamPenalties": null
+    },
+    {
+      "id": 537368,
+      "utcDate": "2026-06-27T03:00:00Z",
+      "status": "Scheduled",
+      "stage": "GroupStage",
+      "homeTeamId": 825,
+      "awayTeamId": 840,
+      "homeTeamGoals": null,
+      "awayTeamGoals": null,
+      "homeTeamPenalties": null,
+      "awayTeamPenalties": null
+    },
+    {
+      "id": 537413,
+      "utcDate": "2026-06-27T21:00:00Z",
+      "status": "Scheduled",
+      "stage": "GroupStage",
+      "homeTeamId": 1836,
+      "awayTeamId": 770,
+      "homeTeamGoals": null,
+      "awayTeamGoals": null,
+      "homeTeamPenalties": null,
+      "awayTeamPenalties": null
+    },
+    {
+      "id": 537414,
+      "utcDate": "2026-06-27T21:00:00Z",
+      "status": "Scheduled",
+      "stage": "GroupStage",
+      "homeTeamId": 799,
+      "awayTeamId": 763,
+      "homeTeamGoals": null,
+      "awayTeamGoals": null,
+      "homeTeamPenalties": null,
+      "awayTeamPenalties": null
+    },
+    {
+      "id": 537407,
+      "utcDate": "2026-06-27T23:30:00Z",
+      "status": "Scheduled",
+      "stage": "GroupStage",
+      "homeTeamId": 818,
+      "awayTeamId": 765,
+      "homeTeamGoals": null,
+      "awayTeamGoals": null,
+      "homeTeamPenalties": null,
+      "awayTeamPenalties": null
+    },
+    {
+      "id": 537408,
+      "utcDate": "2026-06-27T23:30:00Z",
+      "status": "Scheduled",
+      "stage": "GroupStage",
+      "homeTeamId": 1934,
+      "awayTeamId": 8070,
+      "homeTeamGoals": null,
+      "awayTeamGoals": null,
+      "homeTeamPenalties": null,
+      "awayTeamPenalties": null
+    },
+    {
+      "id": 537401,
+      "utcDate": "2026-06-28T02:00:00Z",
+      "status": "Scheduled",
+      "stage": "GroupStage",
+      "homeTeamId": 8049,
+      "awayTeamId": 762,
+      "homeTeamGoals": null,
+      "awayTeamGoals": null,
+      "homeTeamPenalties": null,
+      "awayTeamPenalties": null
+    },
+    {
+      "id": 537402,
+      "utcDate": "2026-06-28T02:00:00Z",
+      "status": "Scheduled",
+      "stage": "GroupStage",
+      "homeTeamId": 778,
+      "awayTeamId": 816,
+      "homeTeamGoals": null,
+      "awayTeamGoals": null,
+      "homeTeamPenalties": null,
+      "awayTeamPenalties": null
+    },
+    {
+      "id": 537417,
+      "utcDate": "2026-06-28T19:00:00Z",
+      "status": "Scheduled",
+      "stage": "RoundOf32",
+      "homeTeamId": 762,
+      "awayTeamId": 778,
+      "homeTeamGoals": null,
+      "awayTeamGoals": null,
+      "homeTeamPenalties": null,
+      "awayTeamPenalties": null
+    },
+    {
+      "id": 537423,
+      "utcDate": "2026-06-29T17:00:00Z",
+      "status": "Scheduled",
+      "stage": "RoundOf32",
+      "homeTeamId": 779,
+      "awayTeamId": 805,
+      "homeTeamGoals": null,
+      "awayTeamGoals": null,
+      "homeTeamPenalties": null,
+      "awayTeamPenalties": null
+    },
+    {
+      "id": 537415,
+      "utcDate": "2026-06-29T20:30:00Z",
+      "status": "Scheduled",
+      "stage": "RoundOf32",
+      "homeTeamId": 1060,
+      "awayTeamId": 764,
+      "homeTeamGoals": null,
+      "awayTeamGoals": null,
+      "homeTeamPenalties": null,
+      "awayTeamPenalties": null
+    },
+    {
+      "id": 537418,
+      "utcDate": "2026-06-30T01:00:00Z",
+      "status": "Scheduled",
+      "stage": "RoundOf32",
+      "homeTeamId": null,
+      "awayTeamId": null,
+      "homeTeamGoals": null,
+      "awayTeamGoals": null,
+      "homeTeamPenalties": null,
+      "awayTeamPenalties": null
+    },
+    {
+      "id": 537424,
+      "utcDate": "2026-06-30T17:00:00Z",
+      "status": "Scheduled",
+      "stage": "RoundOf32",
+      "homeTeamId": null,
+      "awayTeamId": null,
+      "homeTeamGoals": null,
+      "awayTeamGoals": null,
+      "homeTeamPenalties": null,
+      "awayTeamPenalties": null
+    },
+    {
+      "id": 537416,
+      "utcDate": "2026-06-30T21:00:00Z",
+      "status": "Scheduled",
+      "stage": "RoundOf32",
+      "homeTeamId": null,
+      "awayTeamId": null,
+      "homeTeamGoals": null,
+      "awayTeamGoals": null,
+      "homeTeamPenalties": null,
+      "awayTeamPenalties": null
+    },
+    {
+      "id": 537425,
+      "utcDate": "2026-07-01T01:00:00Z",
+      "status": "Scheduled",
+      "stage": "RoundOf32",
+      "homeTeamId": null,
+      "awayTeamId": null,
+      "homeTeamGoals": null,
+      "awayTeamGoals": null,
+      "homeTeamPenalties": null,
+      "awayTeamPenalties": null
+    },
+    {
+      "id": 537426,
+      "utcDate": "2026-07-01T16:00:00Z",
+      "status": "Scheduled",
+      "stage": "RoundOf32",
+      "homeTeamId": null,
+      "awayTeamId": null,
+      "homeTeamGoals": null,
+      "awayTeamGoals": null,
+      "homeTeamPenalties": null,
+      "awayTeamPenalties": null
+    },
+    {
+      "id": 537422,
+      "utcDate": "2026-07-01T20:00:00Z",
+      "status": "Scheduled",
+      "stage": "RoundOf32",
+      "homeTeamId": null,
+      "awayTeamId": null,
+      "homeTeamGoals": null,
+      "awayTeamGoals": null,
+      "homeTeamPenalties": null,
+      "awayTeamPenalties": null
+    },
+    {
+      "id": 537421,
+      "utcDate": "2026-07-02T00:00:00Z",
+      "status": "Scheduled",
+      "stage": "RoundOf32",
+      "homeTeamId": null,
+      "awayTeamId": null,
+      "homeTeamGoals": null,
+      "awayTeamGoals": null,
+      "homeTeamPenalties": null,
+      "awayTeamPenalties": null
+    },
+    {
+      "id": 537420,
+      "utcDate": "2026-07-02T19:00:00Z",
+      "status": "Scheduled",
+      "stage": "RoundOf32",
+      "homeTeamId": null,
+      "awayTeamId": null,
+      "homeTeamGoals": null,
+      "awayTeamGoals": null,
+      "homeTeamPenalties": null,
+      "awayTeamPenalties": null
+    },
+    {
+      "id": 537419,
+      "utcDate": "2026-07-02T23:00:00Z",
+      "status": "Scheduled",
+      "stage": "RoundOf32",
+      "homeTeamId": null,
+      "awayTeamId": null,
+      "homeTeamGoals": null,
+      "awayTeamGoals": null,
+      "homeTeamPenalties": null,
+      "awayTeamPenalties": null
+    },
+    {
+      "id": 537429,
+      "utcDate": "2026-07-03T03:00:00Z",
+      "status": "Scheduled",
+      "stage": "RoundOf32",
+      "homeTeamId": null,
+      "awayTeamId": null,
+      "homeTeamGoals": null,
+      "awayTeamGoals": null,
+      "homeTeamPenalties": null,
+      "awayTeamPenalties": null
+    },
+    {
+      "id": 537428,
+      "utcDate": "2026-07-03T18:00:00Z",
+      "status": "Scheduled",
+      "stage": "RoundOf32",
+      "homeTeamId": null,
+      "awayTeamId": null,
+      "homeTeamGoals": null,
+      "awayTeamGoals": null,
+      "homeTeamPenalties": null,
+      "awayTeamPenalties": null
+    },
+    {
+      "id": 537427,
+      "utcDate": "2026-07-03T22:00:00Z",
+      "status": "Scheduled",
+      "stage": "RoundOf32",
+      "homeTeamId": null,
+      "awayTeamId": null,
+      "homeTeamGoals": null,
+      "awayTeamGoals": null,
+      "homeTeamPenalties": null,
+      "awayTeamPenalties": null
+    },
+    {
+      "id": 537430,
+      "utcDate": "2026-07-04T01:30:00Z",
+      "status": "Scheduled",
+      "stage": "RoundOf32",
+      "homeTeamId": null,
+      "awayTeamId": null,
+      "homeTeamGoals": null,
+      "awayTeamGoals": null,
+      "homeTeamPenalties": null,
+      "awayTeamPenalties": null
+    },
+    {
+      "id": 537376,
+      "utcDate": "2026-07-04T17:00:00Z",
+      "status": "Scheduled",
+      "stage": "RoundOf16",
+      "homeTeamId": null,
+      "awayTeamId": null,
+      "homeTeamGoals": null,
+      "awayTeamGoals": null,
+      "homeTeamPenalties": null,
+      "awayTeamPenalties": null
+    },
+    {
+      "id": 537375,
+      "utcDate": "2026-07-04T21:00:00Z",
+      "status": "Scheduled",
+      "stage": "RoundOf16",
+      "homeTeamId": null,
+      "awayTeamId": null,
+      "homeTeamGoals": null,
+      "awayTeamGoals": null,
+      "homeTeamPenalties": null,
+      "awayTeamPenalties": null
+    },
+    {
+      "id": 537377,
+      "utcDate": "2026-07-05T20:00:00Z",
+      "status": "Scheduled",
+      "stage": "RoundOf16",
+      "homeTeamId": null,
+      "awayTeamId": null,
+      "homeTeamGoals": null,
+      "awayTeamGoals": null,
+      "homeTeamPenalties": null,
+      "awayTeamPenalties": null
+    },
+    {
+      "id": 537378,
+      "utcDate": "2026-07-06T00:00:00Z",
+      "status": "Scheduled",
+      "stage": "RoundOf16",
+      "homeTeamId": null,
+      "awayTeamId": null,
+      "homeTeamGoals": null,
+      "awayTeamGoals": null,
+      "homeTeamPenalties": null,
+      "awayTeamPenalties": null
+    },
+    {
+      "id": 537379,
+      "utcDate": "2026-07-06T19:00:00Z",
+      "status": "Scheduled",
+      "stage": "RoundOf16",
+      "homeTeamId": null,
+      "awayTeamId": null,
+      "homeTeamGoals": null,
+      "awayTeamGoals": null,
+      "homeTeamPenalties": null,
+      "awayTeamPenalties": null
+    },
+    {
+      "id": 537380,
+      "utcDate": "2026-07-07T00:00:00Z",
+      "status": "Scheduled",
+      "stage": "RoundOf16",
+      "homeTeamId": null,
+      "awayTeamId": null,
+      "homeTeamGoals": null,
+      "awayTeamGoals": null,
+      "homeTeamPenalties": null,
+      "awayTeamPenalties": null
+    },
+    {
+      "id": 537381,
+      "utcDate": "2026-07-07T16:00:00Z",
+      "status": "Scheduled",
+      "stage": "RoundOf16",
+      "homeTeamId": null,
+      "awayTeamId": null,
+      "homeTeamGoals": null,
+      "awayTeamGoals": null,
+      "homeTeamPenalties": null,
+      "awayTeamPenalties": null
+    },
+    {
+      "id": 537382,
+      "utcDate": "2026-07-07T20:00:00Z",
+      "status": "Scheduled",
+      "stage": "RoundOf16",
+      "homeTeamId": null,
+      "awayTeamId": null,
+      "homeTeamGoals": null,
+      "awayTeamGoals": null,
+      "homeTeamPenalties": null,
+      "awayTeamPenalties": null
+    },
+    {
+      "id": 537383,
+      "utcDate": "2026-07-09T20:00:00Z",
+      "status": "Scheduled",
+      "stage": "QuarterFinals",
+      "homeTeamId": null,
+      "awayTeamId": null,
+      "homeTeamGoals": null,
+      "awayTeamGoals": null,
+      "homeTeamPenalties": null,
+      "awayTeamPenalties": null
+    },
+    {
+      "id": 537384,
+      "utcDate": "2026-07-10T19:00:00Z",
+      "status": "Scheduled",
+      "stage": "QuarterFinals",
+      "homeTeamId": null,
+      "awayTeamId": null,
+      "homeTeamGoals": null,
+      "awayTeamGoals": null,
+      "homeTeamPenalties": null,
+      "awayTeamPenalties": null
+    },
+    {
+      "id": 537385,
+      "utcDate": "2026-07-11T21:00:00Z",
+      "status": "Scheduled",
+      "stage": "QuarterFinals",
+      "homeTeamId": null,
+      "awayTeamId": null,
+      "homeTeamGoals": null,
+      "awayTeamGoals": null,
+      "homeTeamPenalties": null,
+      "awayTeamPenalties": null
+    },
+    {
+      "id": 537386,
+      "utcDate": "2026-07-12T01:00:00Z",
+      "status": "Scheduled",
+      "stage": "QuarterFinals",
+      "homeTeamId": null,
+      "awayTeamId": null,
+      "homeTeamGoals": null,
+      "awayTeamGoals": null,
+      "homeTeamPenalties": null,
+      "awayTeamPenalties": null
+    },
+    {
+      "id": 537387,
+      "utcDate": "2026-07-14T19:00:00Z",
+      "status": "Scheduled",
+      "stage": "SemiFinals",
+      "homeTeamId": null,
+      "awayTeamId": null,
+      "homeTeamGoals": null,
+      "awayTeamGoals": null,
+      "homeTeamPenalties": null,
+      "awayTeamPenalties": null
+    },
+    {
+      "id": 537388,
+      "utcDate": "2026-07-15T19:00:00Z",
+      "status": "Scheduled",
+      "stage": "SemiFinals",
+      "homeTeamId": null,
+      "awayTeamId": null,
+      "homeTeamGoals": null,
+      "awayTeamGoals": null,
+      "homeTeamPenalties": null,
+      "awayTeamPenalties": null
+    },
+    {
+      "id": 537389,
+      "utcDate": "2026-07-18T21:00:00Z",
+      "status": "Scheduled",
+      "stage": "ThirdPlace",
+      "homeTeamId": null,
+      "awayTeamId": null,
+      "homeTeamGoals": null,
+      "awayTeamGoals": null,
+      "homeTeamPenalties": null,
+      "awayTeamPenalties": null
+    },
+    {
+      "id": 537390,
+      "utcDate": "2026-07-19T19:00:00Z",
+      "status": "Scheduled",
+      "stage": "Final",
+      "homeTeamId": null,
+      "awayTeamId": null,
+      "homeTeamGoals": null,
+      "awayTeamGoals": null,
+      "homeTeamPenalties": null,
+      "awayTeamPenalties": null
+    }
+  ]
+}

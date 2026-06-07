@@ -2,16 +2,12 @@ import Header from "../components/shared/Header";
 import { useQuery } from "@tanstack/react-query";
 import { getRanking } from "../api/client";
 import type { RankResponse } from "../api/types";
-import { cn, initials } from "../lib/utils";
+import { cn, delay, initials } from "../lib/utils";
 import { Target } from "lucide-react";
 import PodiumCard from "../components/rank/PodiumCard";
 import ReportError from "../components/error/ReportError";
 import RankTable from "../components/rank/RankTable";
 import RankTableSkeleton from "../components/rank/RankTableSkeleton";
-
-function delay(ms: number) {
-  return new Promise((resolve) => setTimeout(resolve, ms));
-}
 
 async function getQuery(page: number, pageSize: number, fake: boolean = false): Promise<RankResponse> {
   if (fake) {

@@ -25,8 +25,9 @@ export type Group = {
 
 export type Match = {
    id: number;
-   utcDate: Date;
+   utcDate: string;
    status: string;
+   stage: string;
    homeTeamId: number | null;
    awayTeamId: number | null;
    homeTeamGoals: number | null;
