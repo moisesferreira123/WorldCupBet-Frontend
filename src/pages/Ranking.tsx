@@ -2,9 +2,9 @@ import Header from "../components/shared/Header";
 import { useQuery } from "@tanstack/react-query";
 import { getRanking } from "../api/client";
 import type { RankResponse } from "../api/types";
-import ReportError from "../components/error/ReportError";
-import RankTable from "../components/rank/RankTable";
-import RankTableSkeleton from "../components/rank/RankTableSkeleton";
+// import ReportError from "../components/error/ReportError";
+// import RankTable from "../components/rank/RankTable";
+// import RankTableSkeleton from "../components/rank/RankTableSkeleton";
 import { cn, initials } from "../lib/utils";
 import { Target } from "lucide-react";
 import PodiumCard from "../components/rank/PodiumCard";
@@ -25,7 +25,7 @@ async function getQuery(page: number, pageSize: number, fake: boolean = false): 
           predictions: [],
           title: "Pedro",
           totalPoints: 10,
-          correctPreditions: 2
+          correctPredictions: 2
         },
         {
           id: "id2",
@@ -33,7 +33,7 @@ async function getQuery(page: number, pageSize: number, fake: boolean = false): 
           predictions: [],
           title: "Pedro",
           totalPoints: 9,
-          correctPreditions: 2
+          correctPredictions: 2
         },
         {
           id: "id3",
@@ -41,7 +41,7 @@ async function getQuery(page: number, pageSize: number, fake: boolean = false): 
           predictions: [],
           title: "Pedro",
           totalPoints: 8,
-          correctPreditions: 2
+          correctPredictions: 2
         },
         {
           id: "id4",
@@ -49,7 +49,7 @@ async function getQuery(page: number, pageSize: number, fake: boolean = false): 
           predictions: [],
           title: "Pedro",
           totalPoints: 8,
-          correctPreditions: 2
+          correctPredictions: 2
         },
         {
           id: "id5",
@@ -57,7 +57,7 @@ async function getQuery(page: number, pageSize: number, fake: boolean = false): 
           predictions: [],
           title: "Pedro",
           totalPoints: 8,
-          correctPreditions: 2
+          correctPredictions: 2
         }
       ],
       totalItems: 5
@@ -126,7 +126,7 @@ export default function Ranking() {
                   {/* Adicionar algo caso seja você: isMe && "text-gold" */}
                   <span className={cn("text-sm font-medium")}>{item.title}</span>
                 </div>
-                <span className="text-center text-sm tabular-nums text-muted-foreground">{item.correctPreditions}</span>
+                <span className="text-center text-sm tabular-nums text-muted-foreground">{item.correctPredictions}</span>
                 <span className="text-right font-display font-bold tabular-nums text-gold">{item.totalPoints}</span>
               </div>
             );
