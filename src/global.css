@@ -39,6 +39,7 @@
   --color-border: var(--border);
   --color-input: var(--input);
   --color-ring: var(--ring);
+  --animate-shimmer: shimmer 1.5s linear infinite;
 }
 
 :root {

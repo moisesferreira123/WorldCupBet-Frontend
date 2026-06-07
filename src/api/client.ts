@@ -22,10 +22,6 @@ export async function request<T>(
     };
   } catch (error) {
     if (axios.isAxiosError(error)) {
-      console.log(error);
-    console.log(error.response);
-    console.log(error.message);
-
       return {
         status:
           (error.response?.status as HttpStatusCode) ??
@@ -47,14 +43,14 @@ export const getWorldCupData = () =>
    request<WorldCupResponse>(axios.get("/worldcup"));
 
 export const getRanking = (page: number, pageSize: number) =>
-   request<RankResponse>(
-      axios.get("/bet/rank", {
-         params: {
-            Page: page,
-            PageSize: pageSize
-         },
-      })
-   );
+  request<RankResponse>(
+    axios.get("/bet/rank", {
+        params: {
+          Page: page,
+          PageSize: pageSize
+        },
+    })
+  );
 
 export const getBet = (betId: string) =>
   request<BetResponse>(axios.get(`/bet/${betId}`));
