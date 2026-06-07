@@ -195,8 +195,15 @@ function getStatus(match?: Match) {
   }
 }
 
-export default function KnockoutMatch({ leftLine, rightLine, leftConnectingLine, rightConnectingLine, connectingLineHeight, match, teamsMap, homePlaceholder, awayPlaceholder, editable = false, onScoreChange, onPenaltyChange }: KnockoutMatchProps) {
-  const pathname = useLocation().pathname;
+export default function KnockoutMatch({
+  match,
+  teamsMap,
+  homePlaceholder,
+  awayPlaceholder,
+  editable = false,
+  onScoreChange,
+  onPenaltyChange,
+}: Omit<KnockoutMatchProps, "leftLine" | "rightLine" | "leftConnectingLine" | "rightConnectingLine" | "connectingLineHeight">) {
   const homeTeam = match?.homeTeamId ? teamsMap?.get(match.homeTeamId) : undefined;
   const awayTeam = match?.awayTeamId ? teamsMap?.get(match.awayTeamId) : undefined;
   const status = getStatus(match);
@@ -225,7 +232,11 @@ export default function KnockoutMatch({ leftLine, rightLine, leftConnectingLine,
   }
 
   return (
-    <div className={`relative ${editable ? 'w-64' : 'w-44 xl:w-40'}`}>
+    <div 
+      className={`relative ${editable ? 'w-64' : 'w-44 xl:w-40'}`}
+      data-match-id={match?.id}
+      data-stage={match?.stage}
+    >
       <div className="rounded-xl border border-border bg-card shadow-sm p-2.5">
         <div className="mb-1.5 flex items-center justify-between gap-2 text-[0.65rem] leading-none">
           <div className={`flex min-w-0 items-center gap-1 ${status.className}`}>
@@ -284,10 +295,6 @@ export default function KnockoutMatch({ leftLine, rightLine, leftConnectingLine,
           }
         />
       </div>
-      {rightLine && <span className="pointer-events-none absolute -right-3 top-1/2 h-px w-3 bg-border"></span>}
-      {leftLine && <span className="pointer-events-none absolute -left-3 top-1/2 h-px w-3 bg-border"></span>}
-      {rightConnectingLine && <span className={`pointer-events-none absolute -right-3 top-1/2 w-px bg-border ${connectingLineHeight}`}></span>}
-      {leftConnectingLine && <span className={`pointer-events-none absolute -left-3 top-1/2 w-px bg-border ${connectingLineHeight}`}></span>}
     </div>
   );
 }
