@@ -12,6 +12,10 @@
   --radius-2xl: calc(var(--radius) + 8px);
   --color-background: var(--background);
   --color-foreground: var(--foreground);
+  --color-surface: var(--surface);
+  --color-surface-foreground: var(--surface-foreground);
+  --color-border-elevated: var(--border-elevated);
+  --color-border-soft: var(--border-soft);
   --color-card: var(--card);
   --color-card-foreground: var(--card-foreground);
   --color-popover: var(--popover);
@@ -37,49 +41,72 @@
 
 :root {
   --radius: 0.75rem;
-  
+
   /* PREDOMINANTE: PRETO E BRANCO */
-  --background: oklch(0.12 0 0);               /* Preto Profundo */
-  --foreground: oklch(0.98 0 0);               /* Branco Puro */
-  
+  --background: oklch(0.12 0 0);
+  /* Preto Profundo */
+  --foreground: oklch(0.98 0 0);
+  /* Branco Puro */
+
   /* CARDS: Tons de cinza bem escuros e elegantes */
-  --card: oklch(0.17 0 0);                     /* Cinza muito escuro (Quase preto) */
-  --card-foreground: oklch(0.98 0 0);          /* Branco Puro */
+  --card: oklch(0.17 0 0);
+  /* Cinza muito escuro (Quase preto) */
+  --card-foreground: oklch(0.98 0 0);
+  /* Branco Puro */
   --popover: oklch(0.17 0 0);
   --popover-foreground: oklch(0.98 0 0);
-  
+
   /* COR PRIMÁRIA: Branco para os destaques principais */
-  --primary: oklch(0.98 0 0);                  /* Branco */
-  --primary-foreground: oklch(0.12 0 0);       /* Preto (para contraste) */
-  
+  --primary: oklch(0.98 0 0);
+  /* Branco */
+  --primary-foreground: oklch(0.12 0 0);
+  /* Preto (para contraste) */
+
   /* CORES SECUNDÁRIAS E MUTED: Tons neutros de cinza */
-  --secondary: oklch(0.24 0 0);                /* Cinza Escuro */
-  --secondary-foreground: oklch(0.98 0 0);     /* Branco */
-  --muted: oklch(0.22 0 0);                    /* Cinza Médio/Escuro */
-  --muted-foreground: oklch(0.65 0 0);         /* Cinza Claro (para textos secundários) */
-  --accent: oklch(0.28 0 0);                   /* Cinza de Destaque */
+  --secondary: oklch(0.24 0 0);
+  /* Cinza Escuro */
+  --secondary-foreground: oklch(0.98 0 0);
+  /* Branco */
+  --muted: oklch(0.22 0 0);
+  /* Cinza Médio/Escuro */
+  --muted-foreground: oklch(0.65 0 0);
+  /* Cinza Claro (para textos secundários) */
+  --accent: oklch(0.28 0 0);
+  /* Cinza de Destaque */
   --accent-foreground: oklch(0.98 0 0);
-  
+
   /* Mantido a variável gold mas convertida para Branco para não quebrar componentes antigos */
-  --gold: oklch(0.98 0 0);                     
+  --gold: oklch(0.98 0 0);
   --gold-foreground: oklch(0.12 0 0);
-  
+
   /* STATUS DO BOLÃO: Mantidos discretos apenas para indicar acertos/erros nos jogos */
-  --success: oklch(0.65 0.15 145);             /* Verde suave para acertos */
-  --warning: oklch(0.75 0.13 85);              /* Amarelo suave para acertos parciais */
-  --destructive: oklch(0.55 0.18 25);          /* Vermelho para erros */
+  --success: oklch(0.65 0.15 145);
+  /* Verde suave para acertos */
+  --warning: oklch(0.75 0.13 85);
+  /* Amarelo suave para acertos parciais */
+  --destructive: oklch(0.55 0.18 25);
+  /* Vermelho para erros */
   --destructive-foreground: oklch(0.98 0 0);
-  
+
   /* BORDAS E INPUTS */
-  --border: oklch(0.24 0 0);                   /* Linhas e divisórias em cinza discreto */
-  --input: oklch(0.20 0 0);                    /* Fundo dos inputs de placar */
-  --ring: oklch(0.98 0 0);                     /* Foco branco ao redor dos elementos */
-  
+  --border: oklch(0.24 0 0);
+  /* Linhas e divisórias em cinza discreto */
+  --input: oklch(0.20 0 0);
+  /* Fundo dos inputs de placar */
+  --ring: oklch(0.98 0 0);
+  /* Foco branco ao redor dos elementos */
+
   /* GRADIENTES E SOMBRAS REAJUSTADOS */
   --gradient-pitch: linear-gradient(135deg, oklch(0.17 0 0), oklch(0.12 0 0));
   --gradient-gold: linear-gradient(135deg, oklch(0.98 0 0), oklch(0.75 0 0));
   --shadow-glow: 0 8px 32px -8px oklch(0.98 0 0 / 0.15);
   --shadow-gold: 0 8px 32px -8px oklch(0.98 0 0 / 0.2);
+
+  /* SUPERFÍCIE ELEGANTE MAIS CLARA */
+  --surface: oklch(0.22 0.015 255);
+  --surface-foreground: oklch(0.98 0 0);
+  --border-elevated: oklch(0.32 0.01 255);
+  --border-soft: oklch(0.22 0 0);
 }
 
 @layer base {
@@ -109,5 +136,20 @@
   .no-scrollbar {
     -ms-overflow-style: none;
     scrollbar-width: none;
+  }
+}
+
+@layer utilities {
+  .matte {
+    background-image: radial-gradient(circle at 1px 1px,
+        oklch(0.98 0 0 / 0.03) 1px,
+        transparent 0);
+    background-size: 14px 14px;
+  }
+
+  @keyframes shimmer {
+    100% {
+      transform: translateX(100%);
+    }
   }
 }
