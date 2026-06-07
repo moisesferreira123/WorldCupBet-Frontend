@@ -30,6 +30,8 @@
   --color-accent-foreground: var(--accent-foreground);
   --color-gold: var(--gold);
   --color-gold-foreground: var(--gold-foreground);
+  --color-first: var(--first);
+  --color-first-foreground: var(--first-foreground);
   --color-success: var(--success);
   --color-warning: var(--warning);
   --color-destructive: var(--destructive);
@@ -78,6 +80,11 @@
   /* Mantido a variável gold mas convertida para Branco para não quebrar componentes antigos */
   --gold: oklch(0.98 0 0);
   --gold-foreground: oklch(0.12 0 0);
+  
+  --first: oklch(0.82 0.16 85);
+  --first-foreground: oklch(0.2 0.03 160);
+  --gradient-first: linear-gradient(135deg, oklch(0.85 0.16 85), oklch(0.72 0.18 70));
+  --shadow-first: 0 8px 32px -8px oklch(0.82 0.16 85 / 0.45);
 
   /* STATUS DO BOLÃO: Mantidos discretos apenas para indicar acertos/erros nos jogos */
   --success: oklch(0.65 0.15 145);
