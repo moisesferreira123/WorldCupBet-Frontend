@@ -1,12 +1,18 @@
 import { useLocation } from "react-router-dom";
 import type { Match, Team } from "../../../api/types";
 import { Flag } from "../../shared/Flag";
-import { Circle, Trophy, Ban, Clock3 } from "lucide-react";
+import { Circle, Trophy, Ban, Clock3, Minus, Plus } from "lucide-react";
 
 type MatchRoundCardProps = {
    round: number;
    matches: Match[];
    teams: Team[];
+   editable?: boolean;
+   onScoreChange?: (
+      matchId: number,
+      side: "home" | "away",
+      value: number | null
+   ) => void;
 };
 
 const weekdays: Record<number, string> = {
@@ -95,10 +101,21 @@ function getStatus(match: Match) {
    }
 }
 
+function parseInputValue(value: string) {
+   if (value === "") {
+      return null;
+   }
+
+   const parsed = Number(value);
+   return Number.isNaN(parsed) ? null : Math.max(0, parsed);
+}
+
 export default function MatchRoundCard({
    round,
    matches,
    teams,
+   editable = false,
+   onScoreChange,
 }: MatchRoundCardProps) {
    const pathname = useLocation().pathname;
 
@@ -131,6 +148,67 @@ export default function MatchRoundCard({
                      formatMatchDate(match.utcDate);
 
                   const status = getStatus(match);
+                  const canEdit = editable;
+                  const scoreControl = (
+                     side: "home" | "away",
+                     value: number | null
+                  ) => (
+                     <div className="flex items-center gap-1">
+                        {canEdit && (
+                           <button
+                              onClick={() =>
+                                 onScoreChange?.(
+                                    match.id,
+                                    side,
+                                    Math.max(0, (value ?? 0) - 1)
+                                 )
+                              }
+                              className="grid h-6 w-6 place-items-center rounded-md border border-border bg-secondary text-muted-foreground hover:border-primary hover:text-primary active:scale-95"
+                              aria-label="Diminuir"
+                           >
+                              <Minus className="h-3 w-3" />
+                           </button>
+                        )}
+
+                        <label className="grid h-9 w-9 place-items-center rounded-lg border border-gold/30 bg-gold/10 font-display text-xl font-bold tabular-nums text-gold">
+                           {canEdit ? (
+                              <input
+                                 type="number"
+                                 min={0}
+                                 value={value ?? ""}
+                                 onChange={event =>
+                                    onScoreChange?.(
+                                       match.id,
+                                       side,
+                                       parseInputValue(event.target.value)
+                                    )
+                                 }
+                                 className="h-full w-full rounded-lg bg-transparent text-center focus:outline-none [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none"
+                              />
+                           ) : (
+                              <div className="flex h-full w-full items-center justify-center">
+                                 {value ?? "-"}
+                              </div>
+                           )}
+                        </label>
+
+                        {canEdit && (
+                           <button
+                              onClick={() =>
+                                 onScoreChange?.(
+                                    match.id,
+                                    side,
+                                    (value ?? 0) + 1
+                                 )
+                              }
+                              className="grid h-6 w-6 place-items-center rounded-md border border-border bg-secondary text-muted-foreground hover:border-primary hover:text-primary active:scale-95"
+                              aria-label="Aumentar"
+                           >
+                              <Plus className="h-3 w-3" />
+                           </button>
+                        )}
+                     </div>
+                  );
 
                   return (
                      <div key={match.id}>
@@ -148,7 +226,7 @@ export default function MatchRoundCard({
                            </span>
                         </div>
 
-                        <div className="flex items-center justify-between gap-2">
+                        <div className="grid grid-cols-[1fr_auto_1fr] items-center gap-2">
                            <div className="flex items-center gap-1.5">
                               <Flag
                                  src={homeTeam.flagUri}
@@ -160,47 +238,23 @@ export default function MatchRoundCard({
                               </span>
                            </div>
 
-                           <div className="flex items-center gap-3">
-                              <label className="grid h-12 w-12 place-items-center rounded-xl border border-gold/30 bg-gold/10 font-display text-2xl font-bold tabular-nums text-gold">
-                                 {pathname === "/" ? (
-                                    <input
-                                       type="text"
-                                       value={
-                                          match.homeTeamGoals ?? ""
-                                       }
-                                       readOnly
-                                       className="h-full w-full rounded-xl text-center focus:outline-none"
-                                    />
-                                 ) : (
-                                    <div className="flex h-full w-full items-center justify-center">
-                                       {match.homeTeamGoals ?? "-"}
-                                    </div>
-                                 )}
-                              </label>
+                           <div className="flex items-center gap-1 sm:gap-2">
+                              {scoreControl(
+                                 "home",
+                                 match.homeTeamGoals
+                              )}
 
                               <span className="font-display text-lg font-bold text-muted-foreground">
                                  ×
                               </span>
 
-                              <label className="grid h-12 w-12 place-items-center rounded-xl border border-gold/30 bg-gold/10 font-display text-2xl font-bold tabular-nums text-gold">
-                                 {pathname === "/" ? (
-                                    <input
-                                       type="text"
-                                       value={
-                                          match.awayTeamGoals ?? ""
-                                       }
-                                       readOnly
-                                       className="h-full w-full rounded-xl text-center focus:outline-none"
-                                    />
-                                 ) : (
-                                    <div className="flex h-full w-full items-center justify-center">
-                                       {match.awayTeamGoals ?? "-"}
-                                    </div>
-                                 )}
-                              </label>
+                              {scoreControl(
+                                 "away",
+                                 match.awayTeamGoals
+                              )}
                            </div>
 
-                           <div className="flex items-center gap-1.5">
+                           <div className="flex items-center justify-end gap-1.5 text-right">
                               <span className="text-sm font-semibold">
                                  {awayTeam.tla}
                               </span>

@@ -40,7 +40,7 @@ export default function GroupTable({
           <span className="text-center">SG</span>
         </div>
 
-        {group.standings
+        {[...group.standings]
           .sort((a, b) => a.position - b.position)
           .map((standing) => {
             const team = teamsMap.get(standing.teamId);
@@ -52,7 +52,7 @@ export default function GroupTable({
             return (
               <div
                 key={standing.teamId}
-                className="grid grid-cols-[1fr_repeat(8,28px)] items-center gap-1 rounded-lg px-2 py-2 text-sm hover:bg-secondary/50"
+                className="grid grid-cols-[1fr_repeat(8,28px)] items-center gap-1 rounded-lg px-2 py-2 text-sm transition-all duration-300 hover:bg-secondary/50"
               >
                 <div className="flex items-center gap-2">
                   <span className="w-4 text-xs text-muted-foreground">

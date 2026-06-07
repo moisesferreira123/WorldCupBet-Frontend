@@ -8,11 +8,14 @@ interface PodiumCardProps {
 }
 
 export default function PodiumCard({ user, height }: PodiumCardProps) {
-  const config = {
+  const podiumConfig = {
     1: { Icon: Crown, color: "text-gold", bg: "bg-[image:var(--gradient-gold)]", ring: "ring-gold", fg: "text-gold-foreground" },
     2: { Icon: Medal, color: "text-muted-foreground", bg: "bg-secondary", ring: "ring-border", fg: "text-foreground" },
     3: { Icon: Medal, color: "text-amber-600", bg: "bg-secondary", ring: "ring-border", fg: "text-foreground" },
-  }[user.position];
+  };
+  const config =
+    podiumConfig[user.position as keyof typeof podiumConfig] ??
+    podiumConfig[3];
 
   return (
     <div className="flex flex-col items-center">

@@ -87,7 +87,7 @@ const countryNamesPt: Record<string, string> = {
   // CAF
   "South Africa": "África do Sul",
   Algeria: "Argélia",
-  "Cape Verde": "Cabo Verde",
+  "Cape Verde Islands": "Cabo Verde",
   "Ivory Coast": "Costa do Marfim",
   Egypt: "Egito",
   Ghana: "Gana",

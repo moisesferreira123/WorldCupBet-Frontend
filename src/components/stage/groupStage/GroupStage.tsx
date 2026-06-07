@@ -6,9 +6,19 @@ import MatchRoundCard from "./MatchRoundCard";
 
 type GroupStageProps = {
   data: WorldCupResponse;
+  editable?: boolean;
+  onScoreChange?: (
+    matchId: number,
+    side: "home" | "away",
+    value: number | null
+  ) => void;
 };
 
-export default function GroupStage({ data }: GroupStageProps) {
+export default function GroupStage({
+  data,
+  editable = false,
+  onScoreChange,
+}: GroupStageProps) {
   const [selectedGroupIndex, setSelectedGroupIndex] = useState(0);
 
   const selectedGroup = data.groups[selectedGroupIndex];
@@ -50,13 +60,15 @@ export default function GroupStage({ data }: GroupStageProps) {
       </h1>
 
       <div className="space-y-8">
-        <div className="grid grid-cols-3 gap-4">
+        <div className="grid grid-cols-1 gap-4 lg:grid-cols-3">
           {rounds.map((matches, index) => (
             <MatchRoundCard
               key={index}
               round={index + 1}
               matches={matches}
               teams={data.teams}
+              editable={editable}
+              onScoreChange={onScoreChange}
             />
           ))}
         </div>

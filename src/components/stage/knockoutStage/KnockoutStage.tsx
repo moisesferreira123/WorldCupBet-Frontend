@@ -1,8 +1,25 @@
+import { useRef, useState, type MouseEvent } from "react";
 import type { Match, Team, WorldCupResponse } from "../../../api/types";
+import {
+  roundOf32Placeholders,
+  sortMatchesById,
+  type MatchPlaceholder,
+} from "../../../lib/betting";
 import KnockoutMatch from "./KnockoutMatch";
 
 type KnockoutStageProps = {
   data?: WorldCupResponse;
+  editable?: boolean;
+  onScoreChange?: (
+    matchId: number,
+    side: "home" | "away",
+    value: number | null
+  ) => void;
+  onPenaltyChange?: (
+    matchId: number,
+    side: "home" | "away",
+    value: number | null
+  ) => void;
 };
 
 type MatchLineConfig = {
@@ -26,30 +43,6 @@ type MatchColumnConfig = {
   };
 };
 
-type MatchPlaceholder = {
-  home: string;
-  away: string;
-};
-
-const roundOf32Placeholders: MatchPlaceholder[] = [
-  { home: "1ºE", away: "3ºA/3ºB/3ºC/3ºD/3ºF" },
-  { home: "1ºI", away: "3ºC/3ºD/3ºF/3ºG/3ºH" },
-  { home: "2ºA", away: "2ºB" },
-  { home: "1ºF", away: "2ºC" },
-  { home: "2ºK", away: "2ºL" },
-  { home: "1ºH", away: "2ºJ" },
-  { home: "1ºD", away: "3ºB/3ºE/3ºF/3ºI/3ºJ" },
-  { home: "1ºG", away: "3ºA/3ºE/3ºH/3ºI/3ºJ" },
-  { home: "1ºC", away: "2ºF" },
-  { home: "2ºE", away: "2ºI" },
-  { home: "1ºA", away: "3ºC/3ºE/3ºF/3ºH/3ºI" },
-  { home: "1ºL", away: "3ºE/3ºH/3ºI/3ºJ/3ºK" },
-  { home: "1ºJ", away: "2ºH" },
-  { home: "2ºD", away: "2ºG" },
-  { home: "1ºB", away: "3ºE/3ºF/3ºG/3ºI/3ºJ" },
-  { home: "1ºK", away: "3ºD/3ºE/3ºI/3ºJ/3ºL" },
-];
-
 const line = (
   leftLine: boolean,
   rightLine: boolean,
@@ -63,10 +56,6 @@ const line = (
   leftConnectingLine,
   connectingLineHeight,
 });
-
-function sortMatchesById(matches: Match[]) {
-  return [...matches].sort((first, second) => first.id - second.id);
-}
 
 function groupMatchesByStage(matches: Match[]) {
   return {
@@ -83,9 +72,44 @@ function getTeamsMap(teams: Team[]) {
   return new Map(teams.map(team => [team.id, team]));
 }
 
-export default function KnockoutStage({ data }: KnockoutStageProps) {
+export default function KnockoutStage({
+  data,
+  editable = false,
+  onScoreChange,
+  onPenaltyChange,
+}: KnockoutStageProps) {
   const teamsMap = getTeamsMap(data?.teams ?? []);
   const matchesByStage = groupMatchesByStage(data?.matches ?? []);
+  const scrollContainerRef = useRef<HTMLDivElement>(null);
+  const [isDragging, setIsDragging] = useState(false);
+  const [startX, setStartX] = useState(0);
+  const [startY, setStartY] = useState(0);
+  const [scrollLeft, setScrollLeft] = useState(0);
+  const [scrollTop, setScrollTop] = useState(0);
+
+  const handleMouseMove = (e: MouseEvent) => {
+    if (!isDragging || !scrollContainerRef.current) return;
+    e.preventDefault();
+    const x = e.pageX - scrollContainerRef.current.offsetLeft;
+    const y = e.pageY - scrollContainerRef.current.offsetTop;
+    const walkX = (x - startX) * 2;
+    const walkY = (y - startY) * 2;
+    scrollContainerRef.current.scrollLeft = scrollLeft - walkX;
+    scrollContainerRef.current.scrollTop = scrollTop - walkY;
+  };
+
+  const handleMouseDown = (e: MouseEvent) => {
+    if (!scrollContainerRef.current) return;
+    setIsDragging(true);
+    setStartX(e.pageX - scrollContainerRef.current.offsetLeft);
+    setStartY(e.pageY - scrollContainerRef.current.offsetTop);
+    setScrollLeft(scrollContainerRef.current.scrollLeft);
+    setScrollTop(scrollContainerRef.current.scrollTop);
+  };
+
+  const handleMouseUp = () => {
+    setIsDragging(false);
+  };
 
   const columns: MatchColumnConfig[] = [
     {
@@ -163,12 +187,21 @@ export default function KnockoutStage({ data }: KnockoutStageProps) {
   ];
 
   return (
-    <div className="w-full overflow-x-auto px-4 sm:px-8 lg:px-10 no-scrollbar">
-      <div className="mx-auto flex min-w-max justify-center gap-6 xl:gap-5">
+    <div 
+      ref={scrollContainerRef}
+      onMouseDown={handleMouseDown}
+      onMouseUp={handleMouseUp}
+      onMouseLeave={handleMouseUp}
+      onMouseMove={handleMouseMove}
+      className={`w-full max-h-[70vh] overflow-auto px-4 pb-8 no-scrollbar touch-none ${
+        isDragging ? "cursor-grabbing" : "cursor-grab"
+      }`}
+    >
+      <div className="mx-auto flex min-w-max justify-start gap-8 py-4 sm:justify-center lg:gap-10">
         {columns.map((column, columnIndex) => (
           <div
             key={columnIndex}
-            className={column.className}
+            className={`${column.className} select-none`}
           >
             {column.lines.map((lineConfig, matchIndex) => (
               <KnockoutMatch
@@ -178,6 +211,9 @@ export default function KnockoutStage({ data }: KnockoutStageProps) {
                 teamsMap={teamsMap}
                 homePlaceholder={column.placeholders?.[matchIndex]?.home}
                 awayPlaceholder={column.placeholders?.[matchIndex]?.away}
+                editable={editable}
+                onScoreChange={onScoreChange}
+                onPenaltyChange={onPenaltyChange}
               />
             ))}
 
@@ -189,12 +225,14 @@ export default function KnockoutStage({ data }: KnockoutStageProps) {
                   teamsMap={teamsMap}
                   homePlaceholder={column.absoluteMatch.placeholder?.home}
                   awayPlaceholder={column.absoluteMatch.placeholder?.away}
+                  editable={editable}
+                  onScoreChange={onScoreChange}
+                  onPenaltyChange={onPenaltyChange}
                 />
               </div>
             )}
           </div>
         ))}
-
       </div>
     </div>
   );
