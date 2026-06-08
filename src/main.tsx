@@ -34,10 +34,12 @@ const router = createBrowserRouter([
 const queryClient = new QueryClient({
   defaultOptions: {
     queries: {
-      staleTime: 15 * 60 * 1000,
-      refetchOnMount: false,
-      refetchOnReconnect: false,
-      refetchOnWindowFocus: false,
+      staleTime: 15 * 60 * 1000, // 15 minutos de cache "fresco"
+      gcTime: 15 * 60 * 1000, // Mantém em memória por 15 minutos
+      refetchInterval: 15 * 60 * 1000, // Força atualização a cada 15 minutos
+      refetchOnMount: true, // Verifica se expirou ao carregar o componente
+      refetchOnWindowFocus: true, // Verifica se expirou ao voltar para a aba
+      refetchOnReconnect: true,
       refetchIntervalInBackground: false,
     }
   }
