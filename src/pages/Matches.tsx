@@ -80,8 +80,8 @@ export default function Matches() {
         <button
           onClick={onToggle}
           className={`flex w-full items-center justify-between rounded-xl border p-4 transition-all ${isLiveList
-              ? 'border-success/30 bg-success/5 hover:bg-success/10'
-              : 'border-border bg-card/50 hover:bg-card'
+            ? 'border-success/30 bg-success/5 hover:bg-success/10'
+            : 'border-border bg-card/50 hover:bg-card'
             }`}
         >
           <div className={`flex items-center gap-2 font-bold uppercase tracking-wider ${isLiveList ? 'text-success' : 'text-muted-foreground'}`}>
@@ -108,8 +108,8 @@ export default function Matches() {
                 <div
                   key={match.id}
                   className={`flex flex-col items-center gap-2 rounded-xl border p-3 shadow-sm transition-all duration-500 ${isMatchInProgress
-                      ? 'border-success/50 bg-success/3 ring-1 ring-success/20 animate-pulse-subtle'
-                      : 'border-border bg-card'
+                    ? 'border-success/50 bg-success/3 ring-1 ring-success/20 animate-pulse-subtle'
+                    : 'border-border bg-card'
                     }`}
                 >
                   <div className="flex w-full items-center justify-center gap-2">
@@ -146,7 +146,7 @@ export default function Matches() {
   return (
     <div className="relative z-10 min-h-screen text-foreground">
       <Header />
-      <main className={`flex flex-col items-center px-4 pt-24 ${isGroupStage ? 'pb-28' : 'pb-14'}`}>
+      <main className={`flex flex-col items-center px-4 pt-24 space-y-1 ${isGroupStage ? 'pb-28' : 'pb-14'}`}>
         <CountdownTimer />
 
         {!error && !isLoading && isGroupStage && (

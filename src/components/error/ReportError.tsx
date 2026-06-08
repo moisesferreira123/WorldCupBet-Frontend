@@ -9,16 +9,21 @@ type ReportErrorProps = {
 };
 
 export default function ReportError({ error }: ReportErrorProps) {
+   const truncate = (str: string, limit: number = 1000) => {
+      if (str.length <= limit) return str;
+      return str.slice(0, limit) + "... (truncado por ser muito grande)";
+   };
+
    const reportError = () => {
       const apiInfo = error.apiResponse ? `
 ## API Request
 \`\`\`json
-${JSON.stringify(error.apiResponse.request, null, 2)}
+${truncate(JSON.stringify(error.apiResponse.request, null, 2), 1500)}
 \`\`\`
 
 ## API Response
 \`\`\`json
-${JSON.stringify(error.apiResponse.response, null, 2)}
+${truncate(JSON.stringify(error.apiResponse.response, null, 2), 1500)}
 \`\`\`
 ` : "";
 
@@ -42,7 +47,7 @@ ${apiInfo}
 ## Stack Trace
 
 \`\`\`
-${error.stack ?? "Não disponível"}
+${truncate(error.stack ?? "Não disponível", 1000)}
 \`\`\`
 `;
 

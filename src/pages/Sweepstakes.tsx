@@ -13,6 +13,7 @@ import {
   buildCreateBetPredictions,
   buildPredictedWorldCup,
   buildPredictionsFromMatches,
+  isBettingDataLoaded,
   updatePenalties,
   updateScore,
   type PredictionsMap,
@@ -71,6 +72,18 @@ export default function Home() {
   });
   const [isSaving, setIsSaving] = useState(false);
   const [saveError, setSaveError] = useState<AppError | string | null>(null);
+  const [dataLoaded, setDataLoaded] = useState(isBettingDataLoaded());
+
+  useEffect(() => {
+    if (dataLoaded) return;
+    const interval = setInterval(() => {
+      if (isBettingDataLoaded()) {
+        setDataLoaded(true);
+        clearInterval(interval);
+      }
+    }, 100);
+    return () => clearInterval(interval);
+  }, [dataLoaded]);
 
   const {
     isLoading: isWorldCupLoading,
@@ -117,7 +130,7 @@ export default function Home() {
   const predictedData = useMemo(() => {
     if (!data) return null;
     return buildPredictedWorldCup(data, predictions);
-  }, [data, predictions]);
+  }, [data, predictions, dataLoaded]);
 
   const createPredictions = useMemo(() => {
     if (!predictedData) return [];
@@ -145,9 +158,11 @@ export default function Home() {
     value: number | null
   ) {
     if (isViewMode || isTournamentStarted) return;
-    setPredictions(current => updateScore(current, matchId, side, value));
-    localStorage.setItem('predictions', JSON.stringify(updateScore(predictions, matchId, side, value)));
-    console.log('entrou')
+    setPredictions(current => {
+      const next = updateScore(current, matchId, side, value);
+      localStorage.setItem('predictions', JSON.stringify(next));
+      return next;
+    });
   }
 
   function handlePenaltyChange(
@@ -156,7 +171,11 @@ export default function Home() {
     value: number | null
   ) {
     if (isViewMode || isTournamentStarted) return;
-    setPredictions(current => updatePenalties(current, matchId, side, value));
+    setPredictions(current => {
+      const next = updatePenalties(current, matchId, side, value);
+      localStorage.setItem('predictions', JSON.stringify(next));
+      return next;
+    });
   }
 
   async function handleSubmit() {
@@ -199,7 +218,7 @@ export default function Home() {
     <div className="relative z-10 min-h-screen">
       <Header />
 
-      <main className={`flex flex-col items-center px-4 pt-24 ${isGroupStage ? 'pb-28' : 'pb-14'}`}>
+      <main className={`flex flex-col items-center space-y-1 px-4 pt-24 ${isGroupStage ? 'pb-28' : 'pb-14'}`}>
         {isTournamentStarted && !isViewMode && (
           <div className="mb-6 flex w-full max-w-6xl items-center gap-3 rounded-2xl border border-warning/30 bg-warning/10 p-4 text-warning shadow-lg">
             <Lock size={20} />

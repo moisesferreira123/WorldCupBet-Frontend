@@ -28,7 +28,7 @@ export default function Ranking() {
   return (
     <div className="relative z-10 min-h-screen">
       <Header />
-      <main className="flex flex-col gap-4 pt-20 pb-20 sm:w-2/3 md:w-1/2 mx-auto">
+      <main className="flex flex-col gap-4 pt-24 pb-20 sm:w-2/3 md:w-1/2 mx-auto">
         <div className="space-y-6">
           <div>
             <h1 className="font-display text-2xl font-bold">Ranking Geral</h1>

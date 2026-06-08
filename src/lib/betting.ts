@@ -85,9 +85,18 @@ function getGroupLetter(groupName: string) {
   return groupName.replace("Group", "");
 }
 
-const fifaRankFetch = fetch("/fifa-rank.json").then(res => res.json());
+let thirdPlaceMapping: Record<string, Record<string, string>> | null = null;
 let fifaRankData: Record<string, number> | null = null;
-fifaRankFetch.then(data => (fifaRankData = data));
+
+export const isBettingDataLoaded = () => !!thirdPlaceMapping && !!fifaRankData;
+
+fetch("/third-place-table.json")
+  .then(res => res.json())
+  .then(data => (thirdPlaceMapping = data));
+
+fetch("/fifa-rank.json")
+  .then(res => res.json())
+  .then(data => (fifaRankData = data));
 
 function getFifaRankMap(teams: Team[]) {
   const map = new Map<number, number>();
@@ -401,10 +410,6 @@ function getQualifiedTeamId(
   return null;
 }
 
-const thirdPlaceMappingFetch = fetch("/third-place-table.json").then(res => res.json());
-let thirdPlaceMapping: Record<string, Record<string, string>> | null = null;
-thirdPlaceMappingFetch.then(data => (thirdPlaceMapping = data));
-
 function getThirdPlaceOpponent(
   homePlaceholder: string,
   bestThirdGroups: string[],
@@ -662,6 +667,11 @@ export function buildCreateBetPredictions(
         prediction?.awayTeamGoals === null ||
         prediction?.awayTeamGoals === undefined
       ) {
+        return null;
+      }
+
+      // Se for mata-mata, precisa obrigatoriamente de um vencedor
+      if (match.stage !== "GroupStage" && winnerTeamId === null) {
         return null;
       }
 
