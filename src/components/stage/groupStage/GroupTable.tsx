@@ -7,6 +7,11 @@ type GroupTableProps = {
   teams: Team[];
 };
 
+const truncateName = (name: string) =>
+  name.length > 15
+    ? `${name.slice(0, 12)}...`
+    : name;
+
 export default function GroupTable({
   group,
   teams,
@@ -14,6 +19,9 @@ export default function GroupTable({
   const teamsMap = new Map(
     teams.map(team => [team.id, team])
   );
+
+  const columns =
+    "grid-cols-[minmax(180px,1fr)_repeat(8,28px)]";
 
   return (
     <div className="overflow-hidden w-full rounded-2xl border border-border bg-card">
@@ -27,8 +35,8 @@ export default function GroupTable({
         </span>
       </div>
 
-      <div className="px-2 py-2">
-        <div className="grid grid-cols-[1fr_repeat(8,28px)] gap-1 px-2 pb-1 text-[10px] uppercase tracking-wider text-muted-foreground">
+      <div className="overflow-x-auto px-2 py-2">
+        <div className={`grid ${columns} gap-1 px-2 pb-1 text-[10px] uppercase tracking-wider text-muted-foreground`}>
           <span>Time</span>
           <span className="text-center font-bold text-gold">P</span>
           <span className="text-center">J</span>
@@ -52,9 +60,9 @@ export default function GroupTable({
             return (
               <div
                 key={standing.teamId}
-                className="grid grid-cols-[1fr_repeat(8,28px)] items-center gap-1 rounded-lg px-2 py-2 text-sm transition-all duration-300 hover:bg-secondary/50"
+                className={`grid ${columns} items-center gap-1 rounded-lg px-2 py-2 text-sm transition-all duration-300 hover:bg-secondary/50`}
               >
-                <div className="flex items-center gap-2">
+                <div className="flex min-w-0 items-center gap-2">
                   <span className="w-4 text-xs text-muted-foreground">
                     {standing.position}
                   </span>
@@ -64,8 +72,10 @@ export default function GroupTable({
                     alt={team.name}
                   />
 
-                  <span className="font-medium">
-                    {getCountryNamePt(team.name)}
+                  <span className="whitespace-nowrap font-medium"
+                    title={getCountryNamePt(team.name)}
+                  >
+                    {truncateName(getCountryNamePt(team.name))}
                   </span>
                 </div>
 

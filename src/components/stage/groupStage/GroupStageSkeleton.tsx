@@ -15,7 +15,7 @@ export default function GroupStageSkeleton() {
          <Skeleton className="mx-auto h-8 w-40" />
 
          <div className="space-y-8">
-            <div className="grid grid-cols-3 gap-4">
+            <div className="grid grid-rows-3 sm:grid-cols-3 gap-4">
                {Array.from({ length: 3 }).map((_, round) => (
                   <div
                      key={round}
