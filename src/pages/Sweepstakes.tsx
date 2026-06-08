@@ -5,7 +5,7 @@ import PhaseSelector from "../components/stage/StageSelector";
 import KnockoutStage from "../components/stage/knockoutStage/KnockoutStage";
 import GroupStage from "../components/stage/groupStage/GroupStage";
 import GroupStageSkeleton from "../components/stage/groupStage/GroupStageSkeleton";
-import ReportError from "../components/error/ReportError";
+import ReportError, { type AppError } from "../components/error/ReportError";
 import { createBet, getBet, getWorldCupData } from "../api/client";
 import type { BetResponse, WorldCupResponse } from "../api/types";
 import {
@@ -29,7 +29,9 @@ async function getWorldCupQuery(): Promise<WorldCupResponse> {
     return response.data;
   }
 
-  throw new Error(response.errors.join(", "));
+  const error = new Error(response.errors.join(", ")) as AppError;
+  error.apiResponse = response;
+  throw error;
 }
 
 async function getBetQuery(betId: string): Promise<BetResponse> {
@@ -39,7 +41,9 @@ async function getBetQuery(betId: string): Promise<BetResponse> {
     return response.data;
   }
 
-  throw new Error(response.errors.join(", "));
+  const error = new Error(response.errors.join(", ")) as AppError;
+  error.apiResponse = response;
+  throw error;
 }
 
 export default function Home() {
@@ -66,7 +70,7 @@ export default function Home() {
     return {};
   });
   const [isSaving, setIsSaving] = useState(false);
-  const [saveError, setSaveError] = useState<string | null>(null);
+  const [saveError, setSaveError] = useState<AppError | string | null>(null);
 
   const {
     isLoading: isWorldCupLoading,
@@ -99,14 +103,14 @@ export default function Home() {
       setPredictions(applyBetPredictions(initialPredictions, bet.predictions));
       setTitle(bet.title);
       setInputTitle(bet.title);
-    } 
+    }
   }, [data, bet]);
 
   useEffect(() => {
     const timer = setTimeout(() => {
       setTitle(inputTitle);
       localStorage.setItem('title', inputTitle);
-    }, 500); 
+    }, 500);
     return () => clearTimeout(timer);
   }, [inputTitle]);
 
@@ -184,10 +188,12 @@ export default function Home() {
       return;
     }
 
-    setSaveError(response.errors.join(", "));
+    const error = new Error(response.errors.join(", ")) as AppError;
+    error.apiResponse = response;
+    setSaveError(error);
   }
 
-  if (error instanceof Error) return <ReportError error={error} />;
+  if (error instanceof Error) return <ReportError error={error as AppError} />;
 
   return (
     <div className="relative z-10 min-h-screen">
@@ -255,8 +261,14 @@ export default function Home() {
           </div>
 
           {saveError && (
-            <div className="text-sm font-semibold text-destructive">
-              {saveError}
+            <div className="mt-4">
+              {typeof saveError === "string" ? (
+                <div className="text-sm font-semibold text-destructive">
+                  {saveError}
+                </div>
+              ) : (
+                <ReportError error={saveError} />
+              )}
             </div>
           )}
         </div>

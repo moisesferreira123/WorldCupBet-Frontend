@@ -4,9 +4,21 @@ import type { BetResponse, CreateBetRequest, RankResponse, WorldCupResponse } fr
 axios.defaults.baseURL = import.meta.env.VITE_API_BASE_URL || "http://localhost:5073/";
 
 export type ApiResponse<T> = {
-   status: HttpStatusCode;
-   data: T | null;
-   errors: string[];
+  status: HttpStatusCode;
+  data: T | null;
+  errors: string[];
+  request?: {
+    url?: string;
+    method?: string;
+    data?: unknown;
+    params?: unknown;
+    headers?: unknown;
+  };
+  response?: {
+    data?: unknown;
+    status?: number;
+    headers?: unknown;
+  };
 }
 
 export async function request<T>(
@@ -28,6 +40,18 @@ export async function request<T>(
           HttpStatusCode.InternalServerError,
         data: null,
         errors: [error.message],
+        request: {
+          url: error.config?.url,
+          method: error.config?.method,
+          data: error.config?.data,
+          params: error.config?.params,
+          headers: error.config?.headers,
+        },
+        response: {
+          data: error.response?.data,
+          status: error.response?.status,
+          headers: error.response?.headers,
+        },
       };
     }
 

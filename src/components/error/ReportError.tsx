@@ -1,9 +1,27 @@
+import type { ApiResponse } from "../../api/client";
+
+export interface AppError extends Error {
+   apiResponse?: ApiResponse<unknown>;
+}
+
 type ReportErrorProps = {
-   error: Error;
+   error: AppError;
 };
 
 export default function ReportError({ error }: ReportErrorProps) {
    const reportError = () => {
+      const apiInfo = error.apiResponse ? `
+## API Request
+\`\`\`json
+${JSON.stringify(error.apiResponse.request, null, 2)}
+\`\`\`
+
+## API Response
+\`\`\`json
+${JSON.stringify(error.apiResponse.response, null, 2)}
+\`\`\`
+` : "";
+
       const body = `
 ## Erro
 
@@ -20,7 +38,7 @@ ${new Date().toISOString()}
 ## Navegador
 
 ${navigator.userAgent}
-
+${apiInfo}
 ## Stack Trace
 
 \`\`\`
@@ -39,21 +57,25 @@ ${error.stack ?? "Não disponível"}
    };
 
    return (
-      <div className="text-surface-foreground rounded-lg matte border border-border-elevated p-6 w-full">
-         <h2 className="mb-2 text-lg font-semibold">
+      <div className="text-surface-foreground rounded-2xl border border-destructive/20 bg-destructive/5 p-6 w-full backdrop-blur-sm">
+         <h2 className="mb-2 text-lg font-bold text-destructive">
             Ocorreu um erro inesperado
          </h2>
 
-         <p className="mb-4">
+         <p className="mb-4 text-sm text-muted-foreground">
             Encontramos um problema ao processar sua solicitação.
-            Caso o erro persista, por favor reporte para que possamos corrigir.
+            {error.apiResponse && (
+               <span className="block mt-2 font-mono text-xs bg-destructive/10 p-2 rounded border border-destructive/20">
+                  {error.message}
+               </span>
+            )}
          </p>
 
          <button
             onClick={reportError}
-            className="rounded-md w-full bg-red-600 px-4 py-2 hover:bg-red-700"
+            className="w-full rounded-xl bg-destructive px-4 py-2.5 font-bold text-destructive-foreground transition-all hover:brightness-110 active:scale-95"
          >
-            Reportar erro
+            Reportar erro e enviar detalhes
          </button>
       </div>
    );
