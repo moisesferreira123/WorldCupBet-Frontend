@@ -177,7 +177,7 @@ export default function KnockoutStage({
     <div
       ref={scrollContainerRef}
       {...bind()}
-      className={`no-scrollbar w-full max-h-[80vh] overflow-auto px-4 pb-12 touch-pan-x touch-pan-y`}
+      className={`no-scrollbar w-full max-h-[80vh] overflow-auto px-4 touch-pan-x touch-pan-y`}
     >
       <div
         ref={contentRef}
