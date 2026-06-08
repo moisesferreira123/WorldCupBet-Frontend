@@ -1,10 +1,11 @@
-import { useRef, useState, useLayoutEffect, type MouseEvent } from "react";
+import { useRef, useState, useLayoutEffect } from "react";
 import type { Match, Team, WorldCupResponse } from "../../../api/types";
 import {
   roundOf32Placeholders,
   sortMatchesById,
 } from "../../../lib/betting";
 import KnockoutMatch from "./KnockoutMatch";
+import { useDrag } from "@use-gesture/react";
 
 type KnockoutStageProps = {
   data?: WorldCupResponse;
@@ -48,12 +49,38 @@ export default function KnockoutStage({
   const matchesByStage = groupMatchesByStage(data?.matches ?? []);
   const scrollContainerRef = useRef<HTMLDivElement>(null);
   const contentRef = useRef<HTMLDivElement>(null);
-  const [isDragging, setIsDragging] = useState(false);
-  const [startX, setStartX] = useState(0);
-  const [startY, setStartY] = useState(0);
-  const [scrollLeft, setScrollLeft] = useState(0);
-  const [scrollTop, setScrollTop] = useState(0);
   const [paths, setPaths] = useState<string[]>([]);
+
+  const bind = useDrag(
+    ({
+      first,
+      movement: [mx, my],
+      memo,
+    }) => {
+      if (!scrollContainerRef.current) return;
+
+      if (first) {
+        return {
+          scrollLeft: scrollContainerRef.current.scrollLeft,
+          scrollTop: scrollContainerRef.current.scrollTop,
+        };
+      }
+
+      scrollContainerRef.current.scrollLeft =
+        memo.scrollLeft - mx;
+
+      scrollContainerRef.current.scrollTop =
+        memo.scrollTop - my;
+
+      return memo;
+    },
+    {
+      preventDefault: true,
+      pointer: {
+        touch: true,
+      },
+    }
+  );
 
   useLayoutEffect(() => {
     if (!contentRef.current) return;
@@ -146,38 +173,11 @@ export default function KnockoutStage({
     };
   }, [data, editable, matchesByStage]);
 
-  const handleMouseMove = (e: MouseEvent) => {
-    if (!isDragging || !scrollContainerRef.current) return;
-    e.preventDefault();
-    const x = e.pageX - scrollContainerRef.current.offsetLeft;
-    const y = e.pageY - scrollContainerRef.current.offsetTop;
-    const walkX = (x - startX) * 2;
-    const walkY = (y - startY) * 2;
-    scrollContainerRef.current.scrollLeft = scrollLeft - walkX;
-    scrollContainerRef.current.scrollTop = scrollTop - walkY;
-  };
-
-  const handleMouseDown = (e: MouseEvent) => {
-    if (!scrollContainerRef.current) return;
-    setIsDragging(true);
-    setStartX(e.pageX - scrollContainerRef.current.offsetLeft);
-    setStartY(e.pageY - scrollContainerRef.current.offsetTop);
-    setScrollLeft(scrollContainerRef.current.scrollLeft);
-    setScrollTop(scrollContainerRef.current.scrollTop);
-  };
-
-  const handleMouseUp = () => setIsDragging(false);
-
   return (
     <div
       ref={scrollContainerRef}
-      onMouseDown={handleMouseDown}
-      onMouseUp={handleMouseUp}
-      onMouseLeave={handleMouseUp}
-      onMouseMove={handleMouseMove}
-      className={`no-scrollbar w-full max-h-[80vh] overflow-auto px-4 pb-12 touch-none ${
-        isDragging ? "cursor-grabbing" : "cursor-grab"
-      }`}
+      {...bind()}
+      className={`no-scrollbar w-full max-h-[80vh] overflow-auto px-4 touch-pan-x touch-pan-y`}
     >
       <div
         ref={contentRef}
@@ -201,16 +201,16 @@ export default function KnockoutStage({
         {/* Round of 32 Left */}
         <div className="flex flex-col justify-around gap-6">
           {matchesByStage.roundOf32.slice(0, 8).map((match, i) => (
-            <KnockoutMatch 
-              key={match.id} 
-              match={match} 
+            <KnockoutMatch
+              key={match.id}
+              match={match}
               realMatch={realData?.matches.find(m => m.id === match.id)}
-              teamsMap={teamsMap} 
-              homePlaceholder={roundOf32Placeholders[i].home} 
-              awayPlaceholder={roundOf32Placeholders[i].away} 
-              editable={editable} 
-              onScoreChange={onScoreChange} 
-              onPenaltyChange={onPenaltyChange} 
+              teamsMap={teamsMap}
+              homePlaceholder={roundOf32Placeholders[i].home}
+              awayPlaceholder={roundOf32Placeholders[i].away}
+              editable={editable}
+              onScoreChange={onScoreChange}
+              onPenaltyChange={onPenaltyChange}
             />
           ))}
         </div>
@@ -218,14 +218,14 @@ export default function KnockoutStage({
         {/* Round of 16 Left */}
         <div className="flex flex-col justify-around gap-12">
           {matchesByStage.roundOf16.slice(0, 4).map(match => (
-            <KnockoutMatch 
-              key={match.id} 
-              match={match} 
+            <KnockoutMatch
+              key={match.id}
+              match={match}
               realMatch={realData?.matches.find(m => m.id === match.id)}
-              teamsMap={teamsMap} 
-              editable={editable} 
-              onScoreChange={onScoreChange} 
-              onPenaltyChange={onPenaltyChange} 
+              teamsMap={teamsMap}
+              editable={editable}
+              onScoreChange={onScoreChange}
+              onPenaltyChange={onPenaltyChange}
             />
           ))}
         </div>
@@ -233,27 +233,27 @@ export default function KnockoutStage({
         {/* Quarter Finals Left */}
         <div className="flex flex-col justify-around gap-24">
           {matchesByStage.quarterFinals.slice(0, 2).map(match => (
-            <KnockoutMatch 
-              key={match.id} 
-              match={match} 
+            <KnockoutMatch
+              key={match.id}
+              match={match}
               realMatch={realData?.matches.find(m => m.id === match.id)}
-              teamsMap={teamsMap} 
-              editable={editable} 
-              onScoreChange={onScoreChange} 
-              onPenaltyChange={onPenaltyChange} 
+              teamsMap={teamsMap}
+              editable={editable}
+              onScoreChange={onScoreChange}
+              onPenaltyChange={onPenaltyChange}
             />
           ))}
         </div>
 
         {/* Semi Finals Left */}
         <div className="flex flex-col justify-around gap-32">
-          <KnockoutMatch 
-            match={matchesByStage.semiFinals[0]} 
+          <KnockoutMatch
+            match={matchesByStage.semiFinals[0]}
             realMatch={realData?.matches.find(m => m.id === matchesByStage.semiFinals[0]?.id)}
-            teamsMap={teamsMap} 
-            editable={editable} 
-            onScoreChange={onScoreChange} 
-            onPenaltyChange={onPenaltyChange} 
+            teamsMap={teamsMap}
+            editable={editable}
+            onScoreChange={onScoreChange}
+            onPenaltyChange={onPenaltyChange}
           />
         </div>
 
@@ -262,24 +262,24 @@ export default function KnockoutStage({
           <div className="flex flex-col gap-20">
             <div className="flex flex-col items-center gap-2">
               <span className="text-[0.65rem] font-bold uppercase tracking-wider text-gold">Final</span>
-              <KnockoutMatch 
-                match={matchesByStage.final[0]} 
+              <KnockoutMatch
+                match={matchesByStage.final[0]}
                 realMatch={realData?.matches.find(m => m.id === matchesByStage.final[0]?.id)}
-                teamsMap={teamsMap} 
-                editable={editable} 
-                onScoreChange={onScoreChange} 
-                onPenaltyChange={onPenaltyChange} 
+                teamsMap={teamsMap}
+                editable={editable}
+                onScoreChange={onScoreChange}
+                onPenaltyChange={onPenaltyChange}
               />
             </div>
             <div className="flex flex-col items-center gap-2">
               <span className="text-[0.65rem] font-bold uppercase tracking-wider text-muted-foreground">3º Lugar</span>
-              <KnockoutMatch 
-                match={matchesByStage.thirdPlace[0]} 
+              <KnockoutMatch
+                match={matchesByStage.thirdPlace[0]}
                 realMatch={realData?.matches.find(m => m.id === matchesByStage.thirdPlace[0]?.id)}
-                teamsMap={teamsMap} 
-                editable={editable} 
-                onScoreChange={onScoreChange} 
-                onPenaltyChange={onPenaltyChange} 
+                teamsMap={teamsMap}
+                editable={editable}
+                onScoreChange={onScoreChange}
+                onPenaltyChange={onPenaltyChange}
               />
             </div>
           </div>
@@ -287,13 +287,13 @@ export default function KnockoutStage({
 
         {/* Semi Finals Right */}
         <div className="flex flex-col justify-around gap-32">
-          <KnockoutMatch 
-            match={matchesByStage.semiFinals[1]} 
+          <KnockoutMatch
+            match={matchesByStage.semiFinals[1]}
             realMatch={realData?.matches.find(m => m.id === matchesByStage.semiFinals[1]?.id)}
-            teamsMap={teamsMap} 
-            editable={editable} 
-            onScoreChange={onScoreChange} 
-            onPenaltyChange={onPenaltyChange} 
+            teamsMap={teamsMap}
+            editable={editable}
+            onScoreChange={onScoreChange}
+            onPenaltyChange={onPenaltyChange}
           />
         </div>
 

@@ -150,7 +150,7 @@ export default function Matches() {
       <main className={`flex flex-col items-center px-4 pt-24 ${isGroupStage ? 'pb-28' : 'pb-14'}`}>
         <CountdownTimer />
 
-        {!error && !isLoading && (
+        {!error && !isLoading && isGroupStage && (
           <>
             {renderSummaryList(liveMatches, "Partidas Ao Vivo", null, showLive, () => setShowLive(!showLive), true)}
             {renderSummaryList(recentMatches, "Últimas Partidas", <History size={16} />, showRecent, () => setShowRecent(!showRecent))}
