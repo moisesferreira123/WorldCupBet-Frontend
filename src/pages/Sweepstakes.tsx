@@ -51,8 +51,20 @@ export default function Home() {
   const [savedBetId, setSavedBetId] = useState(() =>
     localStorage.getItem(betStorageKey)
   );
-  const [title, setTitle] = useState("");
-  const [predictions, setPredictions] = useState<PredictionsMap>({});
+  const [title, setTitle] = useState(localStorage.getItem('title') || "");
+  const [inputTitle, setInputTitle] = useState(localStorage.getItem('title') || "");
+  const [predictions, setPredictions] = useState<PredictionsMap>(() => {
+    const storedData = localStorage.getItem("predictions");
+    if (storedData) {
+      try {
+        return JSON.parse(storedData) as PredictionsMap;
+      } catch (error) {
+        console.error("Erro ao ler rascunhos do localStorage:", error);
+        return {};
+      }
+    }
+    return {};
+  });
   const [isSaving, setIsSaving] = useState(false);
   const [saveError, setSaveError] = useState<string | null>(null);
 
@@ -88,10 +100,17 @@ export default function Home() {
     if (bet) {
       setPredictions(applyBetPredictions(initialPredictions, bet.predictions));
       setTitle(bet.title);
-    } else {
-      setPredictions(initialPredictions);
-    }
+      setInputTitle(bet.title);
+    } 
   }, [data, bet]);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setTitle(inputTitle);
+      localStorage.setItem('title', inputTitle);
+    }, 500); 
+    return () => clearTimeout(timer);
+  }, [inputTitle]);
 
   const predictedData = useMemo(() => {
     if (!data) return null;
@@ -125,6 +144,8 @@ export default function Home() {
   ) {
     if (isViewMode || isTournamentStarted) return;
     setPredictions(current => updateScore(current, matchId, side, value));
+    localStorage.setItem('predictions', JSON.stringify(updateScore(predictions, matchId, side, value)));
+    console.log('entrou')
   }
 
   function handlePenaltyChange(
@@ -174,7 +195,7 @@ export default function Home() {
     <div className="relative z-10 min-h-screen">
       <Header />
 
-      <main className="flex flex-col items-center px-4 pt-24 pb-28">
+      <main className={`flex flex-col items-center px-4 pt-24 ${isGroupStage ? 'pb-28' : 'pb-14'}`}>
         {isTournamentStarted && !isViewMode && (
           <div className="mb-6 flex w-full max-w-6xl items-center gap-3 rounded-2xl border border-warning/30 bg-warning/10 p-4 text-warning shadow-lg">
             <Lock size={20} />
@@ -193,8 +214,8 @@ export default function Home() {
                 </h1>
               ) : (
                 <input
-                  value={title}
-                  onChange={event => setTitle(event.target.value)}
+                  value={inputTitle}
+                  onChange={event => setInputTitle(event.target.value)}
                   className="w-full rounded-xl border border-border bg-background/50 px-4 py-2.5 text-xl font-bold outline-none transition-all focus:border-gold focus:bg-background focus:ring-1 focus:ring-gold sm:text-2xl"
                   placeholder="Nome do seu bolão (ex: Bolão do Pedro)"
                   aria-label="Nome do bolão"

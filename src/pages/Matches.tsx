@@ -147,7 +147,7 @@ export default function Matches() {
   return (
     <div className="relative z-10 min-h-screen text-foreground">
       <Header />
-      <main className="flex flex-col items-center pt-24 pb-32 px-4">
+      <main className={`flex flex-col items-center px-4 pt-24 ${isGroupStage ? 'pb-28' : 'pb-14'}`}>
         <CountdownTimer />
 
         {!error && !isLoading && (
