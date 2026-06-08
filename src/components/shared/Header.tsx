@@ -19,6 +19,7 @@ export default function Header() {
           <li className={`${pathname === '/' ? 'text-gold' : 'hover:text-gold'} cursor-pointer`}><Link to={'/'}>Bolão</Link></li>
           <li className={`${pathname === '/matches' ? 'text-gold' : 'hover:text-gold'} cursor-pointer`}><Link to={'/matches'}>Partidas</Link></li>
           <li className={`${pathname === '/ranking' ? 'text-gold' : 'hover:text-gold'} cursor-pointer`}><Link to={'/ranking'}>Ranking</Link></li>
+          <li className={`${pathname === '/rules' ? 'text-gold' : 'hover:text-gold'} cursor-pointer`}><Link to={'/rules'}>Regras</Link></li>
         </ul>
       </nav>
     </header>

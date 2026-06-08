@@ -5,6 +5,7 @@ import Sweepstakes from './pages/Sweepstakes'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import Ranking from './pages/Ranking'
 import Matches from './pages/Matches'
+import Rules from './pages/Rules'
 import { QueryClient } from '@tanstack/react-query'
 import { createAsyncStoragePersister } from '@tanstack/query-async-storage-persister'
 
@@ -23,6 +24,10 @@ const router = createBrowserRouter([
   {
     path: "/ranking",
     element: <Ranking />,
+  },
+  {
+    path: "/rules",
+    element: <Rules />,
   },
 ])
 
