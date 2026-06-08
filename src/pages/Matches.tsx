@@ -35,7 +35,6 @@ export default function Matches() {
   const { isLoading, error, data } = useQuery<WorldCupResponse>({
     queryKey: ["worldcup"],
     queryFn: async () => getWorldCupQuery(),
-    staleTime: 15 * 60 * 1000
   });
 
   const teamsMap = useMemo(() => {

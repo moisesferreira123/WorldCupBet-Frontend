@@ -29,7 +29,7 @@ ${error.stack ?? "Não disponível"}
 `;
 
       const url =
-         "https://github.com/moisesferreira123/word-cup-front/issues/new?" +
+         "https://github.com/moisesferreira123/WorldCupBet-Frontend/issues/new?" +
          new URLSearchParams({
             title: `[Bug] ${error.message}`,
             body,

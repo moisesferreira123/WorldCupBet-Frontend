@@ -23,7 +23,6 @@ export default function Ranking() {
   const { isLoading, error, data } = useQuery<RankResponse>({
     queryKey: ["ranking", page, pageSize],
     queryFn: async () => getRankQuery(page, pageSize),
-    staleTime: 15 * 60 * 1000
   });
 
   return (

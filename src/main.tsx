@@ -5,8 +5,11 @@ import Sweepstakes from './pages/Sweepstakes'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import Ranking from './pages/Ranking'
 import Matches from './pages/Matches'
-import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
+import { QueryClient } from '@tanstack/react-query'
+import { createAsyncStoragePersister } from '@tanstack/query-async-storage-persister'
+
 import BackgroundElements from './components/shared/BackgroundElements'
+import { PersistQueryClientProvider } from '@tanstack/react-query-persist-client'
 
 const router = createBrowserRouter([
   {
@@ -23,13 +26,30 @@ const router = createBrowserRouter([
   },
 ])
 
-const queryClient = new QueryClient();
+const queryClient = new QueryClient({
+  defaultOptions: {
+    queries: {
+      staleTime: 15 * 60 * 1000,
+      refetchOnMount: false,
+      refetchOnReconnect: false,
+      refetchOnWindowFocus: false,
+      refetchIntervalInBackground: false,
+    }
+  }
+});
+
+const persister = createAsyncStoragePersister({
+  storage: window.localStorage
+});
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
-    <QueryClientProvider client={queryClient}>
+    <PersistQueryClientProvider
+      client={queryClient}
+      persistOptions={{ persister }}
+    >
       <BackgroundElements />
       <RouterProvider router={router} />
-    </QueryClientProvider >
+    </PersistQueryClientProvider >
   </StrictMode >,
 )

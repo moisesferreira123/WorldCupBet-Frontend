@@ -75,7 +75,6 @@ export default function Home() {
   } = useQuery<WorldCupResponse>({
     queryKey: ["worldcup"],
     queryFn: getWorldCupQuery,
-    staleTime: 15 * 60 * 1000,
   });
 
   const {
@@ -86,7 +85,6 @@ export default function Home() {
     queryKey: ["bet", savedBetId],
     queryFn: async () => getBetQuery(savedBetId ?? ""),
     enabled: savedBetId !== null,
-    staleTime: 15 * 60 * 1000,
   });
 
   const isViewMode = !!savedBetId && !!bet;
