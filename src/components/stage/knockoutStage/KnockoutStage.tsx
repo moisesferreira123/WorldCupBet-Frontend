@@ -1,4 +1,5 @@
 import { useRef, useState, useLayoutEffect } from "react";
+import { ArrowRightCircle, ArrowUpCircle } from "lucide-react";
 import type { Match, Team, WorldCupResponse } from "../../../api/types";
 import {
   roundOf32Placeholders,
@@ -6,6 +7,7 @@ import {
 } from "../../../lib/betting";
 import KnockoutMatch from "./KnockoutMatch";
 import { useDrag } from "@use-gesture/react";
+import { cn } from "../../../lib/utils";
 
 type KnockoutStageProps = {
   data?: WorldCupResponse;
@@ -50,6 +52,51 @@ export default function KnockoutStage({
   const scrollContainerRef = useRef<HTMLDivElement>(null);
   const contentRef = useRef<HTMLDivElement>(null);
   const [paths, setPaths] = useState<string[]>([]);
+  const [buttonPosition, setButtonPosition] = useState<"top" | "bottom">("bottom");
+
+  const nextUnpredictedMatch = data?.matches
+    .filter(m => m.stage !== "GroupStage")
+    .sort((a, b) => a.id - b.id)
+    .find(m => {
+      const isScoreMissing = m.homeTeamGoals === null || m.awayTeamGoals === null;
+      const isDraw = m.homeTeamGoals === m.awayTeamGoals && m.homeTeamGoals !== null;
+      const isPenaltyMissing = isDraw && (m.homeTeamPenalties === null || m.awayTeamPenalties === null);
+      
+      return isScoreMissing || isPenaltyMissing;
+    });
+
+  const scrollToNextMatch = () => {
+    if (!nextUnpredictedMatch || !scrollContainerRef.current) return;
+    const element = document.querySelector(`[data-match-id="${nextUnpredictedMatch.id}"]`) as HTMLElement;
+    
+    if (element && scrollContainerRef.current) {
+      const container = scrollContainerRef.current;
+      const containerRect = container.getBoundingClientRect();
+
+      // Calcula a posição centralizada
+      const scrollLeft = element.offsetLeft - (containerRect.width / 2) + (element.offsetWidth / 2);
+      const scrollTop = element.offsetTop - (containerRect.height / 2) + (element.offsetHeight / 2);
+
+      // Se o card estiver na metade inferior da visualização após o scroll, movemos o botão para cima
+      if (element.offsetTop > (container.scrollHeight * 0.5)) {
+        setButtonPosition("top");
+      } else {
+        setButtonPosition("bottom");
+      }
+
+      container.scrollTo({
+        left: scrollLeft,
+        top: scrollTop,
+        behavior: 'smooth'
+      });
+      
+      // Feedback visual
+      element.classList.add('ring-4', 'ring-gold', 'ring-offset-4', 'ring-offset-background');
+      setTimeout(() => {
+        element.classList.remove('ring-4', 'ring-gold', 'ring-offset-4', 'ring-offset-background');
+      }, 2000);
+    }
+  };
 
   const bind = useDrag(
     ({
@@ -174,177 +221,195 @@ export default function KnockoutStage({
   }, [data, editable, matchesByStage]);
 
   return (
-    <div
-      ref={scrollContainerRef}
-      {...bind()}
-      className={`no-scrollbar w-full max-h-[80vh] overflow-auto px-4 touch-pan-x touch-pan-y`}
-    >
+    <>
       <div
-        ref={contentRef}
-        className="relative flex min-w-max w-full gap-12 p-8 py-12 lg:gap-16 justify-start sm:justify-center"
+        ref={scrollContainerRef}
+        {...bind()}
+        className={`no-scrollbar w-full max-h-[80vh] overflow-auto px-4 touch-pan-x touch-pan-y`}
       >
-        <svg className="pointer-events-none absolute inset-0 h-full w-full overflow-visible">
-          {paths.map((d, i) => (
-            <path
-              key={i}
-              d={d}
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="2"
-              className="text-muted-foreground/60 transition-all duration-300"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            />
-          ))}
-        </svg>
+        <div
+          ref={contentRef}
+          className="relative flex min-w-max w-full gap-12 p-8 py-12 lg:gap-16 justify-start sm:justify-center"
+        >
+          <svg className="pointer-events-none absolute inset-0 h-full w-full overflow-visible">
+            {paths.map((d, i) => (
+              <path
+                key={i}
+                d={d}
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+                className="text-muted-foreground/60 transition-all duration-300"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
+            ))}
+          </svg>
 
-        {/* Round of 32 Left */}
-        <div className="flex flex-col justify-around gap-6">
-          {matchesByStage.roundOf32.slice(0, 8).map((match, i) => (
-            <KnockoutMatch
-              key={match.id}
-              match={match}
-              realMatch={realData?.matches.find(m => m.id === match.id)}
-              teamsMap={teamsMap}
-              homePlaceholder={roundOf32Placeholders[i].home}
-              awayPlaceholder={roundOf32Placeholders[i].away}
-              editable={editable}
-              onScoreChange={onScoreChange}
-              onPenaltyChange={onPenaltyChange}
-            />
-          ))}
-        </div>
-
-        {/* Round of 16 Left */}
-        <div className="flex flex-col justify-around gap-12">
-          {matchesByStage.roundOf16.slice(0, 4).map(match => (
-            <KnockoutMatch
-              key={match.id}
-              match={match}
-              realMatch={realData?.matches.find(m => m.id === match.id)}
-              teamsMap={teamsMap}
-              editable={editable}
-              onScoreChange={onScoreChange}
-              onPenaltyChange={onPenaltyChange}
-            />
-          ))}
-        </div>
-
-        {/* Quarter Finals Left */}
-        <div className="flex flex-col justify-around gap-24">
-          {matchesByStage.quarterFinals.slice(0, 2).map(match => (
-            <KnockoutMatch
-              key={match.id}
-              match={match}
-              realMatch={realData?.matches.find(m => m.id === match.id)}
-              teamsMap={teamsMap}
-              editable={editable}
-              onScoreChange={onScoreChange}
-              onPenaltyChange={onPenaltyChange}
-            />
-          ))}
-        </div>
-
-        {/* Semi Finals Left */}
-        <div className="flex flex-col justify-around gap-32">
-          <KnockoutMatch
-            match={matchesByStage.semiFinals[0]}
-            realMatch={realData?.matches.find(m => m.id === matchesByStage.semiFinals[0]?.id)}
-            teamsMap={teamsMap}
-            editable={editable}
-            onScoreChange={onScoreChange}
-            onPenaltyChange={onPenaltyChange}
-          />
-        </div>
-
-        {/* Final + Third Place */}
-        <div className="flex flex-col justify-center gap-24">
-          <div className="flex flex-col gap-20">
-            <div className="flex flex-col items-center gap-2">
-              <span className="text-[0.65rem] font-bold uppercase tracking-wider text-gold">Final</span>
+          {/* Round of 32 Left */}
+          <div className="flex flex-col justify-around gap-6">
+            {matchesByStage.roundOf32.slice(0, 8).map((match, i) => (
               <KnockoutMatch
-                match={matchesByStage.final[0]}
-                realMatch={realData?.matches.find(m => m.id === matchesByStage.final[0]?.id)}
+                key={match.id}
+                match={match}
+                realMatch={realData?.matches.find(m => m.id === match.id)}
+                teamsMap={teamsMap}
+                homePlaceholder={roundOf32Placeholders[i].home}
+                awayPlaceholder={roundOf32Placeholders[i].away}
+                editable={editable}
+                onScoreChange={onScoreChange}
+                onPenaltyChange={onPenaltyChange}
+              />
+            ))}
+          </div>
+
+          {/* Round of 16 Left */}
+          <div className="flex flex-col justify-around gap-12">
+            {matchesByStage.roundOf16.slice(0, 4).map(match => (
+              <KnockoutMatch
+                key={match.id}
+                match={match}
+                realMatch={realData?.matches.find(m => m.id === match.id)}
                 teamsMap={teamsMap}
                 editable={editable}
                 onScoreChange={onScoreChange}
                 onPenaltyChange={onPenaltyChange}
               />
-            </div>
-            <div className="flex flex-col items-center gap-2">
-              <span className="text-[0.65rem] font-bold uppercase tracking-wider text-muted-foreground">3º Lugar</span>
+            ))}
+          </div>
+
+          {/* Quarter Finals Left */}
+          <div className="flex flex-col justify-around gap-24">
+            {matchesByStage.quarterFinals.slice(0, 2).map(match => (
               <KnockoutMatch
-                match={matchesByStage.thirdPlace[0]}
-                realMatch={realData?.matches.find(m => m.id === matchesByStage.thirdPlace[0]?.id)}
+                key={match.id}
+                match={match}
+                realMatch={realData?.matches.find(m => m.id === match.id)}
                 teamsMap={teamsMap}
                 editable={editable}
                 onScoreChange={onScoreChange}
                 onPenaltyChange={onPenaltyChange}
               />
+            ))}
+          </div>
+
+          {/* Semi Finals Left */}
+          <div className="flex flex-col justify-around gap-32">
+            <KnockoutMatch
+              match={matchesByStage.semiFinals[0]}
+              realMatch={realData?.matches.find(m => m.id === matchesByStage.semiFinals[0]?.id)}
+              teamsMap={teamsMap}
+              editable={editable}
+              onScoreChange={onScoreChange}
+              onPenaltyChange={onPenaltyChange}
+            />
+          </div>
+
+          {/* Final + Third Place */}
+          <div className="flex flex-col justify-center gap-24">
+            <div className="flex flex-col gap-20">
+              <div className="flex flex-col items-center gap-2">
+                <span className="text-[0.65rem] font-bold uppercase tracking-wider text-gold">Final</span>
+                <KnockoutMatch
+                  match={matchesByStage.final[0]}
+                  realMatch={realData?.matches.find(m => m.id === matchesByStage.final[0]?.id)}
+                  teamsMap={teamsMap}
+                  editable={editable}
+                  onScoreChange={onScoreChange}
+                  onPenaltyChange={onPenaltyChange}
+                />
+              </div>
+              <div className="flex flex-col items-center gap-2">
+                <span className="text-[0.65rem] font-bold uppercase tracking-wider text-muted-foreground">3º Lugar</span>
+                <KnockoutMatch
+                  match={matchesByStage.thirdPlace[0]}
+                  realMatch={realData?.matches.find(m => m.id === matchesByStage.thirdPlace[0]?.id)}
+                  teamsMap={teamsMap}
+                  editable={editable}
+                  onScoreChange={onScoreChange}
+                  onPenaltyChange={onPenaltyChange}
+                />
+              </div>
             </div>
           </div>
-        </div>
 
-        {/* Semi Finals Right */}
-        <div className="flex flex-col justify-around gap-32">
-          <KnockoutMatch
-            match={matchesByStage.semiFinals[1]}
-            realMatch={realData?.matches.find(m => m.id === matchesByStage.semiFinals[1]?.id)}
-            teamsMap={teamsMap}
-            editable={editable}
-            onScoreChange={onScoreChange}
-            onPenaltyChange={onPenaltyChange}
-          />
-        </div>
-
-        {/* Quarter Finals Right */}
-        <div className="flex flex-col justify-around gap-24">
-
-          {matchesByStage.quarterFinals.slice(2, 4).map(match => (
+          {/* Semi Finals Right */}
+          <div className="flex flex-col justify-around gap-32">
             <KnockoutMatch
-              key={match.id}
-              match={match}
-              realMatch={realData?.matches.find(m => m.id === match.id)}
+              match={matchesByStage.semiFinals[1]}
+              realMatch={realData?.matches.find(m => m.id === matchesByStage.semiFinals[1]?.id)}
               teamsMap={teamsMap}
               editable={editable}
               onScoreChange={onScoreChange}
               onPenaltyChange={onPenaltyChange}
             />
-          ))}
-        </div>
+          </div>
 
-        {/* Round of 16 Right */}
-        <div className="flex flex-col justify-around gap-12">
-          {matchesByStage.roundOf16.slice(4, 8).map(match => (
-            <KnockoutMatch
-              key={match.id}
-              match={match}
-              realMatch={realData?.matches.find(m => m.id === match.id)}
-              teamsMap={teamsMap}
-              editable={editable}
-              onScoreChange={onScoreChange}
-              onPenaltyChange={onPenaltyChange}
-            />
-          ))}
-        </div>
+          {/* Quarter Finals Right */}
+          <div className="flex flex-col justify-around gap-24">
 
-        {/* Round of 32 Right */}
-        <div className="flex flex-col justify-around gap-6">
-          {matchesByStage.roundOf32.slice(8, 16).map((match, i) => (
-            <KnockoutMatch
-              key={match.id}
-              match={match}
-              realMatch={realData?.matches.find(m => m.id === match.id)}
-              teamsMap={teamsMap}
-              homePlaceholder={roundOf32Placeholders[i + 8].home}
-              awayPlaceholder={roundOf32Placeholders[i + 8].away}
-              editable={editable}
-              onScoreChange={onScoreChange}
-              onPenaltyChange={onPenaltyChange}
-            />
-          ))}
+            {matchesByStage.quarterFinals.slice(2, 4).map(match => (
+              <KnockoutMatch
+                key={match.id}
+                match={match}
+                realMatch={realData?.matches.find(m => m.id === match.id)}
+                teamsMap={teamsMap}
+                editable={editable}
+                onScoreChange={onScoreChange}
+                onPenaltyChange={onPenaltyChange}
+              />
+            ))}
+          </div>
+
+          {/* Round of 16 Right */}
+          <div className="flex flex-col justify-around gap-12">
+            {matchesByStage.roundOf16.slice(4, 8).map(match => (
+              <KnockoutMatch
+                key={match.id}
+                match={match}
+                realMatch={realData?.matches.find(m => m.id === match.id)}
+                teamsMap={teamsMap}
+                editable={editable}
+                onScoreChange={onScoreChange}
+                onPenaltyChange={onPenaltyChange}
+              />
+            ))}
+          </div>
+
+          {/* Round of 32 Right */}
+          <div className="flex flex-col justify-around gap-6">
+            {matchesByStage.roundOf32.slice(8, 16).map((match, i) => (
+              <KnockoutMatch
+                key={match.id}
+                match={match}
+                realMatch={realData?.matches.find(m => m.id === match.id)}
+                teamsMap={teamsMap}
+                homePlaceholder={roundOf32Placeholders[i + 8].home}
+                awayPlaceholder={roundOf32Placeholders[i + 8].away}
+                editable={editable}
+                onScoreChange={onScoreChange}
+                onPenaltyChange={onPenaltyChange}
+              />
+            ))}
+          </div>
         </div>
       </div>
-    </div>
+
+      {/* Floating Shortcut Button */}
+      {editable && nextUnpredictedMatch && (
+        <div className={cn(
+          "fixed inset-x-0 z-50 flex justify-center pointer-events-none transition-all duration-500 ease-in-out",
+          buttonPosition === "bottom" ? "bottom-28" : "top-24"
+        )}>
+          <button
+            onClick={scrollToNextMatch}
+            className="flex items-center gap-2 pointer-events-auto px-6 py-3 rounded-full bg-gold text-gold-foreground font-black shadow-2xl shadow-gold/50 border-2 border-gold-foreground/20 hover:scale-105 active:scale-95 transition-all animate-in slide-in-from-bottom-8 duration-500"
+          >
+            <span className="text-sm tracking-tighter">PRÓXIMA PARTIDA</span>
+            {buttonPosition === "bottom" ? <ArrowRightCircle size={20} /> : <ArrowUpCircle size={20} />}
+          </button>
+        </div>
+      )}
+    </>
   );
 }
