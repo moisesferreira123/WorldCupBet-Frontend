@@ -173,14 +173,14 @@ export default function MatchRoundCard({
                                     Math.max(0, (value ?? 0) - 1)
                                  )
                               }
-                              className="grid h-6 w-6 place-items-center rounded-md border border-border bg-secondary text-muted-foreground hover:border-primary hover:text-primary active:scale-95"
+                              className="grid h-6 w-6 place-items-center rounded-md border-2 border-border bg-secondary text-foreground hover:border-gold hover:text-gold active:scale-90 transition-colors"
                               aria-label="Diminuir"
                            >
                               <Minus className="h-3 w-3" />
                            </button>
                         )}
 
-                        <label className="grid h-9 w-9 place-items-center rounded-lg border border-gold/30 bg-gold/10 font-display text-xl font-bold tabular-nums text-gold">
+                        <label className="grid h-9 w-9 place-items-center rounded-lg border-2 border-gold/40 bg-gold/10 font-display text-xl font-black tabular-nums text-gold shadow-inner">
                            {canEdit ? (
                               <input
                                  type="number"
@@ -211,7 +211,7 @@ export default function MatchRoundCard({
                                     (value ?? 0) + 1
                                  )
                               }
-                              className="grid h-6 w-6 place-items-center rounded-md border border-border bg-secondary text-muted-foreground hover:border-primary hover:text-primary active:scale-95"
+                              className="grid h-6 w-6 place-items-center rounded-md border-2 border-border bg-secondary text-foreground hover:border-gold hover:text-gold active:scale-90 transition-colors"
                               aria-label="Aumentar"
                            >
                               <Plus className="h-3 w-3" />
@@ -221,8 +221,8 @@ export default function MatchRoundCard({
                   );
 
                   return (
-                     <div key={match.id} className={`relative rounded-xl transition-all duration-300 ${showLiveEffects ? 'bg-success/5 ring-1 ring-success/20' : ''}`}>
-                        <div className={`mb-2 flex items-center justify-between text-xs ${showLiveEffects ? 'p-2 pb-0' : ''}`}>
+                     <div key={match.id} className={`relative rounded-xl transition-all duration-300 ${showLiveEffects ? 'bg-success/5 ring-1 ring-success/20 shadow-lg' : ''}`}>
+                        <div className={`mb-2 flex items-center justify-between text-xs font-black uppercase tracking-widest ${showLiveEffects ? 'p-2 pb-0' : ''}`}>
                            <div className="flex items-center gap-1.5">
                               {showLiveEffects ? (
                                  <div className="flex items-center gap-1.5">
@@ -230,9 +230,9 @@ export default function MatchRoundCard({
                                        <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-success opacity-75"></span>
                                        <span className="relative inline-flex h-2 w-2 rounded-full bg-success"></span>
                                     </div>
-                                    <span className="font-bold uppercase tracking-wider text-success">Ao Vivo</span>
+                                    <span className="text-success">Ao Vivo</span>
                                  </div>
-                              ) : status.icon}
+                              ) : <span className="scale-110">{status.icon}</span>}
 
                               <span className="text-muted-foreground">
                                  {date}
@@ -241,11 +241,11 @@ export default function MatchRoundCard({
 
                            <div className="flex items-center gap-2">
                               {points !== null && (
-                                 <span className={`rounded-md px-1.5 py-0.5 font-bold ${points === 3 ? 'bg-gold/20 text-gold' : points === 1 ? 'bg-primary/20 text-primary' : 'bg-muted text-muted-foreground'}`}>
+                                 <span className={`rounded-md px-1.5 py-0.5 shadow-sm ring-1 ring-background ${points === 3 ? 'bg-gold text-gold-foreground' : points === 1 ? 'bg-primary text-primary-foreground' : 'bg-muted text-muted-foreground'}`}>
                                     +{points}
                                  </span>
                               )}
-                              <span className={`font-medium ${isInProgress ? 'text-success' : 'text-muted-foreground'}`}>
+                              <span className={`${isInProgress ? 'text-success' : 'text-muted-foreground'}`}>
                                  {time}
                               </span>
                            </div>

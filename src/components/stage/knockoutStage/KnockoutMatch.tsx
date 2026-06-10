@@ -105,23 +105,23 @@ function MatchTeamRow({
         {showPenaltyButton && (
           <button
             onClick={onPenaltySelect}
-            className={`flex h-5 w-5 shrink-0 items-center justify-center rounded-full border transition-colors ${
+            className={`flex h-6 w-6 shrink-0 items-center justify-center rounded-full border-2 transition-all active:scale-90 ${
               isPenaltyWinner
-                ? "border-gold bg-gold text-gold-foreground"
-                : "border-border bg-secondary hover:border-gold"
+                ? "border-gold bg-gold text-gold-foreground shadow-md"
+                : "border-border bg-secondary hover:border-gold/50"
             }`}
             title="Marcar como vencedor nos pênaltis"
           >
             <Trophy
-              size={10}
+              size={12}
               className={
                 isPenaltyWinner ? "text-gold-foreground" : "text-muted-foreground/40"
               }
             />
           </button>
         )}
-        {!showPenaltyButton && editable && <div className="h-5 w-5 shrink-0" />}
-        <div className="h-5 w-5 shrink-0 overflow-hidden rounded-full border border-border bg-secondary">
+        {!showPenaltyButton && editable && <div className="h-6 w-6 shrink-0" />}
+        <div className="h-5 w-5 shrink-0 overflow-hidden rounded-full border border-border bg-secondary shadow-sm">
           {team && (
             <img
               className="h-full w-full object-cover"
@@ -131,7 +131,7 @@ function MatchTeamRow({
           )}
         </div>
         <span
-          className="truncate text-xs font-semibold"
+          className="truncate text-xs font-black tracking-tight"
           title={label}
         >
           {label}
@@ -141,7 +141,7 @@ function MatchTeamRow({
         {canEdit && (
           <button
             onClick={() => changeScore(Math.max(0, (score ?? 0) - 1))}
-            className="grid h-6 w-6 place-items-center rounded-md border border-border bg-secondary text-muted-foreground hover:border-primary hover:text-primary active:scale-95"
+            className="grid h-6 w-6 place-items-center rounded-md border-2 border-border bg-secondary text-foreground hover:border-gold hover:text-gold active:scale-90 transition-colors"
             aria-label="Diminuir"
           >
             <Minus className="h-3 w-3" />
@@ -149,7 +149,7 @@ function MatchTeamRow({
         )}
 
         <div
-          className={`grid h-8 w-8 place-items-center rounded-md border border-gold/30 bg-gold/10 font-display font-bold tabular-nums text-gold text-base ${
+          className={`grid h-8 w-8 place-items-center rounded-md border-2 border-gold/40 bg-gold/10 font-display font-black tabular-nums text-gold text-base shadow-inner ${
             canEdit ? "p-0" : ""
           }`}
         >
@@ -171,7 +171,7 @@ function MatchTeamRow({
         {canEdit && (
           <button
             onClick={() => changeScore((score ?? 0) + 1)}
-            className="grid h-6 w-6 place-items-center rounded-md border border-border bg-secondary text-muted-foreground hover:border-primary hover:text-primary active:scale-95"
+            className="grid h-6 w-6 place-items-center rounded-md border-2 border-border bg-secondary text-foreground hover:border-gold hover:text-gold active:scale-90 transition-colors"
             aria-label="Aumentar"
           >
             <Plus className="h-3 w-3" />
@@ -260,24 +260,24 @@ export default function KnockoutMatch({
       data-stage={match?.stage}
     >
       <div
-        className={`rounded-xl border bg-card p-2.5 shadow-sm transition-all duration-300 ${
+        className={`rounded-xl border-2 bg-card p-2.5 shadow-md transition-all duration-300 ${
           showLiveEffects
-            ? "border-success/50 bg-success/[0.02] ring-1 ring-success/20 shadow-lg shadow-success/10"
-            : "border-border"
+            ? "border-success bg-success/[0.04] ring-2 ring-success/20 shadow-xl shadow-success/10"
+            : "border-border/80 hover:border-gold/30"
         }`}
       >
-        <div className="mb-1.5 flex items-center justify-between gap-2 text-[0.65rem] leading-none">
-          <div className={`flex min-w-0 items-center gap-1 ${status.className}`}>
+        <div className="mb-2 flex items-center justify-between gap-2 text-[0.65rem] font-black uppercase tracking-widest leading-none">
+          <div className={`flex min-w-0 items-center gap-1.5 ${status.className}`}>
             {showLiveEffects ? (
               <div className="relative -top-0.5 h-1.5 w-1.5 shrink-0">
                 <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-success opacity-75"></span>
                 <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-success"></span>
               </div>
             ) : (
-              status.icon
+              <span className="shrink-0 scale-125">{status.icon}</span>
             )}
             <span
-              className={`truncate font-bold uppercase tracking-wider ${
+              className={`truncate ${
                 showLiveEffects ? "text-success" : ""
               }`}
             >
@@ -285,15 +285,15 @@ export default function KnockoutMatch({
             </span>
           </div>
           <span
-            className={`shrink-0 ${
-              isInProgress ? "text-success font-bold" : "text-muted-foreground"
+            className={`shrink-0 font-bold ${
+              isInProgress ? "text-success" : "text-muted-foreground"
             }`}
           >
             {formatCompactDate(realMatch?.utcDate || match?.utcDate)}
           </span>
           {points !== null && (
             <span
-              className={`absolute -right-2 -top-2 z-20 rounded-md px-2 py-0.5 text-[0.6rem] font-black shadow-md transition-all ${
+              className={`absolute -right-2 -top-2 z-20 rounded-md px-2 py-0.5 text-[0.6rem] font-black shadow-lg ring-1 ring-background ${
                 points === 3
                   ? "bg-gold text-gold-foreground"
                   : points === 1

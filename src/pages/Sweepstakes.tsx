@@ -262,6 +262,10 @@ export default function Home() {
               <>
                 <div className="flex items-center gap-1.5 text-gold">
                   <Trophy size={16} />
+                  <span>{bet?.position ? `${bet.position}º lugar` : 'Sem posição'}</span>
+                </div>
+                <div className="flex items-center gap-1.5 text-gold">
+                  <CheckCircle2 size={16} className="text-success" />
                   <span>{bet?.totalPoints ?? 0} pontos</span>
                 </div>
                 <div className="flex items-center gap-1.5 text-success">

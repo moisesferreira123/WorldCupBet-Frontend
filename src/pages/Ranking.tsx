@@ -1,3 +1,4 @@
+import { useState } from "react";
 import Header from "../components/shared/Header";
 import { useQuery } from "@tanstack/react-query";
 import { getRanking } from "../api/client";
@@ -17,29 +18,38 @@ async function getRankQuery(page: number, pageSize: number): Promise<RankRespons
 }
 
 export default function Ranking() {
-  const page = 1;
-  const pageSize = 20;
+  const [page, setPage] = useState(1);
+  const pageSize = 10;
 
-  const { isLoading, error, data } = useQuery<RankResponse>({
+  const { isLoading, error, data, isPlaceholderData } = useQuery<RankResponse>({
     queryKey: ["ranking", page, pageSize],
     queryFn: async () => getRankQuery(page, pageSize),
+    placeholderData: (previousData) => previousData,
   });
 
   return (
     <div className="relative z-10 min-h-screen">
       <Header />
-      <main className="flex flex-col gap-4 pt-24 pb-20 sm:w-2/3 md:w-1/2 mx-auto">
+      <main className="flex flex-col gap-4 pt-24 pb-20 sm:w-2/3 md:w-1/2 mx-auto px-4 sm:px-0">
         <div className="space-y-6">
           <div>
-            <h1 className="font-display text-2xl font-bold">Ranking Geral</h1>
-            <p className="text-sm text-muted-foreground">Os melhores palpiteiros da Copa</p>
+            <h1 className="font-display text-2xl font-black">Ranking Geral</h1>
+            <p className="text-sm font-bold text-muted-foreground">Os melhores palpiteiros da Copa</p>
           </div>
           {error ?
             <ReportError error={error} />
             : (
-              isLoading ?
+              isLoading && !data ?
                 <RankTableSkeleton />
-                : <RankTable data={data ?? { items: [], totalItems: 0 }} />
+                : (
+                  <RankTable 
+                    data={data ?? { items: [], totalItems: 0 }} 
+                    page={page} 
+                    pageSize={pageSize} 
+                    onPageChange={setPage}
+                    isRefreshing={isPlaceholderData}
+                  />
+                )
             )
           }
         </div>

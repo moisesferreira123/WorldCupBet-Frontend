@@ -25,20 +25,20 @@ export default function GroupTable({
 
   return (
     <div className="overflow-hidden w-full rounded-2xl border border-border bg-card">
-      <div className="flex items-center gap-2 border-b border-border bg-(image:--gradient-pitch) px-4 py-3">
-        <div className="grid h-8 w-8 place-items-center rounded-lg bg-gold/15 font-display text-sm font-bold text-gold">
+      <div className="flex items-center gap-2 border-b-2 border-border/80 bg-(image:--gradient-pitch) px-4 py-3 shadow-sm">
+        <div className="grid h-8 w-8 place-items-center rounded-lg bg-gold/20 border border-gold/40 font-display text-sm font-black text-gold">
           {group.group.replace("Group", "")}
         </div>
 
-        <span className="text-sm font-semibold">
+        <span className="text-sm font-black uppercase tracking-widest">
           {group.group.replace("Group", "Grupo ")}
         </span>
       </div>
 
       <div className="overflow-x-auto px-2 py-2">
-        <div className={`grid ${columns} gap-1 px-2 pb-1 text-[10px] uppercase tracking-wider text-muted-foreground`}>
+        <div className={`grid ${columns} gap-1 px-2 pb-2 text-[10px] font-black uppercase tracking-widest text-muted-foreground`}>
           <span>Time</span>
-          <span className="text-center font-bold text-gold">P</span>
+          <span className="text-center font-black text-gold">P</span>
           <span className="text-center">J</span>
           <span className="text-center">V</span>
           <span className="text-center">E</span>
@@ -60,10 +60,10 @@ export default function GroupTable({
             return (
               <div
                 key={standing.teamId}
-                className={`grid ${columns} items-center gap-1 rounded-lg px-2 py-2 text-sm transition-all duration-300 hover:bg-secondary/50`}
+                className={`grid ${columns} items-center gap-1 rounded-lg px-2 py-2.5 text-sm transition-all duration-300 hover:bg-secondary/40`}
               >
-                <div className="flex min-w-0 items-center gap-2">
-                  <span className="w-4 text-xs text-muted-foreground">
+                <div className="flex min-w-0 items-center gap-3">
+                  <span className="w-4 text-xs font-black text-muted-foreground">
                     {standing.position}
                   </span>
 
@@ -72,14 +72,14 @@ export default function GroupTable({
                     alt={team.name}
                   />
 
-                  <span className="whitespace-nowrap font-medium"
+                  <span className="whitespace-nowrap font-black tracking-tight text-foreground"
                     title={getCountryNamePt(team.name)}
                   >
                     {truncateName(getCountryNamePt(team.name))}
                   </span>
                 </div>
 
-                <span className="text-center font-display font-bold text-gold tabular-nums">
+                <span className="text-center font-display font-black text-gold tabular-nums">
                   {standing.points}
                 </span>
 
