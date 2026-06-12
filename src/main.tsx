@@ -6,6 +6,7 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import Ranking from './pages/Ranking'
 import Matches from './pages/Matches'
 import Rules from './pages/Rules'
+import Admin from './pages/Admin'
 import { QueryClient } from '@tanstack/react-query'
 import { createAsyncStoragePersister } from '@tanstack/query-async-storage-persister'
 
@@ -28,6 +29,10 @@ const router = createBrowserRouter([
   {
     path: "/rules",
     element: <Rules />,
+  },
+  {
+    path: "/admin",
+    element: <Admin />,
   },
 ])
 
