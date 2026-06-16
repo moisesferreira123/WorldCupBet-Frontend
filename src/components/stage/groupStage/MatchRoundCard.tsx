@@ -291,13 +291,12 @@ export default function MatchRoundCard({
                            </div>
                         </div>
 
-                        {isFinished && !realMatch && (
+                        {isFinished && realMatch && (
                            <div className="absolute left-0 right-0 top-4 mt-0.5 flex flex-col items-center text-[0.55rem] font-bold uppercase tracking-widest text-muted-foreground/80 z-20 pointer-events-none">
                               <div className="flex items-center gap-1 rounded-full border border-border/50 bg-card/80 px-2 py-0.5 shadow-sm backdrop-blur-sm">
                                  <span>Real:</span>
                                  <span className="text-foreground">
-                                    {/* {realMatch.homeTeamGoals} × {realMatch.awayTeamGoals} */}
-                                    1 x 2
+                                    {realMatch.homeTeamGoals} × {realMatch.awayTeamGoals}
                                  </span>
                               </div>
                            </div>
