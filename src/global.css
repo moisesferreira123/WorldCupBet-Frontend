@@ -34,6 +34,8 @@
   --color-silver-foreground: var(--silver-foreground);
   --color-bronze: var(--bronze);
   --color-bronze-foreground: var(--bronze-foreground);
+  --color-green-five: var(--green-five);
+  --color-green-five-foreground: var(--green-five-foreground);
   --color-success: var(--success);
   --color-warning: var(--warning);
   --color-destructive: var(--destructive);
@@ -70,6 +72,10 @@
   --silver-foreground: oklch(0.15 0 0);
   --bronze: oklch(0.65 0.12 45);
   --bronze-foreground: oklch(0.15 0.05 45);
+
+  /* SCORE COLORS */
+  --green-five: oklch(0.68 0.19 145);
+  --green-five-foreground: oklch(0.20 0.06 145);
   
   --success: oklch(0.7 0.15 145);
   --warning: oklch(0.8 0.13 85);
@@ -118,6 +124,10 @@
     --silver-foreground: oklch(1 0 0);
     --bronze: oklch(0.65 0.14 45);
     --bronze-foreground: oklch(1 0 0);
+
+    /* SCORE COLORS */
+    --green-five: oklch(0.68 0.19 145);
+    --green-five-foreground: oklch(0.20 0.06 145);
 
     /* STATUS */
     --success: oklch(0.5 0.18 145);

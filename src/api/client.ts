@@ -1,5 +1,6 @@
 import axios, { HttpStatusCode } from 'axios';
 import type { BetResponse, CreateBetRequest, RankResponse, WorldCupResponse } from './types';
+// import worldCupMockData from "../mock/worldcup.json"
 
 axios.defaults.baseURL = import.meta.env.VITE_API_BASE_URL || "http://localhost:5073/";
 
@@ -65,6 +66,14 @@ export async function request<T>(
  
 export const getWorldCupData = () => 
    request<WorldCupResponse>(axios.get("/worldcup"));
+
+// export const getWorldCupData = () => {
+//   return Promise.resolve({
+//     status: 200,
+//     data: worldCupMockData,
+//     errors: [] as string[]
+//   });
+// };
 
 export const getRanking = (page: number, pageSize: number) =>
   request<RankResponse>(

@@ -112,9 +112,9 @@ export default function Matches() {
                     : 'border-border bg-card'
                     }`}
                 >
-                  <div className="flex w-full items-center justify-center gap-2">
+                  <div className="flex w-full items-center justify-center gap-3">
                     <div className="flex flex-col items-center gap-1">
-                      <div className="h-6 w-8 overflow-hidden rounded-sm border border-border/50 shadow-sm">
+                      <div className="h-6 overflow-hidden rounded-sm shadow-sm">
                         <Flag src={home.flagUri} alt={home.name} />
                       </div>
                       <span className="text-[10px] font-bold">{home.tla}</span>
@@ -128,7 +128,7 @@ export default function Matches() {
                       </span>
                     </div>
                     <div className="flex flex-col items-center gap-1">
-                      <div className="h-6 w-8 overflow-hidden rounded-sm border border-border/50 shadow-sm">
+                      <div className="h-6 overflow-hidden rounded-sm shadow-sm">
                         <Flag src={away.flagUri} alt={away.name} />
                       </div>
                       <span className="text-[10px] font-bold">{away.tla}</span>

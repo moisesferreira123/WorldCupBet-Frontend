@@ -221,12 +221,12 @@ export default function MatchRoundCard({
                   );
 
                   return (
-                     <div key={match.id} className={`relative rounded-xl transition-all duration-300 ${showLiveEffects ? 'bg-success/5 ring-1 ring-success/20 shadow-lg' : ''}`}>
-                        <div className={`mb-2 flex items-center justify-between text-xs font-black uppercase tracking-widest ${showLiveEffects ? 'p-2 pb-0' : ''}`}>
+                     <div key={match.id} className={`relative rounded-xl transition-all duration-300`}>
+                        <div className={`mb-2 flex items-center justify-between text-xs font-black uppercase tracking-widest space-y-4`}>
                            <div className="flex items-center gap-1.5">
                               {showLiveEffects ? (
                                  <div className="flex items-center gap-1.5">
-                                    <div className="relative -top-0.5 h-2 w-2">
+                                    <div className="relative flex justify-center items-center h-2 w-2">
                                        <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-success opacity-75"></span>
                                        <span className="relative inline-flex h-2 w-2 rounded-full bg-success"></span>
                                     </div>
@@ -241,7 +241,7 @@ export default function MatchRoundCard({
 
                            <div className="flex items-center gap-2">
                               {points !== null && (
-                                 <span className={`rounded-md px-1.5 py-0.5 shadow-sm ring-1 ring-background ${points === 3 ? 'bg-gold text-gold-foreground' : points === 1 ? 'bg-primary text-primary-foreground' : 'bg-muted text-muted-foreground'}`}>
+                                 <span className={`rounded-md px-1.5 py-0.5 shadow-sm ring-1 ring-background ${points === 5 ? 'bg-green-five text-green-five-foreground' : points === 3 ? 'bg-gold text-gold-foreground' : points === 1 ? 'bg-primary text-primary-foreground' : 'bg-muted text-muted-foreground'}`}>
                                     +{points}
                                  </span>
                               )}
@@ -291,12 +291,13 @@ export default function MatchRoundCard({
                            </div>
                         </div>
 
-                        {isFinished && realMatch && (
-                           <div className="absolute left-0 right-0 top-full mt-0.5 flex flex-col items-center text-[0.55rem] font-bold uppercase tracking-widest text-muted-foreground/80 z-20 pointer-events-none">
+                        {isFinished && !realMatch && (
+                           <div className="absolute left-0 right-0 top-4 mt-0.5 flex flex-col items-center text-[0.55rem] font-bold uppercase tracking-widest text-muted-foreground/80 z-20 pointer-events-none">
                               <div className="flex items-center gap-1 rounded-full border border-border/50 bg-card/80 px-2 py-0.5 shadow-sm backdrop-blur-sm">
                                  <span>Real:</span>
                                  <span className="text-foreground">
-                                    {realMatch.homeTeamGoals} × {realMatch.awayTeamGoals}
+                                    {/* {realMatch.homeTeamGoals} × {realMatch.awayTeamGoals} */}
+                                    1 x 2
                                  </span>
                               </div>
                            </div>
