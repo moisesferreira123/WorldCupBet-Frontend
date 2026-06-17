@@ -46,7 +46,7 @@ export default function Rules() {
     },
     {
       title: "Vencedor nos Pênaltis",
-      points: "+5",
+      points: "+2",
       description: "Você acertou qual time venceu a disputa de pênaltis em jogos eliminatórios.",
       icon: <Star className="h-5 w-5" />,
       color: "bg-gold/10 text-gold border-gold/20",
@@ -73,8 +73,8 @@ export default function Rules() {
 
         <div className="grid gap-3">
           {scoringRules.map((rule, index) => (
-            <div 
-              key={index} 
+            <div
+              key={index}
               className="flex items-start gap-4 rounded-2xl border border-border bg-card p-4 transition-all hover:border-border-elevated hover:shadow-glow group"
             >
               <div className={cn(
