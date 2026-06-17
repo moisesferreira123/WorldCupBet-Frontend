@@ -92,4 +92,27 @@ export const createBet = (data: CreateBetRequest) =>
   request<BetResponse>(axios.post("/bet", data));
 
 export const recalculateBets = (password: string) =>
-  request<void>(axios.post("/bet/recalculate", { Password: password }));
+  request<void>(
+    axios.post(
+      "/admin/bets/recalculate",
+      {},
+      {
+        headers: {
+          "X-Admin-Password": password
+        }
+      }
+    )
+  );
+
+export const updateStandings = (password: string) =>
+  request<void>(
+    axios.post(
+      "/admin/standings/update",
+      {},
+      {
+        headers: {
+          "X-Admin-Password": password
+        }
+      }
+    )
+  );

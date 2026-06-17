@@ -1,6 +1,6 @@
 import { useState } from "react";
 import Header from "../components/shared/Header";
-import { recalculateBets } from "../api/client";
+import { recalculateBets, updateStandings } from "../api/client";
 import { Lock, RefreshCw, CheckCircle2, AlertCircle } from "lucide-react";
 
 export default function Admin() {
@@ -31,6 +31,40 @@ export default function Admin() {
     }
   };
 
+  const handleUpdateStandings = async () => {
+    if (!password) {
+      setStatus({ type: 'error', message: "Senha é obrigatória" });
+      return;
+    }
+
+    setIsLoading(true);
+    setStatus({ type: null, message: "" });
+
+    try {
+      const response = await updateStandings(password);
+      if (response.errors.length > 0) {
+        setStatus({ type: 'error', message: response.errors[0] });
+      } else {
+        setStatus({ type: 'success', message: "Classificação atualizada com sucesso!" });
+      }
+    } catch (error) {
+      setStatus({ type: 'error', message: "Erro ao atualizar classificação" });
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
+  const buttons = [
+    {
+      label: "Atualizar Apostas",
+      onClick: handleUpdateBets,
+    },
+    {
+      label: "Atualizar Classificação",
+      onClick: handleUpdateStandings,
+    },
+  ]
+
   return (
     <div className="relative z-10 min-h-screen">
       <Header />
@@ -55,19 +89,22 @@ export default function Admin() {
             />
           </div>
 
-          <div className="pt-2">
-            <button
-              onClick={handleUpdateBets}
-              disabled={isLoading}
-              className="w-full flex items-center justify-center gap-2 rounded-xl bg-gold py-3 font-bold text-gold-foreground transition-all hover:bg-gold-elevated hover:shadow-glow disabled:opacity-50 disabled:cursor-not-allowed cursor-pointer"
-            >
-              {isLoading ? (
-                <RefreshCw className="h-5 w-5 animate-spin" />
-              ) : (
-                <RefreshCw className="h-5 w-5" />
-              )}
-              Atualizar Apostas
-            </button>
+          <div className="pt-2 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+            {buttons.map((button, index) => (
+              <button
+                onClick={button.onClick}
+                disabled={isLoading}
+                key={index}
+                className="w-full flex items-center justify-center gap-2 rounded-xl bg-gold py-3 font-bold text-gold-foreground transition-all hover:bg-gold-elevated hover:shadow-glow disabled:opacity-50 disabled:cursor-not-allowed cursor-pointer"
+              >
+                {isLoading ? (
+                  <RefreshCw className="h-5 w-5 animate-spin" />
+                ) : (
+                  <RefreshCw className="h-5 w-5" />
+                )}
+                {button.label}
+              </button>
+            ))}
           </div>
 
           {status.type && (
