@@ -60,7 +60,7 @@ export default function RankTable({ data, page, pageSize, onPageChange, isRefres
                            <span className={cn("text-sm font-black tabular-nums", isMe ? "text-gold" : "text-muted-foreground")}>{item.position}</span>
                            <div className="flex items-center gap-3">
                               <div className={cn(
-                                 "grid h-9 w-9 place-items-center rounded-full text-xs font-black border-2 shadow-sm transition-all",
+                                 "flex items-center justify-center shrink-0 h-9 w-9 rounded-full text-xs font-black border-2 shadow-sm transition-all",
                                  isMe 
                                     ? "bg-gold border-gold text-gold-foreground scale-110" 
                                     : "bg-secondary border-border/60 text-foreground"

@@ -36,6 +36,8 @@
   --color-bronze-foreground: var(--bronze-foreground);
   --color-green-five: var(--green-five);
   --color-green-five-foreground: var(--green-five-foreground);
+  --color-red-loss: var(--red-loss);
+  --color-red-loss-foreground: var(--red-loss-foreground);
   --color-success: var(--success);
   --color-warning: var(--warning);
   --color-destructive: var(--destructive);
@@ -76,6 +78,8 @@
   /* SCORE COLORS */
   --green-five: oklch(0.68 0.19 145);
   --green-five-foreground: oklch(0.20 0.06 145);
+  --red-loss: oklch(0.62 0.22 25);    
+  --red-loss-foreground: oklch(0.22 0.07 25);
   
   --success: oklch(0.7 0.15 145);
   --warning: oklch(0.8 0.13 85);
@@ -128,6 +132,8 @@
     /* SCORE COLORS */
     --green-five: oklch(0.68 0.19 145);
     --green-five-foreground: oklch(0.20 0.06 145);
+    --red-loss: oklch(0.62 0.22 25);    
+    --red-loss-foreground: oklch(0.22 0.07 25);
 
     /* STATUS */
     --success: oklch(0.5 0.18 145);

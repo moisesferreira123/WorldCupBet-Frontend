@@ -241,8 +241,8 @@ export default function MatchRoundCard({
 
                            <div className="flex items-center gap-2">
                               {points !== null && (
-                                 <span className={`rounded-md px-1.5 py-0.5 shadow-sm ring-1 ring-background ${points === 5 ? 'bg-green-five text-green-five-foreground' : points === 3 ? 'bg-gold text-gold-foreground' : points === 1 ? 'bg-primary text-primary-foreground' : 'bg-muted text-muted-foreground'}`}>
-                                    +{points}
+                                 <span className={`rounded-md px-1.5 py-0.5 shadow-sm ring-1 ring-background ${points < 0 ? 'bg-red-loss text-red-loss-foreground' : points === 0 ? 'bg-muted text-muted-foreground' : points < 3 ? 'bg-primary text-primary-foreground' : points < 5 ? 'bg-gold text-gold-foreground' : 'bg-green-five text-green-five-foreground'}`}>
+                                    {points >= 0 ? '+' : ''}{points}
                                  </span>
                               )}
                               <span className={`${isInProgress ? 'text-success' : 'text-muted-foreground'}`}>
