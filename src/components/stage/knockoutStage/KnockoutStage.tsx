@@ -25,10 +25,29 @@ type KnockoutStageProps = {
   ) => void;
 };
 
+function swapMatchesById(matches: Match[], id1: number, id2: number) {
+  const i = matches.findIndex(match => match.id === id1);
+  const j = matches.findIndex(match => match.id === id2);
+
+  if (i !== -1 && j !== -1) {
+    [matches[i], matches[j]] = [matches[j], matches[i]];
+  }
+
+  return matches;
+}
+
 function groupMatchesByStage(matches: Match[]) {
+  const roundOf16 = sortMatchesById(
+    matches.filter(match => match.stage === "RoundOf16")
+  );
+
+  // Trocas desejadas
+  swapMatchesById(roundOf16, 537377, 537379);
+  swapMatchesById(roundOf16, 537378, 537380);
+
   return {
     roundOf32: sortMatchesById(matches.filter(match => match.stage === "RoundOf32")),
-    roundOf16: sortMatchesById(matches.filter(match => match.stage === "RoundOf16")),
+    roundOf16: roundOf16,
     quarterFinals: sortMatchesById(matches.filter(match => match.stage === "QuarterFinals")),
     semiFinals: sortMatchesById(matches.filter(match => match.stage === "SemiFinals")),
     thirdPlace: sortMatchesById(matches.filter(match => match.stage === "ThirdPlace")),
@@ -61,14 +80,14 @@ export default function KnockoutStage({
       const isScoreMissing = m.homeTeamGoals === null || m.awayTeamGoals === null;
       const isDraw = m.homeTeamGoals === m.awayTeamGoals && m.homeTeamGoals !== null;
       const isPenaltyMissing = isDraw && (m.homeTeamPenalties === null || m.awayTeamPenalties === null);
-      
+
       return isScoreMissing || isPenaltyMissing;
     });
 
   const scrollToNextMatch = () => {
     if (!nextUnpredictedMatch || !scrollContainerRef.current) return;
     const element = document.querySelector(`[data-match-id="${nextUnpredictedMatch.id}"]`) as HTMLElement;
-    
+
     if (element && scrollContainerRef.current) {
       const container = scrollContainerRef.current;
       const containerRect = container.getBoundingClientRect();
@@ -89,7 +108,7 @@ export default function KnockoutStage({
         top: scrollTop,
         behavior: 'smooth'
       });
-      
+
       // Feedback visual
       element.classList.add('ring-4', 'ring-gold', 'ring-offset-4', 'ring-offset-background');
       setTimeout(() => {
